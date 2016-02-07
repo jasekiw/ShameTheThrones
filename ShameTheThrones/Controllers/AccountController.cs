@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ShameTheThrones.Models;
 // testing dssdgdf
+//Commit
 namespace ShameTheThrones.Controllers
 {
     [Authorize]
