@@ -11,7 +11,7 @@ namespace ShameTheThrones.Controllers
 
         public ActionResult Index()
         {
-            //test test2
+            //test test2 test3
             return View();
         }
 
