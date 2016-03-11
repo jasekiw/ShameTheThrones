@@ -1,0 +1,34 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">ShameTheThrones</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li @if (ViewBag.NavBarTab == "Home"){ 
+                    @: class="active" 
+                    }><a href="@Url.Action("Index", "Home")">Home</a></li>
+
+                <li @if (ViewBag.NavbarTab == "About") {
+                    @: class="active" 
+                    }><a href="@Url.Action("Index", "Home")">About</a></li>
+
+
+                <li @if (ViewBag.NavbarTab == "Rate"){ 
+                    @: class="active" 
+                    }><a href="@Url.Action("Index", "Home")">Rate</a></li>
+
+                <li @if (ViewBag.NavbarTab == "Contact"){ 
+                    @: class="active" 
+                    }><a href="@Url.Action("Index", "Home")">Hall of Shame</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
