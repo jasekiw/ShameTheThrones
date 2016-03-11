@@ -17,6 +17,7 @@ namespace ShameTheThrones
                       "~/Content/bootstrap.css",
                       "~/Content/style.css"
                       ));
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
