@@ -1,0 +1,31 @@
+﻿@model ShameTheThrones.Models.UserModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="panel panel-default">
+
+    <div class="panel-heading text-center">Log In</div>
+
+    <div class="panel-body">
+        <div class="col-xs-12">
+            @Html.Label("User Name")
+            @Html.TextBoxFor(m => m.UserName)
+        </div>
+
+        <div class="col-xs-12">
+            @Html.Label("Email Address")
+            @Html.TextBoxFor(m => m.Email)
+        </div>
+
+        <div class="col-xs-12">
+            @Html.Label("Password")
+            @Html.TextBoxFor(m => m.Password)
+        </div>
+
+    </div>
+
+</div>
+
+
