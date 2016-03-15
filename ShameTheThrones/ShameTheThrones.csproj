@@ -146,23 +146,23 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Models\ShameTheThronesDbModel.Context.tt">
+    <Content Include="Models\DbContext\ShameTheThronesDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
       <LastGenOutput>ShameTheThronesDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShameTheThronesDbModel.tt">
+    <Content Include="Models\DbContext\ShameTheThronesDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
       <LastGenOutput>ShameTheThronesDbModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ShameTheThronesDbModel.edmx">
+    <EntityDeploy Include="Models\DbContext\ShameTheThronesDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShameTheThronesDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ShameTheThronesDbModel.edmx.diagram">
+    <Content Include="Models\DbContext\ShameTheThronesDbModel.edmx.diagram">
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -182,31 +182,31 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Medium.cs">
+    <Compile Include="Models\DbContext\Medium.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rating.cs">
+    <Compile Include="Models\DbContext\Rating.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Restroom.cs">
+    <Compile Include="Models\DbContext\Restroom.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShameTheThronesDbModel.Context.cs">
+    <Compile Include="Models\DbContext\ShameTheThronesDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShameTheThronesDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShameTheThronesDbModel.cs">
+    <Compile Include="Models\DbContext\ShameTheThronesDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShameTheThronesDbModel.Designer.cs">
+    <Compile Include="Models\DbContext\ShameTheThronesDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
+    <Compile Include="Models\DbContext\User.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
