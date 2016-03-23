@@ -32,9 +32,11 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Request.IsAuthenticated)
                 {
-                    <li>@Html.Encode(User.Identity.Name)</li>
                     <li>
-                        <a href="@Url.Action("Index", "Home")">Log Out</a>
+                        <a href="#">@Html.Encode(User.Identity.Name)</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LogOut", "User")">Log Out</a>
                     </li>
                 }
                 else

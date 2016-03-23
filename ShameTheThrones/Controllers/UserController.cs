@@ -25,8 +25,13 @@ namespace ShameTheThrones.Controllers
         [HttpPost]
         public ActionResult Register(UserModel user)
         {
-            user.Register(user);
-            return RedirectToAction("Register");
+            if (ModelState.IsValid)
+            {
+                user.Register(user);
+                return RedirectToAction("Index", "Home");
+            }
+            
+            return View(user);
         }
         
         [HttpGet]

@@ -10,8 +10,6 @@ namespace ShameTheThrones.Models
     public class UserModel
     {
 
-        public int id { get; }
-
         public string UserName { get; set; }
 
         [Required]
