@@ -11,17 +11,45 @@
 <div class="row spaced homeSearch">
     <div class="col-xs-12">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="form-control" placeholder="start typing a zip code...">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
             </span>
         </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
 </div>
-<script type="text/javascript">
-    $(".homeSearch .form-control").on("keyup", function(obj, e) {
-        console.log(obj);
-        console.log(e);
-    });
-</script>
+<div class="searchResults row">
+    <div class="col-xs-12 results">
+        
+    </div>
+</div>
 
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(".homeSearch .form-control").on("keyup", function(event) {
+            var target = $(event.currentTarget);
+            var value = target.val();
+//            $.get("/bathrooms/search/zip/" + value, function (obj) { // stub for the ajax request to search for bathrooms
+//
+//            });
+            var results = [
+                { value: "test result 1" },
+                { value: "test result 1" },
+                { value: "test result 1" },
+                { value: value }
+            ];
+            
+            if (value.length >= 3) {
+                var resultsSection = $(".searchResults .results");
+                resultsSection.html("");
+                results.forEach(function(obj) { 
+                    var toAdd = '<div class="result row"><a href="#">' + obj.value + '</a></div>';
+                    resultsSection.append($(toAdd));
+                });
+            }
+        });
+
+    </script>
+}
