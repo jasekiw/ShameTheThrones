@@ -1,0 +1,78 @@
+﻿@model ShameTheThrones.Models.BathroomModel
+
+@{
+    ViewBag.Title = "AddBathroom";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading text-center">Add New Bathroom</div>
+
+    @using (Html.BeginForm("New", "Bathroom")) // Need a model for bathrooms????
+    {
+    <div class="panel-body">
+        <div class="well">
+            <div class="row">
+                <div class="col-xs-8 text-center">
+                    @Html.Label("Address")
+                    @Html.TextBoxFor(b => b.Address, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px" })
+
+                </div>
+
+                <div class="col-xs-4 text-center">
+                    @Html.Label("City")
+                    @Html.TextBoxFor(b => b.City, new { @class = "forum-control", @style = "margin:auto; margin-bottom: 20px" })
+                    
+                </div>
+
+
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    @Html.Label("State")
+                    @Html.TextBoxFor(b => b.State, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+
+                </div>
+
+                <div class="col-xs-6 text-center">
+                    @Html.Label("Zip")
+                    @Html.TextBoxFor(b => b.ZipCode, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+
+                </div>
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <p>Gender: </p>
+                <select>
+                    <option value="default">--</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="both">Both</option>
+                </select>
+
+            </div>
+            <div class="col-xs-6 text-center">
+                <div class="btn-toolbar" role="toolbar" aria-label="">
+                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">1</span></div>
+                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">2</span></div>
+                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">3</span></div>
+                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">4</span></div>
+                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">5</span></div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12"
+
+        </div>
+
+    </div>
+    }
+
+</div>
+
