@@ -9,7 +9,7 @@ namespace ShameTheThrones.Models
 {
     public class UserModel
     {
-        [Required]
+
         public string UserName { get; set; }
 
         [Required]
@@ -37,12 +37,31 @@ namespace ShameTheThrones.Models
             }
         }
 
-        public void LogIn(UserModel user)
+        //public void LogIn(UserModel user)
+        //{
+        //    using (shamethethronesEntities db = new shamethethronesEntities())
+        //    {
+                
+        //    }
+        //}
+
+        public bool isValid(string email, string password)
         {
+            bool isValid = false;
+
             using (shamethethronesEntities db = new shamethethronesEntities())
             {
-                // TODO: Stuff to log in and verify credentials
+                var user = db.Users.FirstOrDefault(x => x.email == email);
+
+                if (user != null)
+                {
+                    if (user.pasword == password)
+                    {
+                        isValid = true;
+                    }
+                }
             }
+                return isValid;
         }
         
     }
