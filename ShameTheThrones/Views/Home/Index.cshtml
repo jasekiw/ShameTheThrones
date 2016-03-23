@@ -3,8 +3,25 @@
     ViewBag.Title = "Shame The Thrones!";
     ViewBag.NavbarTab = "Home";
 }
-
-<div class="col-xs-12" id="homeGreeting">
+<div class="row spaced">
+    <div class="col-xs-12" id="homeGreeting">
         Welcome to ShameTheThrones, to start rating public restrooms please log in.
+    </div>
 </div>
+<div class="row spaced homeSearch">
+    <div class="col-xs-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div>
+<script type="text/javascript">
+    $(".homeSearch .form-control").on("keyup", function(obj, e) {
+        console.log(obj);
+        console.log(e);
+    });
+</script>
 

@@ -31,7 +31,7 @@ namespace ShameTheThrones.Models
                 newUser.username = user.UserName;
                 newUser.email = user.Email;
                 newUser.pasword = user.Password;
-
+                
                 db.Users.Add(newUser);
                 db.SaveChanges();
             }
