@@ -15,6 +15,7 @@ namespace ShameTheThrones
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
         }
     }
 }

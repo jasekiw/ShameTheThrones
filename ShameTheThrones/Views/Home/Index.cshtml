@@ -34,11 +34,15 @@
 @section Scripts
 {
     <script type="text/javascript">
+        var markerImg = "@Url.Content("~/Content/img/toilet.png")";
         var x = document.getElementById("demo");
+
         function locatePerson() {
             getLocation();
-            $("#map").goTo();
+
+            $(window).scrollTop($("#map").position().top);
         }
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, locationDeclined);
@@ -90,32 +94,64 @@
 
         function initMap(x, y) {
             console.log("i got here");
-            var markerImg = "@Url.Content("~/Content/img/toilet.png")";
+           
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: x, lng: y },
-                zoom: 12
+                zoom: 14
             });
-          
-            var toiletMarker = new google.maps.Marker({
-                position: { lat: x, lng: y },
-                map: map,
-                icon: markerImg
-            });
-            console.log(toiletMarker);
-            map.addListener('center_changed', function() {
-                /**
-                *
-                *marker.setPosition( new LatLng(x,y))
-                */
-                var lat0 = map.getBounds().getNorthEast().lat();
-                var lng0 = map.getBounds().getNorthEast().lng();
-                var lat1 = map.getBounds().getSouthWest().lat();
-                var lng1 = map.getBounds().getSouthWest().lng();
-                console.log("TOPRIGHT: (" + lat0 + ", " + lng0 + ") BOTTOMLEFT: (" + lat1 + ", " + lng1 + ")");
-//                console.log(map.getCenter());
-                toiletMarker.setPosition(map.getCenter());
+
+//            var toiletMarker = new google.maps.Marker({
+//                position: { lat: x, lng: y },
+//                map: map,
+//                icon: markerImg
+//            });
+//            console.log(toiletMarker);
+            map.addListener('dragend', function() {
+//                toiletMarker.setPosition(map.getCenter());
+                console.log(
+                    {
+                        Lat: map.getCenter().lat(),
+                        Lng: map.getCenter().lng()
+                    }
+                );
+                search();
             });
             $('#map').css("min-height", "400px");
+            google.maps.event.addListenerOnce(map, 'idle', function() {
+                search();
+            });
+            map.addListener('zoom_changed', function () {
+                search();
+            });
+
+        }
+
+        function search() {
+            var searchObject = {
+                SWLat:   map.getBounds().getSouthWest().lat(),
+                SWLong:  map.getBounds().getSouthWest().lng(),
+                NELat:  map.getBounds().getNorthEast().lat(),
+                NELong: map.getBounds().getNorthEast().lng()
+            }
+            console.log(searchObject);
+            $.ajax({
+                url: '/restroom/search',
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(searchObject),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // get the result and do some magic with it
+                    data.forEach(function(restroom) {
+                        var toiletMarker = new google.maps.Marker({
+                            position: { lat: restroom.coordX, lng: restroom.coordY },
+                            map: map,
+                            icon: markerImg
+                        });
+                    })
+                    console.log(data);
+                }
+            });
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg" async defer></script>
