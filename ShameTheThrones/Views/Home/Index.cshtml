@@ -84,7 +84,7 @@
                 var resultsSection = $(".searchResults");
                 resultsSection.html("");
                 results.forEach(function(obj) {
-                    var rateButton = '<a href="#" type="button" class="btn btn-default rate-button">Rate</a>';
+                    var rateButton = '<a type="button" class="btn btn-default rate-button" href="@Url.Action("Register", "User")">Rate</a>';
                     var toAdd = template.replace("[content]", '<a class="bathroom" href="' + obj.link + '">' + obj.title + '</a>' + rateButton);
                     resultsSection.append($(toAdd));
                 });
@@ -94,7 +94,7 @@
 
         function initMap(x, y) {
             console.log("i got here");
-           
+
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: x, lng: y },
                 zoom: 14
