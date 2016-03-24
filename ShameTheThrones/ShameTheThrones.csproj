@@ -224,6 +224,7 @@
     </Compile>
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
+    <Compile Include="Models\BathroomModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -238,6 +239,8 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Restroom\AddBathroom.cshtml" />
+    <Content Include="Views\Restroom\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

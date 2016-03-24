@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.WebPages;
 using ShameTheThrones.Models;
 using ShameTheThrones.Models.DbContext;
 
@@ -19,17 +16,22 @@ namespace ShameTheThrones.Controllers
             return View();
         }
 
+        public ActionResult AddBathroom()
+        {
+            return View();
+        }
+
         public ActionResult Search(RestroomSearchModel search)
         {
             shamethethronesEntities db = new shamethethronesEntities();
             List<Restroom> restrooms = new List<Restroom>();
-           
+
             var query =
                 db.Restrooms
                     .Where(x => search.SWLat <= x.coordX)
-                    .Where(x =>  search.SWLong <= x.coordY)
-                    .Where(x =>  search.NELat >= x.coordX)
-                    .Where( x => search.NELong >= x.coordY)
+                    .Where(x => search.SWLong <= x.coordY)
+                    .Where(x => search.NELat >= x.coordX)
+                    .Where(x => search.NELong >= x.coordY)
                     .Take(100);
             restrooms = query.ToList();
             List<RestroomSearchResultModel> restroomsResults = new List<RestroomSearchResultModel>();
@@ -42,9 +44,10 @@ namespace ShameTheThrones.Controllers
                 restroomResult.address = restroom.address;
                 restroomResult.gender = restroom.gender;
                 restroomsResults.Add(restroomResult);
-            } 
-            
+            }
+
             return Json(restroomsResults.ToArray(), JsonRequestBehavior.AllowGet);
         }
+
     }
 }
