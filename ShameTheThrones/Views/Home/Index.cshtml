@@ -10,6 +10,12 @@
 </div>
 <div class="row spaced homeSearch">
     <div class="col-xs-12">
+        <div class="centered">
+            <h1>
+                <a href="javascript:locatePerson()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
+            </h1>
+            <h2>Or...</h2>
+        </div>
         <div class="input-group">
             <input type="text" class="form-control" placeholder="start typing a zip code...">
             <span class="input-group-btn">
@@ -23,11 +29,39 @@
         <ul class="list-group searchResults"></ul>
     </div>
 </div>
-
-
+<div id="map"></div>
+<div id="demo"></div>
 @section Scripts
 {
     <script type="text/javascript">
+        var x = document.getElementById("demo");
+        function locatePerson() {
+            getLocation();
+            $("#map").goTo();
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, locationDeclined);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            initMap(position.coords.latitude, position.coords.longitude);
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function locationDeclined(error) {
+            if (error.code == error.PERMISSION_DENIED) {
+                console.log("Location permission denied");
+            } else {
+                console.log("unkown error occured when getting location ERRORCODE: " + error.code + " ERRORMESSAGE: " + error.message);
+            }
+        }
+
+
         $(".homeSearch .form-control").on("keyup", function(event) {
             var target = $(event.currentTarget);
             var value = target.val();
@@ -36,23 +70,53 @@
 //
 //            });
             var results = [
-                { title: "test result 1", link: "#"},
-                { title: "test result 1", link: "#"},
+                { title: "test result 1", link: "#" },
+                { title: "test result 1", link: "#" },
                 { title: "test result 1", link: "#" },
                 { title: value, link: "#" }
             ];
-            
+
             if (value.length >= 3) {
                 var resultsSection = $(".searchResults");
                 resultsSection.html("");
-                results.forEach(function (obj) {
-                    var rateButton = '<a href="#" type="button" class="btn btn-default rate-button">Rate</button>';
+                results.forEach(function(obj) {
+                    var rateButton = '<a href="#" type="button" class="btn btn-default rate-button">Rate</a>';
                     var toAdd = template.replace("[content]", '<a class="bathroom" href="' + obj.link + '">' + obj.title + '</a>' + rateButton);
                     resultsSection.append($(toAdd));
                 });
             }
         });
-      
+        var map;
 
+        function initMap(x, y) {
+            console.log("i got here");
+            var markerImg = "@Url.Content("~/Content/img/toilet.png")";
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: x, lng: y },
+                zoom: 12
+            });
+          
+            var toiletMarker = new google.maps.Marker({
+                position: { lat: x, lng: y },
+                map: map,
+                icon: markerImg
+            });
+            console.log(toiletMarker);
+            map.addListener('center_changed', function() {
+                /**
+                *
+                *marker.setPosition( new LatLng(x,y))
+                */
+                var lat0 = map.getBounds().getNorthEast().lat();
+                var lng0 = map.getBounds().getNorthEast().lng();
+                var lat1 = map.getBounds().getSouthWest().lat();
+                var lng1 = map.getBounds().getSouthWest().lng();
+                console.log("TOPRIGHT: (" + lat0 + ", " + lng0 + ") BOTTOMLEFT: (" + lat1 + ", " + lng1 + ")");
+//                console.log(map.getCenter());
+                toiletMarker.setPosition(map.getCenter());
+            });
+            $('#map').css("min-height", "400px");
+        }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg" async defer></script>
 }
