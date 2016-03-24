@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShameTheThrones.Models
+namespace ShameTheThrones.Models.DbContext
 {
     using System;
     using System.Collections.Generic;

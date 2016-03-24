@@ -1,0 +1,33 @@
+﻿@model ShameTheThrones.Models.UserModel
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<div class="panel panel-default">
+    
+    <div class="panel-heading text-center">Log In</div>
+    
+    <div class="panel-body">
+
+    @using (Html.BeginForm("LogIn", "User"))
+    {
+        <div class="col-xs-12 text-center">
+            @Html.Label("Username")
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+        </div>
+
+        <div class="col-xs-12 text-center">
+            @Html.Label("Password")
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+        </div>
+        
+        <div class="text-center" style="margin-bottom:20px;">
+            <button class="btn btn-default text-center" type="submit">Log In</button>
+        </div>
+    }
+
+    </div>
+
+</div>
+
