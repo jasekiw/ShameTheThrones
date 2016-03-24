@@ -16,6 +16,12 @@
             </h1>
             <h2>Or...</h2>
         </div>
+        <div class="centered">
+            <h1>
+                <a href="@Url.Action("AddBathroom", "Restroom")" type="button" class="btn btn-default rate-button">Don't see what you are looking for?  Add a bathroom</a>
+            </h1>
+            <h2>Or...</h2>
+        </div>
         <div class="input-group">
             <input type="text" class="form-control" placeholder="start typing a zip code...">
             <span class="input-group-btn">
@@ -84,7 +90,7 @@
                 var resultsSection = $(".searchResults");
                 resultsSection.html("");
                 results.forEach(function(obj) {
-                    var rateButton = '<a type="button" class="btn btn-default rate-button" href="@Url.Action("Register", "User")">Rate</a>';
+                    var rateButton = '<a type="button" class="btn btn-default rate-button" href="@Url.Action("RateBathroom", "Restroom")">Rate</a>';
                     var toAdd = template.replace("[content]", '<a class="bathroom" href="' + obj.link + '">' + obj.title + '</a>' + rateButton);
                     resultsSection.append($(toAdd));
                 });
