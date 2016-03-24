@@ -24,6 +24,8 @@ namespace ShameTheThrones.Models
         [Required]
         public Byte Gender { get; set; }
 
+        //public IEnumerable<String> = // may not need
+
         [Required]
         public string Descritption { get; set; }
 
@@ -36,9 +38,9 @@ namespace ShameTheThrones.Models
                 Restroom newBathroom = new Restroom();
 
                 newBathroom.address = bathroom.Address;
-                newBathroom.city= bathroom.City;
-                newBathroom.state = bathroom.State;
-                newBathroom.zip = bathroom.ZipCode;
+                //newBathroom.city= bathroom.City; // commented out until db is changed 
+                //newBathroom.state = bathroom.State; 
+                //newBathroom.zip = bathroom.ZipCode; 
                 newBathroom.gender = bathroom.Gender;
                 newBathroom.description = bathroom.Descritption;
                 

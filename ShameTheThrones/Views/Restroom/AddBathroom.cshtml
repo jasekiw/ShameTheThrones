@@ -5,22 +5,23 @@
 }
 
 <div class="panel panel-default">
-    <div class="panel-heading text-center">Add New Bathroom</div>
+    <div class="panel-heading text-center"><h2>Add New Bathroom</h2></div>
 
-    @using (Html.BeginForm("New", "Bathroom")) // Need a model for bathrooms????
+    @using (Html.BeginForm("New", "Bathroom"))
     {
     <div class="panel-body">
         <div class="well">
+            <h3 class="text-center">Location</h3>
             <div class="row">
-                <div class="col-xs-8 text-center">
+                <div class="col-xs-6 text-center">
                     @Html.Label("Address")
-                    @Html.TextBoxFor(b => b.Address, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px" })
+                    @Html.TextBoxFor(b => b.Address, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
 
                 </div>
 
-                <div class="col-xs-4 text-center">
+                <div class="col-xs-6 text-center">
                     @Html.Label("City")
-                    @Html.TextBoxFor(b => b.City, new { @class = "forum-control", @style = "margin:auto; margin-bottom: 20px" })
+                    @Html.TextBoxFor(b => b.City, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
                     
                 </div>
 
@@ -44,35 +45,68 @@
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <p>Gender: </p>
+
+                @{ //gender list array
+                    SelectList genderList = new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "Male", Value = "male" },
+                        new SelectListItem {Text = "Female", Value = "female" },
+                        new SelectListItem {Text = "Both", Value = "both" }
+                    }, "Value", "Text");
+
+                }
+                    @Html.DropDownListFor(x => x.Gender, genderList, "Select Gender",
+                        new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+                
+                @*<p>Gender: </p>
                 <select>
-                    <option value="default">--</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="both">Both</option>
-                </select>
+                    <option>genderList[0]</option>
+                    <option>genderList[1]</option>
+                    <option>genderList[2]</option>
+                </select>*@
 
-            </div>
+            </div> 
+
+
             <div class="col-xs-6 text-center">
-                <div class="btn-toolbar" role="toolbar" aria-label="">
-                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">1</span></div>
-                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">2</span></div>
-                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">3</span></div>
-                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">4</span></div>
-                    <div class="btn-group" role="group"><span class="glyphicon glyphicon-star" aria-hidden="true">5</span></div>
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-secondary">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true">1</span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true">2</span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true">3</span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true">4</span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true">5</span>
+                        </button>
+                    </div>
                 </div>
-
-
             </div>
+
+
         </div>
 
         <div class="row">
-            <div class="col-xs-12"
+            <div class="col-xs-12">
+
+
+            </div>
 
         </div>
 
     </div>
     }
+    </div>
 
-</div>
 
