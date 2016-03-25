@@ -33,10 +33,15 @@
 <div id="demo"></div>
 @section Scripts
 {
-
+    <script type="text/javascript">
+        var seconds = new Date().getTime() / 1000;
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
 
     <script type="text/javascript">
+        var stopTimer = function() {
+            return (new Date().getTime() / 1000) - seconds;
+        }
         var main = new Main();
 
         var markerImg = "@Url.Content("~/Content/img/toilet.png")";

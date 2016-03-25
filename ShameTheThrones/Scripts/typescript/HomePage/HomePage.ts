@@ -1,18 +1,24 @@
 ﻿///<reference path="../../typings/jquery/jquery.d.ts"/>
 ///<reference path="RestroomSearchObject.ts"/>
 ///<reference path="../libraries/restrooms/RestroomResponse.ts"/>
+///<reference path="../../typings/global.d.ts"/>
 class HomePage {
 
     private markerImg: string;
     private map: google.maps.Map;
     private currentLatitude: number = 38; // default values to give a map a location to preload
     private currentLongitude: number = -85;
-    private markers: google.maps.Marker[];
+    public markers: google.maps.Marker[];
+
     constructor(markerImg: string) {
         this.markerImg = markerImg;
         this.markers = [];
         this.initMap();
     }
+    /**
+     * 
+     * Gets the location of the user
+     */
     public getLocation = () : void => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.showPosition, this.locationDeclined);
@@ -42,18 +48,17 @@ class HomePage {
      * 
      * Initializes the map
      */
-    public initMap = (): void => {
+    public initMap = () : void => {
         this.map = new google.maps.Map(document.getElementById('map'),   {
             center: new google.maps.LatLng(this.currentLatitude, this.currentLongitude),
             zoom: 14
         });
+// ReSharper disable once TsNotResolved
+//        console.log("TIMETAKEN: ");
+//        console.log(Window.stopTimer());
         console.log("map ready");
-        this.map.addListener('dragend', (e) => { 
-            this.search();
-        });
-        this.map.addListener('zoom_changed', () => {
-            this.search();
-        });
+        this.map.addListener('dragend', () => this.search() );
+        this.map.addListener('zoom_changed', () => this.search() );
     }
 
     public search = () : void =>  {
@@ -71,7 +76,7 @@ class HomePage {
             contentType: 'application/json; charset=utf-8',
             success: (data: RestroomResponse[]) => {
                 // get the result and do some magic with it
-               
+                console.log(this.markers);
                 data.forEach((restroom: RestroomResponse) => {
                     if (this.markers["" + restroom.coordX + "," + restroom.coordY] == undefined) {
                         var toiletMarker = new google.maps.Marker({
@@ -80,7 +85,7 @@ class HomePage {
                             icon: this.markerImg
                         });
                         this.markers["" + restroom.coordX + "," + restroom.coordY] = toiletMarker;
-                     
+                        
                     }
                    
                 });
