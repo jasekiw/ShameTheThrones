@@ -29,3 +29,18 @@ textarea {
 .searchResults {
     padding: 30px 0;
 }
+.searchResults .rate-button {
+    float: right;
+}
+.searchResults .bathroom {
+    line-height: 34px;
+    display: inline-block;
+}
+.searchResults .result {
+    display: inline-block;
+    width: 100%;
+}
+.centered {
+    text-align: center;
+}
+

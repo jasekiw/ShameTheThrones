@@ -50,6 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Controllers\HomeControllerTests.cs" />
+    <Compile Include="Controllers\RestroomControllerTests.cs" />
+    <Compile Include="Models\BathroomModelTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +61,9 @@
       <Project>{ab00c454-8e11-4ff1-b144-a21a988ffe9e}</Project>
       <Name>ShameTheThrones</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

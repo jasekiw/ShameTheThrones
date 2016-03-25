@@ -1,0 +1,129 @@
+﻿@model ShameTheThrones.Models.BathroomModel
+
+@{
+    ViewBag.Title = "AddBathroom";
+}
+
+@*
+    Comments and TODO:
+    - Validate form and make sure all fields are filled in before submission.
+    - Capture data from the rating button group or pssiibly impliment a better method.
+    - Make textbox the width of the form.
+    - Add photo upload functonality. 
+
+    - Is layout intuitive?
+*@
+
+<div class="panel panel-default">
+    <div class="panel-heading text-center"><h2>Add New Bathroom</h2></div>
+
+    @using (Html.BeginForm("New", "Bathroom"))
+    {
+        <div class="panel-body">
+
+            <div class="well" style="margin-bottom:75px">
+                <h3 class="text-center">Location</h3>
+
+                <div class="row">
+                    <div class="col-xs-6 text-center">
+                        @Html.Label("Address")
+                        @Html.TextBoxFor(b => b.Address, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+                    </div>
+
+                    <div class="col-xs-6 text-center">
+                        @Html.Label("City")
+                        @Html.TextBoxFor(b => b.City, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 text-center">
+                        @Html.Label("State")
+                        @Html.TextBoxFor(b => b.State, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+
+                    </div>
+
+                    <div class="col-xs-6 text-center">
+                        @Html.Label("Zip")
+                        @Html.TextBoxFor(b => b.ZipCode, new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+
+                    @{ //gender list array
+                        SelectList genderList = new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "Male", Value = "male" },
+                        new SelectListItem {Text = "Female", Value = "female" },
+                        new SelectListItem {Text = "Both", Value = "both" }
+                    }, "Value", "Text");
+
+                    }
+                    @Html.DropDownListFor(x => x.Gender, genderList, "Select Gender For Restroom",
+                        new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
+
+                </div>
+
+                <!--How to make db capture data from this?  Is there a better way to do it?-->
+                <div class="col-xs-6 text-center">
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group" role="group" aria-label="First group">
+
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true">1</span>
+                            </button>
+
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true">2</span>
+                            </button>
+
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true">3</span>
+                            </button>
+
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true">4</span>
+                            </button>
+
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true">5</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row" style="margin-top: 50px">
+                <div class="col-xs-12 text-center">
+                    @Html.Label("Description")
+                    @Html.TextAreaFor(b => b.Descritption, new
+               {
+                   @class = "form-control",
+                   @style = "margin: auto; margin-bottom: 20px; width: 100%", //How to make comment  box span the width of the form?
+                   @rows = "4"
+
+               })
+                </div>
+
+            </div>
+
+            <div class="well text-left">
+                <button class="btn btn-default text-center" type="button">Add Photo(s)</button>  
+                
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg text-center btn-block" type="submit">Add Restroom</button>
+            </div>
+
+        </div>
+                        }
+</div>

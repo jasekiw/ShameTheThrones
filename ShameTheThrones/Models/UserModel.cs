@@ -20,7 +20,7 @@ namespace ShameTheThrones.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public DateTime DeletedAt;
+        public DateTime? DeletedAt;
 
         public void Register(UserModel user)
         {
