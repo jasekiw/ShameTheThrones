@@ -12,7 +12,7 @@
     <div class="col-xs-12">
         <div class="centered">
             <h1>
-                <a href="javascript:locatePerson()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
+                <a href="javascript:main.homePage.getLocation()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
             </h1>
             <h2>Or...</h2>
         </div>
@@ -33,9 +33,18 @@
 <div id="demo"></div>
 @section Scripts
 {
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
+
     <script type="text/javascript">
+        var main = new Main();
+
         var markerImg = "@Url.Content("~/Content/img/toilet.png")";
+        var baseProjectDir = "@Url.Content("~")";
+        main.constructHomePage(markerImg);
         var x = document.getElementById("demo");
+        $(window).scrollTop($("#map").position().top);
+        console.log($(window));
 
         function locatePerson() {
             getLocation();
@@ -94,7 +103,7 @@
 
         function initMap(x, y) {
             console.log("i got here");
-           
+
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: x, lng: y },
                 zoom: 14
@@ -120,7 +129,7 @@
             google.maps.event.addListenerOnce(map, 'idle', function() {
                 search();
             });
-            map.addListener('zoom_changed', function () {
+            map.addListener('zoom_changed', function() {
                 search();
             });
 
@@ -128,9 +137,9 @@
 
         function search() {
             var searchObject = {
-                SWLat:   map.getBounds().getSouthWest().lat(),
-                SWLong:  map.getBounds().getSouthWest().lng(),
-                NELat:  map.getBounds().getNorthEast().lat(),
+                SWLat: map.getBounds().getSouthWest().lat(),
+                SWLong: map.getBounds().getSouthWest().lng(),
+                NELat: map.getBounds().getNorthEast().lat(),
                 NELong: map.getBounds().getNorthEast().lng()
             }
             console.log(searchObject);
@@ -140,7 +149,7 @@
                 dataType: 'json',
                 data: JSON.stringify(searchObject),
                 contentType: 'application/json; charset=utf-8',
-                success: function (data) {
+                success: function(data) {
                     // get the result and do some magic with it
                     data.forEach(function(restroom) {
                         var toiletMarker = new google.maps.Marker({
@@ -154,5 +163,4 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg" async defer></script>
-}
+}   
