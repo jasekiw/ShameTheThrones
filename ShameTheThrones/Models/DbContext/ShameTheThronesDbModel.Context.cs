@@ -12,7 +12,8 @@ namespace ShameTheThrones.Models.DbContext
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using Moq;
+
     public partial class shamethethronesEntities : DbContext
     {
         public shamethethronesEntities()
@@ -29,5 +30,10 @@ namespace ShameTheThrones.Models.DbContext
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Restroom> Restrooms { get; set; }
         public virtual DbSet<User> Users { get; set; }
+
+        public static implicit operator Mock<object>(shamethethronesEntities v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
