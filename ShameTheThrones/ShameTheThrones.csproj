@@ -220,6 +220,8 @@
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BathroomModel.cs" />
+    <Compile Include="Models\RestroomSearchModel.cs" />
+    <Compile Include="Models\RestroomSearchResultModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
