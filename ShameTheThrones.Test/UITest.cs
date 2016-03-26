@@ -1,12 +1,11 @@
-﻿using System;
+﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
-
 
 namespace ShameTheThrones.Test
 {
@@ -31,9 +30,10 @@ namespace ShameTheThrones.Test
 
 
        [Test]
-       // Tests to make sure values appear, not that they are correct
+       
        public void testSearch()
         {
+            // Tests to make sure values appear, not that they are correct
             driver.Navigate().GoToUrl("http://localhost:60060/");
 
             IWebElement search = driver.FindElement(By.TagName("input"));
@@ -47,7 +47,24 @@ namespace ShameTheThrones.Test
 
         public void testHomeButton()
         {
+            driver.Navigate().GoToUrl("http://localhost:60060/");
 
+            IWebElement homeBtn = driver.FindElement(By.CssSelector("ul.navbar-nav"));
+            homeBtn = homeBtn.FindElement(By.XPath("/li[1]")); //Possible error due to index 
+
+            homeBtn.Submit();
+
+            // may need to add wait time
+
+            Assert.AreEqual("Shame The Thrones!", driver.Title);
+            
         } // test home button
+
+        public void testTets()
+        {
+            Assert.IsTrue(true);
+        }
     } // driver
+
+
 }
