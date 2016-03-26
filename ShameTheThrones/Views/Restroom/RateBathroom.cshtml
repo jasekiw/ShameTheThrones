@@ -1,23 +1,21 @@
 ﻿@model ShameTheThrones.Models.BathroomModel
 
 @{
-    ViewBag.Title = "AddBathroom";
+    ViewBag.Title = "RateBathroom";
 }
 
 @*
     Comments and TODO:
-    - Validate form and make sure all fields are filled in before submission.
-    - Capture data from the rating button group or pssiibly impliment a better method.
-    - Make textbox the width of the form.
-    - Add photo upload functonality. 
-
-    - Is layout intuitive?
+    May be better to extend the add bathroom class?  We want them to be in sync, so if we change the layout of one we need to change the
+    layout of the other.  
+    TODO: pass data from the home screen to this class--the restroom fields for location and gender should be filled out, only rating related 
+    fields should be blank.  It will be good enough to make some tests.  
 *@
 
 <div class="panel panel-default">
-    <div class="panel-heading text-center"><h2>Add New Bathroom</h2></div>
+    <div class="panel-heading text-center"><h2>Rate Bathroom</h2></div>
 
-    @using (Html.BeginForm("New", "Bathroom"))
+    @using (Html.BeginForm("Rate", "Bathroom"))
     {
         <div class="panel-body">
 
@@ -116,12 +114,12 @@
             </div>
 
             <div class="well text-left">
-                <button class="btn btn-default text-center" type="button">Add Photo(s)</button>  
-                
+                <button class="btn btn-default text-center" type="button">Add Photo(s)</button>
+
             </div>
 
             <div class="text-center">
-                <button class="btn btn-primary btn-lg text-center btn-block" type="submit">Add Restroom</button>
+                <button class="btn btn-primary btn-lg text-center btn-block" type="submit">Rate Restroom</button>
             </div>
 
         </div>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Moq;
 
 namespace ShameTheThrones.Models
 {
@@ -48,7 +49,5 @@ namespace ShameTheThrones.Models
                 //db.SaveChanges(); //until testing is done
             }
         }
-
-        
     }// BathroomModel
 }
