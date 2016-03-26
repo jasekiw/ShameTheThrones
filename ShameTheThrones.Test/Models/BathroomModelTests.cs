@@ -1,12 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ShameTheThrones.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
-using ShameTheThrones.Models.DbContext;
 
 
 namespace ShameTheThrones.Models.Tests

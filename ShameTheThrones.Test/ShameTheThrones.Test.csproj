@@ -58,6 +58,7 @@
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Controllers\RestroomControllerTests.cs" />
     <Compile Include="Models\BathroomModelTests.cs" />
+    <Compile Include="Models\UserModelTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
