@@ -21,7 +21,12 @@ namespace ShameTheThrones.Controllers
             return View();
         }
 
-        public JsonResult Search(RestroomSearchModel search)
+        public ActionResult RateBathroom()
+        {
+            return View();
+        }
+
+        public ActionResult Search(RestroomSearchModel search)
         {
             shamethethronesEntities db = new shamethethronesEntities();
             List<Restroom> restrooms = new List<Restroom>();

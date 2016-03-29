@@ -11,7 +11,8 @@ namespace ShameTheThrones.Models.DbContext
 {
     using System;
     using System.Collections.Generic;
-    
+    using Moq;
+
     public partial class Restroom
     {
         public int id { get; set; }
@@ -24,5 +25,10 @@ namespace ShameTheThrones.Models.DbContext
         public Nullable<System.DateTime> deletedAt { get; set; }
     
         public virtual User User { get; set; }
+
+        public static implicit operator Mock<object>(Restroom v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
