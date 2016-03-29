@@ -1,17 +1,16 @@
-﻿///<reference path="../../typings/jquery/jquery.d.ts"/>
-///<reference path="RestroomSearchObject.ts"/>
-///<reference path="../libraries/restrooms/RestroomResponse.ts"/>
-///<reference path="../../typings/global.d.ts"/>
+﻿
 class HomePage {
 
     private markerImg: string;
+    private basedir : string;
     private map: google.maps.Map;
     private currentLatitude: number = 38; // default values to give a map a location to preload
     private currentLongitude: number = -85;
     public markers: google.maps.Marker[];
 
-    constructor(markerImg: string) {
-        this.markerImg = markerImg;
+    constructor() {
+        this.markerImg = Main.getBaseDir() + "Content/img/toilet.png";
+        console.log(this.markerImg);
         this.markers = [];
         this.initMap();
     }
@@ -19,7 +18,8 @@ class HomePage {
      * 
      * Gets the location of the user
      */
-    public getLocation = () : void => {
+    public getLocation = (): void => {
+        Main.showLoader();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.showPosition, this.locationDeclined);
         } else {
@@ -35,8 +35,10 @@ class HomePage {
         google.maps.event.trigger(this.map, "resize");
         jQuery(window).scrollTop(jQuery("#map").position().top);
         this.search();
+        Main.loadCompleted();
     }
     public locationDeclined(error): void {
+        Main.loadCompleted();
         if (error.code === error.PERMISSION_DENIED) {
             console.log("Location permission denied");
         } else {
@@ -58,7 +60,9 @@ class HomePage {
 //        console.log(Window.stopTimer());
         console.log("map ready");
         this.map.addListener('dragend', () => this.search() );
-        this.map.addListener('zoom_changed', () => this.search() );
+        this.map.addListener('zoom_changed', () => this.search());
+        var spinnerBackground = $(".spinner");
+        spinnerBackground.css("display", "none");
     }
 
     public search = () : void =>  {
@@ -76,21 +80,39 @@ class HomePage {
             contentType: 'application/json; charset=utf-8',
             success: (data: RestroomResponse[]) => {
                 // get the result and do some magic with it
-                console.log(this.markers);
-                data.forEach((restroom: RestroomResponse) => {
-                    if (this.markers["" + restroom.coordX + "," + restroom.coordY] == undefined) {
-                        var toiletMarker = new google.maps.Marker({
-                            position: new google.maps.LatLng(restroom.coordX, restroom.coordY),
-                            map: this.map,
-                            icon: this.markerImg
-                        });
-                        this.markers["" + restroom.coordX + "," + restroom.coordY] = toiletMarker;
-                        
-                    }
-                   
-                });
                
+                this.updateMarkers(data);
+
             }
         });
+    }
+
+    public updateMarkers = (restrooms: RestroomResponse[]) => {
+
+        restrooms.forEach((restroom: RestroomResponse) =>
+        {
+            if (this.markers["" + restroom.coordX + "," + restroom.coordY] == undefined)
+            {
+                var toiletMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(restroom.coordX, restroom.coordY),
+                    map: this.map,
+                    icon: this.markerImg,
+                    animation: google.maps.Animation.DROP,
+                    title: restroom.address
+                });
+                toiletMarker.addListener('click', () => this.toggleBounce(toiletMarker) );
+                this.markers["" + restroom.coordX + "," + restroom.coordY] = toiletMarker;
+
+            }
+
+        });
+    }
+    public toggleBounce(marker: google.maps.Marker): void {
+      
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
     }
 }

@@ -6,13 +6,21 @@ namespace ShameTheThrones
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/before").Include(
+                    "~/Scripts/spin.js",
+                     "~/Scripts/libraries/spinnerHandler.js"
+                     ));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js")
+                      
+                        );
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"
                      ));
+         
             bundles.Add(new ScriptBundle("~/bundles/mainsite").Include(
+                    "~/Scripts/thirdparty/geolocation-marker.js",
                      "~/Scripts/typescript/typescriptcombined.js"
                     ));
            

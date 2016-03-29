@@ -11,6 +11,7 @@ namespace ShameTheThrones.Models
         public decimal coordX;
         public decimal coordY;
         public string address;
+        public string description;
         public byte gender;
     }
 }

@@ -193,8 +193,10 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\libraries\spinnerHandler.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <TypeScriptCompile Include="Scripts\typescript\libraries\restrooms\RestroomResponse.ts" />
+    <Content Include="Scripts\spin.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -265,6 +267,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\thirdparty\" />
+    <Folder Include="Scripts\typings\spinner\" />
     <Folder Include="Views\Bathroom\" />
   </ItemGroup>
   <ItemGroup>
@@ -277,7 +281,6 @@
     <TypeScriptCompile Include="Scripts\typescript\HomePage\RestroomSearchObject.ts" />
     <TypeScriptCompile Include="Scripts\typescript\Main.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\jquery\jquerycustom.d.ts" />
     <TypeScriptCompile Include="typings\google.maps.d.ts" />
   </ItemGroup>
   <PropertyGroup>

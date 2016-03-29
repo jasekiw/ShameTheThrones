@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Web.Optimization
+
 @{
     ViewBag.Title = "Shame The Thrones!";
     ViewBag.NavbarTab = "Home";
@@ -12,7 +13,7 @@
     <div class="col-xs-12">
         <div class="centered">
             <h1>
-                <a href="javascript:main.homePage.getLocation()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
+                <a href="javascript:mainApp.homePage.getLocation()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
             </h1>
             <h2>Or...</h2>
         </div>
@@ -31,141 +32,20 @@
 </div>
 <div id="map"></div>
 <div id="demo"></div>
+@section ScriptsBefore
+{
+    <script type="text/javascript">
+        var waitUntilLoaded = true;
+        var seconds = new Date().getTime() / 1000;
+        var stopTimer = function () {
+            return (new Date().getTime() / 1000) - seconds;
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
+}
 @section Scripts
 {
     <script type="text/javascript">
-        var seconds = new Date().getTime() / 1000;
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
-
-    <script type="text/javascript">
-        var stopTimer = function() {
-            return (new Date().getTime() / 1000) - seconds;
-        }
-        var main = new Main();
-
-        var markerImg = "@Url.Content("~/Content/img/toilet.png")";
-        var baseProjectDir = "@Url.Content("~")";
-        main.constructHomePage(markerImg);
-        var x = document.getElementById("demo");
-        $(window).scrollTop($("#map").position().top);
-        console.log($(window));
-
-        function locatePerson() {
-            getLocation();
-
-            $(window).scrollTop($("#map").position().top);
-        }
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, locationDeclined);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position) {
-            initMap(position.coords.latitude, position.coords.longitude);
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
-
-        function locationDeclined(error) {
-            if (error.code == error.PERMISSION_DENIED) {
-                console.log("Location permission denied");
-            } else {
-                console.log("unkown error occured when getting location ERRORCODE: " + error.code + " ERRORMESSAGE: " + error.message);
-            }
-        }
-
-
-        $(".homeSearch .form-control").on("keyup", function(event) {
-            var target = $(event.currentTarget);
-            var value = target.val();
-            var template = '<li class="list-group-item result">[content]</li>';
-//            $.get("/bathrooms/search/zip/" + value, function (obj) { // stub for the ajax request to search for bathrooms
-//
-//            });
-            var results = [
-                { title: "test result 1", link: "#" },
-                { title: "test result 1", link: "#" },
-                { title: "test result 1", link: "#" },
-                { title: value, link: "#" }
-            ];
-
-            if (value.length >= 3) {
-                var resultsSection = $(".searchResults");
-                resultsSection.html("");
-                results.forEach(function(obj) {
-                    var rateButton = '<a href="#" type="button" class="btn btn-default rate-button">Rate</a>';
-                    var toAdd = template.replace("[content]", '<a class="bathroom" href="' + obj.link + '">' + obj.title + '</a>' + rateButton);
-                    resultsSection.append($(toAdd));
-                });
-            }
-        });
-        var map;
-
-        function initMap(x, y) {
-            console.log("i got here");
-
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: x, lng: y },
-                zoom: 14
-            });
-
-//            var toiletMarker = new google.maps.Marker({
-//                position: { lat: x, lng: y },
-//                map: map,
-//                icon: markerImg
-//            });
-//            console.log(toiletMarker);
-            map.addListener('dragend', function() {
-//                toiletMarker.setPosition(map.getCenter());
-                console.log(
-                    {
-                        Lat: map.getCenter().lat(),
-                        Lng: map.getCenter().lng()
-                    }
-                );
-                search();
-            });
-            $('#map').css("min-height", "400px");
-            google.maps.event.addListenerOnce(map, 'idle', function() {
-                search();
-            });
-            map.addListener('zoom_changed', function() {
-                search();
-            });
-
-        }
-
-        function search() {
-            var searchObject = {
-                SWLat: map.getBounds().getSouthWest().lat(),
-                SWLong: map.getBounds().getSouthWest().lng(),
-                NELat: map.getBounds().getNorthEast().lat(),
-                NELong: map.getBounds().getNorthEast().lng()
-            }
-            console.log(searchObject);
-            $.ajax({
-                url: '/restroom/search',
-                type: 'POST',
-                dataType: 'json',
-                data: JSON.stringify(searchObject),
-                contentType: 'application/json; charset=utf-8',
-                success: function(data) {
-                    // get the result and do some magic with it
-                    data.forEach(function(restroom) {
-                        var toiletMarker = new google.maps.Marker({
-                            position: { lat: restroom.coordX, lng: restroom.coordY },
-                            map: map,
-                            icon: markerImg
-                        });
-                    })
-                    console.log(data);
-                }
-            });
-        }
+        mainApp.constructHomePage();
     </script>
 }   
