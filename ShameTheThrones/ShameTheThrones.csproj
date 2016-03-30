@@ -187,9 +187,6 @@
     <Content Include="Content\sass\includes\_homesearch.scss" />
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -237,9 +234,12 @@
     <Compile Include="Models\DbContext\User.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RatingAverageModel.cs" />
+    <Compile Include="Models\RatingModel.cs" />
+    <Compile Include="Models\RestroomRateModel.cs" />
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
-    <Compile Include="Models\BathroomModel.cs" />
+    <Compile Include="Models\RestroomModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\UnitTest3.cs" />
@@ -257,8 +257,9 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\Restroom\AddBathroom.cshtml" />
+    <Content Include="Views\Restroom\Add.cshtml" />
     <Content Include="Views\Restroom\Index.cshtml" />
+    <Content Include="Views\Restroom\Rate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -282,6 +283,8 @@
     <TypeScriptCompile Include="Scripts\typescript\HomePage\HomePage.ts" />
     <TypeScriptCompile Include="Scripts\typescript\HomePage\RestroomSearchObject.ts" />
     <TypeScriptCompile Include="Scripts\typescript\Main.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\Restroom\AddRestroomPage.ts" />
+    <TypeScriptCompile Include="Scripts\typings\geolocationMarker\GeolocationMarker.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\google.maps.d.ts" />
   </ItemGroup>

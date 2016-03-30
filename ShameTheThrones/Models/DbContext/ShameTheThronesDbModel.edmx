@@ -34,7 +34,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="coordX" Type="decimal" Precision="18" Scale="14" />
           <Property Name="coordY" Type="decimal" Precision="18" Scale="14" />
-          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="30" />
+          <Property Name="zipCode" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="30" />
           <Property Name="userId" Type="int" Nullable="false" />
           <Property Name="description" Type="text" />
           <Property Name="gender" Type="tinyint" Nullable="false" />
@@ -48,7 +51,7 @@
           <Property Name="username" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="pasword" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="deletedAt" Type="date" />
+          <Property Name="deletedAt" Type="datetime" />
         </EntityType>
         <Association Name="FK_Rating_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -122,12 +125,15 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="coordX" Type="Decimal" Precision="18" Scale="14" />
           <Property Name="coordY" Type="Decimal" Precision="18" Scale="14" />
-          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="userId" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="gender" Type="Byte" Nullable="false" />
           <Property Name="deletedAt" Type="DateTime" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_Restroom_User" FromRole="Restroom" ToRole="User" />
+          <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="zipCode" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -137,7 +143,7 @@
           <Property Name="username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pasword" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="deletedAt" Type="DateTime" Precision="0" />
+          <Property Name="deletedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Ratings" Relationship="Self.FK_Rating_User" FromRole="User" ToRole="Rating" />
           <NavigationProperty Name="Restrooms" Relationship="Self.FK_Restroom_User" FromRole="User" ToRole="Restroom" />
         </EntityType>
@@ -212,6 +218,9 @@
           <EntitySetMapping Name="Restrooms">
             <EntityTypeMapping TypeName="ShameTheThronesModel.Restroom">
               <MappingFragment StoreEntitySet="Restroom">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="coordX" ColumnName="coordX" />
                 <ScalarProperty Name="coordY" ColumnName="coordY" />

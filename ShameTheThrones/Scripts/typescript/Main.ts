@@ -2,6 +2,7 @@
 class Main {
     
     public homePage: HomePage;
+    public addRestroomPage : AddRestroomPage;
     private static basedir : string;
     constructor(waitUntilLoaded) {
         if (waitUntilLoaded == undefined)
@@ -12,6 +13,9 @@ class Main {
     public constructHomePage = (): void => {
         this.homePage = new HomePage();
       
+    }
+    public constructAddRestroomPage() {
+        this.addRestroomPage = new AddRestroomPage();
     }
     public static setBaseDir(basedir: string) {
         Main.basedir = basedir;

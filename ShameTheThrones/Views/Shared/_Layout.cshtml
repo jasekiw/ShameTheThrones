@@ -12,13 +12,16 @@
 
     @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr/>
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ShameTheThrones</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - ShameTheThrones</p>
+    </footer>
+</div>
+    <script type="text/javascript">
+        var waitUntilLoaded = false;
+    </script>
     @Scripts.Render("~/bundles/before");
     @RenderSection("ScriptsBefore", false/*required*/)
     <script src="~/Scripts/modernizr-2.6.2.js"></script>

@@ -7,20 +7,20 @@ namespace ShameTheThrones.Models.Tests
     [TestClass()]
     public class BathroomModelTests
     {
-        private Mock<BathroomModel> _mockDb;
-        private Mock<BathroomModel> _mockRR1;
-        private Mock<BathroomModel> _mockRR2;
+        private Mock<RestroomModel> _mockDb;
+        private Mock<RestroomModel> _mockRR1;
+        private Mock<RestroomModel> _mockRR2;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockDb = new Mock<BathroomModel>();
-            _mockRR1 = new Mock<BathroomModel>();
-            _mockRR2 = new Mock<BathroomModel>();
+            _mockDb = new Mock<RestroomModel>();
+            _mockRR1 = new Mock<RestroomModel>();
+            _mockRR2 = new Mock<RestroomModel>();
             _mockDb.SetupAllProperties();
             _mockRR1.SetupAllProperties();
             _mockRR2.SetupAllProperties();
-            _mockDb.Setup(add => add.AddBathroom(new Mock<BathroomModel>().Object));
+            _mockDb.Setup(add => add.AddBathroom(new Mock<RestroomModel>().Object));
         }
         [TestMethod()]
         public void AddBathroomModelTest()

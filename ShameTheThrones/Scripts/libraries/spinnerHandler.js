@@ -12,4 +12,3 @@
     var spinner = new Spinner().spin();
     newElement.appendChild(spinner.el);
 }
-fullPageSpinner();

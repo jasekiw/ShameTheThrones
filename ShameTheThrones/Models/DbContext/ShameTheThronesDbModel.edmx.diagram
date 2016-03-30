@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c011363bf403489988b9d00441d9a020" Name="Diagram1">
+      <Diagram DiagramId="c011363bf403489988b9d00441d9a020" Name="Diagram1" ZoomLevel="107">
         <EntityTypeShape EntityType="ShameTheThronesModel.Medium" Width="1.5" PointX="5.375" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ShameTheThronesModel.Rating" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ShameTheThronesModel.Restroom" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />

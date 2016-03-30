@@ -7,6 +7,7 @@ class HomePage {
     private currentLatitude: number = 38; // default values to give a map a location to preload
     private currentLongitude: number = -85;
     public markers: google.maps.Marker[];
+    private locationMarker : any;
 
     constructor() {
         this.markerImg = Main.getBaseDir() + "Content/img/toilet.png";
@@ -30,10 +31,13 @@ class HomePage {
         
         this.currentLatitude = position.coords.latitude;
         this.currentLongitude = position.coords.longitude; 
-        this.map.setCenter(new google.maps.LatLng(this.currentLatitude, this.currentLongitude, true));
         $('#map').css("min-height", "400px");
         google.maps.event.trigger(this.map, "resize");
-        jQuery(window).scrollTop(jQuery("#map").position().top);
+        this.map.setCenter(new google.maps.LatLng(this.currentLatitude, this.currentLongitude, true));
+        if(this.locationMarker == null)
+            this.locationMarker = new GeolocationMarker(this.map);
+     
+        $(window).scrollTop(jQuery("#map").position().top);
         this.search();
         Main.loadCompleted();
     }

@@ -19,7 +19,7 @@
         </div>
         <div class="centered">
             <h1>
-                <a href="@Url.Action("AddBathroom", "Restroom")" type="button" class="btn btn-default rate-button">Don't see what you are looking for?  Add a bathroom</a>
+                <a href="@Url.Action("Add", "Restroom")" type="button" class="btn btn-default rate-button">Don't see what you are looking for?  Add a bathroom</a>
             </h1>
             <h2>Or...</h2>
         </div>
@@ -42,13 +42,14 @@
 {
     <script type="text/javascript">
         var waitUntilLoaded = true;
+        fullPageSpinner();
         var seconds = new Date().getTime() / 1000;
         var stopTimer = function () {
             return (new Date().getTime() / 1000) - seconds;
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
-            }
+}
 @section Scripts
                     {
     <script type="text/javascript">
