@@ -20,12 +20,12 @@ namespace ShameTheThrones.Models.Tests
             _mockDb.SetupAllProperties();
             _mockRR1.SetupAllProperties();
             _mockRR2.SetupAllProperties();
-            _mockDb.Setup(add => add.AddBathroom(new Mock<RestroomModel>().Object));
+            _mockDb.Setup(add => add.AddRestroom(new Mock<RestroomModel>().Object));
         }
         [TestMethod()]
         public void AddBathroomModelTest()
         {
-            _mockDb.Object.AddBathroom(_mockRR2.Object);
+            _mockDb.Object.AddRestroom(_mockRR2.Object);
             Assert.AreEqual(_mockDb.Object, _mockRR2.Object);
         }
     }
