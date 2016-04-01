@@ -65,6 +65,19 @@ namespace ShameTheThrones.Models
             }
             return average;
         }
-        
+     
+        public static RatingAverageModel getRatingObject(int id)
+        {
+            double average = -1;
+            using (shamethethronesEntities db = new shamethethronesEntities())
+            {
+                var ratingAverageResult =
+                    db.Database.SqlQuery<RatingAverageModel>(
+                        "SELECT SUM(dbo.Rating.rating) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
+                        id).First();
+                return ratingAverageResult;
+            }
+        }
+
     }// BathroomModel
 }

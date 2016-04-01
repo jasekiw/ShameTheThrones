@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -170,8 +170,8 @@
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
       <LastGenOutput>ShameTheThronesDbModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\js\thirdparty\bootstrap.js" />
+    <Content Include="Scripts\js\thirdparty\bootstrap.min.js" />
     <EntityDeploy Include="Models\DbContext\ShameTheThronesDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShameTheThronesDbModel.Designer.cs</LastGenOutput>
@@ -186,14 +186,14 @@
     </None>
     <Content Include="Content\sass\includes\_homesearch.scss" />
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.2.0.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.js" />
-    <Content Include="Scripts\libraries\spinnerHandler.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <TypeScriptCompile Include="Scripts\typescript\libraries\restrooms\RestroomResponse.ts" />
-    <Content Include="Scripts\spin.js" />
+    <None Include="Scripts\js\thirdparty\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\js\thirdparty\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\js\thirdparty\jquery-2.2.0.js" />
+    <Content Include="Scripts\js\thirdparty\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\js\libraries\spinnerHandler.js" />
+    <Content Include="Scripts\js\thirdparty\modernizr-2.6.2.js" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomResponse.ts" />
+    <Content Include="Scripts\js\thirdparty\spin.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -249,7 +249,7 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Scripts\js\thirdparty\jquery-2.2.0.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -270,7 +270,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\thirdparty\" />
     <Folder Include="Scripts\typings\spinner\" />
     <Folder Include="Views\Bathroom\" />
   </ItemGroup>
@@ -280,10 +279,10 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\typescript\HomePage\HomePage.ts" />
-    <TypeScriptCompile Include="Scripts\typescript\HomePage\RestroomSearchObject.ts" />
-    <TypeScriptCompile Include="Scripts\typescript\Main.ts" />
-    <TypeScriptCompile Include="Scripts\typescript\Restroom\AddRestroomPage.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\home\HomePage.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomSearchObject.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\Main.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\AddRestroomPage.ts" />
     <TypeScriptCompile Include="Scripts\typings\geolocationMarker\GeolocationMarker.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\google.maps.d.ts" />
