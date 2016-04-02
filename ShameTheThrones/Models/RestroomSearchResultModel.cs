@@ -55,7 +55,7 @@ namespace ShameTheThrones.Models
         {
             List<RestroomSearchResultModel> restroomsResults = new List<RestroomSearchResultModel>();
             foreach (var restroom in restrooms)  
-                restroomsResults.Add(getFromDatabaseModel(restroom));
+                restroomsResults.Add(getFromDatabaseModel(restroom, true));
             return restroomsResults;
         }
     }

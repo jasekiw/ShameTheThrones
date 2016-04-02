@@ -192,8 +192,12 @@
     <Content Include="Scripts\js\thirdparty\jquery-2.2.0.min.js" />
     <Content Include="Scripts\js\libraries\spinnerHandler.js" />
     <Content Include="Scripts\js\thirdparty\modernizr-2.6.2.js" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomInfoBuilder.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomMarker.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomResponse.ts" />
     <Content Include="Scripts\js\thirdparty\spin.js" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\google\MarkerCollection.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomIcon.ts" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -270,6 +274,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\restroom-markers\men\" />
+    <Folder Include="Content\img\restroom-markers\unisex\" />
+    <Folder Include="Content\img\restroom-markers\women\" />
     <Folder Include="Scripts\typings\spinner\" />
     <Folder Include="Views\Bathroom\" />
   </ItemGroup>

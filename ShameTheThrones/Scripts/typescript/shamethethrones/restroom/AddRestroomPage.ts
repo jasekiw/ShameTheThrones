@@ -1,6 +1,7 @@
 ﻿namespace shamethethrones.restroom {
+    import maps = google.maps;
     export class AddRestroomPage {
-        private geocoder: google.maps.Geocoder;
+        private geocoder: maps.Geocoder;
         constructor() {
 
         }
@@ -16,7 +17,7 @@
         }
         public showPosition = (position) => {
             var location = { lat: position.coords.latitude, lng: position.coords.longitude };
-            this.geocoder.geocode({ location: location }, (results: google.maps.GeocoderResult[], status) => {
+            this.geocoder.geocode({ location: location }, (results: maps.GeocoderResult[], status) => {
                 if (results[0]) {
                     this.addAddressToForm(results[0]);
                 } else {
@@ -27,7 +28,7 @@
         public locationDeclined() {
 
         }
-        public addAddressToForm(address: google.maps.GeocoderResult) {
+        public addAddressToForm(address: maps.GeocoderResult) {
             var isAddress = true;
             address.types.forEach((addressType) => {
                 if (addressType == "locality")

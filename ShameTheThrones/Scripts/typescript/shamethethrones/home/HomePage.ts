@@ -1,20 +1,23 @@
-﻿namespace shamethethrones.home {
+﻿///<reference path="../restroom/RestroomInfoBuilder.ts"/>
+///<reference path="../google/MarkerCollection.ts"/>
+namespace shamethethrones.home {
     import RestroomSearchObject = restroom.RestroomSearchObject;
     import RestroomResponse = restroom.RestroomResponse;
-
+    import maps = google.maps;
+    import RestroomInfoBuilder = restroom.RestroomInfoBuilder;
     export class HomePage {
 
         private markerImg: string;
         private basedir: string;
-        private map: google.maps.Map;
+        private map: maps.Map;
         private currentLatitude: number = 38; // default values to give a map a location to preload
         private currentLongitude: number = -85;
-        public markers: google.maps.Marker[];
+        public markers: shamethethrones_google.MarkerCollection;
         private locationMarker: any;
 
         constructor() {
             this.markerImg = Main.getBaseDir() + "Content/img/toilet.png";
-            this.markers = [];
+            this.markers = {};
             this.initMap();
         }
         /**
@@ -96,28 +99,35 @@
         public updateMarkers = (restrooms: RestroomResponse[]) => {
 
             restrooms.forEach((restroom: RestroomResponse) => {
+               
                 if (this.markers["" + restroom.coordX + "," + restroom.coordY] == undefined) {
+                    var restroomIcon = new shamethethrones.restroom.RestroomIcon();
+                    var markerImgUrl = restroomIcon.getIcon(restroom.rating, restroom.gender, restroom.rated);
+                    var contentBuilder: RestroomInfoBuilder = new RestroomInfoBuilder(restroom);
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentBuilder.getContent()
+                    });
+
                     var toiletMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(restroom.coordX, restroom.coordY),
                         map: this.map,
-                        icon: this.markerImg,
+                        icon: markerImgUrl,
                         animation: google.maps.Animation.DROP,
                         title: restroom.address
+
                     });
-                    toiletMarker.addListener('click', () => this.toggleBounce(toiletMarker));
-                    this.markers["" + restroom.coordX + "," + restroom.coordY] = toiletMarker;
+                    var restroomMarker: restroom.RestroomMarker = { marker: toiletMarker, restroom: restroom, infoWindow: infowindow };
+                    toiletMarker.addListener('click', () => this.markerClicked(restroomMarker));
+                    this.markers["" + restroom.coordX + "," + restroom.coordY] = restroomMarker;
 
                 }
 
             });
         }
-        public toggleBounce(marker: google.maps.Marker): void {
+        public markerClicked(marker: restroom.RestroomMarker): void {
 
-            if (marker.getAnimation() !== null) {
-                marker.setAnimation(null);
-            } else {
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-            }
+            marker.infoWindow.open(this.map, marker.marker);
+
         }
     }
 }

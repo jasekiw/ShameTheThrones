@@ -1,19 +1,43 @@
 var shamethethrones;
 (function (shamethethrones) {
     var restroom;
-    (function (restroom) {
-        var RestroomResponse = (function () {
-            function RestroomResponse() {
+    (function (restroom_1) {
+        var RestroomInfoBuilder = (function () {
+            function RestroomInfoBuilder(restroom) {
+                this.restroom = restroom;
             }
-            return RestroomResponse;
+            RestroomInfoBuilder.prototype.getContent = function () {
+                var genderName = "";
+                if (this.restroom.gender == 0)
+                    genderName = "Mens";
+                else if (this.restroom.gender == 1)
+                    genderName = "Womens";
+                else if (this.restroom.gender == 2)
+                    genderName = "Both";
+                var ratingText = "";
+                console.log(this.restroom.rated);
+                if (this.restroom.rated)
+                    ratingText = this.restroom.rating.toString();
+                else
+                    ratingText = "Not Yet Rated";
+                var header = "<h3>" + this.restroom.address + "</h3>";
+                var description = "<p><strong>Description:</strong> " + this.restroom.description + "</p>";
+                var gender = "<p><strong>Gender:</strong> " + genderName + "</p>";
+                var rating = "<p><strong>rating:</strong> " + ratingText + "</p>";
+                return header + description + gender + rating;
+            };
+            return RestroomInfoBuilder;
         }());
-        restroom.RestroomResponse = RestroomResponse;
+        restroom_1.RestroomInfoBuilder = RestroomInfoBuilder;
     })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
 })(shamethethrones || (shamethethrones = {}));
+///<reference path="../restroom/RestroomInfoBuilder.ts"/>
+///<reference path="../google/MarkerCollection.ts"/>
 var shamethethrones;
 (function (shamethethrones) {
     var home;
     (function (home) {
+        var RestroomInfoBuilder = shamethethrones.restroom.RestroomInfoBuilder;
         var HomePage = (function () {
             function HomePage() {
                 var _this = this;
@@ -84,20 +108,27 @@ var shamethethrones;
                 this.updateMarkers = function (restrooms) {
                     restrooms.forEach(function (restroom) {
                         if (_this.markers["" + restroom.coordX + "," + restroom.coordY] == undefined) {
+                            var restroomIcon = new shamethethrones.restroom.RestroomIcon();
+                            var markerImgUrl = restroomIcon.getIcon(restroom.rating, restroom.gender, restroom.rated);
+                            var contentBuilder = new RestroomInfoBuilder(restroom);
+                            var infowindow = new google.maps.InfoWindow({
+                                content: contentBuilder.getContent()
+                            });
                             var toiletMarker = new google.maps.Marker({
                                 position: new google.maps.LatLng(restroom.coordX, restroom.coordY),
                                 map: _this.map,
-                                icon: _this.markerImg,
+                                icon: markerImgUrl,
                                 animation: google.maps.Animation.DROP,
                                 title: restroom.address
                             });
-                            toiletMarker.addListener('click', function () { return _this.toggleBounce(toiletMarker); });
-                            _this.markers["" + restroom.coordX + "," + restroom.coordY] = toiletMarker;
+                            var restroomMarker = { marker: toiletMarker, restroom: restroom, infoWindow: infowindow };
+                            toiletMarker.addListener('click', function () { return _this.markerClicked(restroomMarker); });
+                            _this.markers["" + restroom.coordX + "," + restroom.coordY] = restroomMarker;
                         }
                     });
                 };
                 this.markerImg = shamethethrones.Main.getBaseDir() + "Content/img/toilet.png";
-                this.markers = [];
+                this.markers = {};
                 this.initMap();
             }
             HomePage.prototype.locationDeclined = function (error) {
@@ -109,13 +140,8 @@ var shamethethrones;
                     console.log("unkown error occured when getting location ERRORCODE: " + error.code + " ERRORMESSAGE: " + error.message);
                 }
             };
-            HomePage.prototype.toggleBounce = function (marker) {
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                }
-                else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
+            HomePage.prototype.markerClicked = function (marker) {
+                marker.infoWindow.open(this.map, marker.marker);
             };
             return HomePage;
         }());
@@ -211,5 +237,62 @@ var shamethethrones;
         return Main;
     }());
     shamethethrones.Main = Main;
+})(shamethethrones || (shamethethrones = {}));
+var shamethethrones;
+(function (shamethethrones) {
+    var restroom;
+    (function (restroom) {
+        var RestroomIcon = (function () {
+            function RestroomIcon() {
+            }
+            RestroomIcon.prototype.getIcon = function (rating, gender, rated) {
+                var baseDir = shamethethrones.Main.getBaseDir();
+                var baseIconUrl = baseDir + "Content/img/restroom-markers/";
+                switch (gender) {
+                    case 0:
+                        baseIconUrl += "men/";
+                        break;
+                    case 1:
+                        baseIconUrl += "women/";
+                        break;
+                    case 2:
+                        baseIconUrl += "unisex/";
+                        break;
+                    default:
+                        baseIconUrl += "men/";
+                        break;
+                }
+                if (!rated) {
+                    baseIconUrl += "gray.png";
+                    return baseIconUrl;
+                }
+                if (rating < 1)
+                    baseIconUrl += "red.png";
+                else if (rating < 2)
+                    baseIconUrl += "purple.png";
+                else if (rating < 3)
+                    baseIconUrl += "blue.png";
+                else if (rating < 4)
+                    baseIconUrl += "green.png";
+                else if (rating <= 5)
+                    baseIconUrl += "yellow.png";
+                return baseIconUrl;
+            };
+            return RestroomIcon;
+        }());
+        restroom.RestroomIcon = RestroomIcon;
+    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
+})(shamethethrones || (shamethethrones = {}));
+var shamethethrones;
+(function (shamethethrones) {
+    var restroom;
+    (function (restroom) {
+        var RestroomResponse = (function () {
+            function RestroomResponse() {
+            }
+            return RestroomResponse;
+        }());
+        restroom.RestroomResponse = RestroomResponse;
+    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
 })(shamethethrones || (shamethethrones = {}));
 //# sourceMappingURL=typescriptcombined.js.map
