@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fav.ico" />
     <Content Include="Content\img\toilet.png" />
+    <None Include="Content\sass\includes\_legend.scss" />
     <Content Include="Content\sass\style.css">
       <DependentUpon>style.scss</DependentUpon>
     </Content>
@@ -264,6 +265,7 @@
     <Content Include="Views\Restroom\Add.cshtml" />
     <Content Include="Views\Restroom\Index.cshtml" />
     <Content Include="Views\Restroom\Rate.cshtml" />
+    <Content Include="Views\Restroom\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

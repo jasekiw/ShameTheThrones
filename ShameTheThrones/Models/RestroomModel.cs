@@ -34,6 +34,28 @@ namespace ShameTheThrones.Models
 
         public DateTime DeletedAt;
 
+        public RestroomModel()
+        {
+            
+        }
+
+        public RestroomModel(int id)
+        {
+            using (shamethethronesEntities db = new shamethethronesEntities())
+            {
+                Restroom restroom = db.Restrooms.Where(x => x.id == id).First(x => x.deletedAt == null);
+               
+                this.id = restroom.id;
+                this.Address = restroom.address;
+                this.City = restroom.city;
+                this.Descritption = restroom.description;
+                this.Gender = restroom.gender;
+                this.State = restroom.state;
+                this.ZipCode = restroom.zipCode.HasValue ? "" + restroom.zipCode.Value : "";
+                this.userId = restroom.userId;
+            }
+        }
+
         public void AddRestroom(RestroomModel bathroom)
         {
             using (shamethethronesEntities db = new shamethethronesEntities())
@@ -61,7 +83,7 @@ namespace ShameTheThrones.Models
                     db.Database.SqlQuery<RatingAverageModel>(
                         "SELECT SUM(dbo.Rating.rating) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
                         this.id).First();
-                 average = (double)ratingAverageResult.sumOfRatings/(double)ratingAverageResult.total;
+                average = ratingAverageResult.getAverage();
             }
             return average;
         }
@@ -78,6 +100,7 @@ namespace ShameTheThrones.Models
                 return ratingAverageResult;
             }
         }
+        
 
     }// BathroomModel
 }

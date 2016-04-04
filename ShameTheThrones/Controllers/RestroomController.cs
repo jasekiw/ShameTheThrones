@@ -41,5 +41,11 @@ namespace ShameTheThrones.Controllers
             return Json(search.GetRestrooms().ToArray(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Show(int id)
+        {
+            RestroomModel restroom = new RestroomModel(id);
+            return View(restroom);
+        }
+
     }
 }

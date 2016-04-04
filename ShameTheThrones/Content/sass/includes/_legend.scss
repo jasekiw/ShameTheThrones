@@ -1,0 +1,41 @@
+﻿$fontsize: 20;
+$fontadjust: $fontsize + 10 + px;
+
+.legend {
+    & {
+        position:relative;
+        padding: 10px 0;
+    }
+    > div {
+        margin-top: $fontadjust;
+        display: inline-block;
+        position:relative;
+        margin-left: 5px;
+        margin-right:5px;
+    }
+    > div > span {
+        font-size:$fontsize + px;
+        position: relative;
+        display:inline-block;
+        transform:translateY(-$fontadjust);
+    }
+    
+    &__0 {
+        background-color: #696969; // gray
+    }
+    &__1 {
+        background-color: #f93d5e; // red
+    }
+    &__2 {
+        background-color: #8974b4; //purple
+    }
+    &__3 {
+        background-color: #1cbdbe; // blue
+    }
+    &__4 {
+         background-color: #72bf44; // green
+    }
+     &__5 {
+         background-color: #ffcc2e; // yellow
+    }
+}

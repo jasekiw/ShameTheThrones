@@ -16,7 +16,6 @@
                 genderName = "Both";
 
             var ratingText: string = "";
-            console.log(this.restroom.rated);
             if (this.restroom.rated)
                 ratingText = this.restroom.rating.toString();
             else
@@ -25,7 +24,8 @@
             var description: string = "<p><strong>Description:</strong> " + this.restroom.description + "</p>";
             var gender: string = "<p><strong>Gender:</strong> " + genderName + "</p>";
             var rating: string = "<p><strong>rating:</strong> " + ratingText + "</p>";
-            return header + description + gender + rating;
+            var rateButton: string = "<div class=\"ratebutton_container\"><a class=\"btn btn-primary\" href=\"" + Main.getBaseDir() + "restroom/rate/" + this.restroom.id + "\">Rate</a></div>";
+            return header + description + gender + rating + rateButton;
         }
     }
 }

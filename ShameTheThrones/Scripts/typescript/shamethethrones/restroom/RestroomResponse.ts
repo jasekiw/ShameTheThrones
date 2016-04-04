@@ -1,5 +1,6 @@
 ﻿namespace shamethethrones.restroom {
     export class RestroomResponse {
+        public id : number;
         public coordX: number;
         public coordY: number;
         public gender: number;
