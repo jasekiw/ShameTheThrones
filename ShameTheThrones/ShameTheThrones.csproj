@@ -238,6 +238,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Restroom\AddBathroom.cshtml" />
     <Content Include="Views\Restroom\Index.cshtml" />
+    <Content Include="Views\Restroom\RateBathroom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
