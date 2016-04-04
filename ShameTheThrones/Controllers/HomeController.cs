@@ -14,5 +14,10 @@ namespace ShameTheThrones.Controllers
         {
             return View();
         }
+        // GET: Home
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
