@@ -262,7 +262,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\Restroom\Add.cshtml" />
     <Content Include="Views\Restroom\Index.cshtml" />
     <Content Include="Views\Restroom\Rate.cshtml" />
     <Content Include="Views\Restroom\Show.cshtml" />
