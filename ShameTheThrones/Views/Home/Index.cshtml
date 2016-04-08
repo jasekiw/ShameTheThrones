@@ -13,7 +13,7 @@
     <div class="col-xs-12">
         <div class="centered">
             <h1>
-                <a href="javascript:mainApp.homePage.getLocation()" type="button" class="btn btn-default rate-button">Click here to find bathrooms around you</a>
+                <a href="javascript:mainApp.homePage.getLocation()" type="button" class="btn btn-default map-button">Click here to find bathrooms around you</a>
             </h1>
             <h2>Or...</h2>
         </div>
@@ -24,9 +24,9 @@
             <h2>Or...</h2>
         </div>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="start typing a zip code...">
+            <input type="text" class="form-control zip-code-search" placeholder="start typing an address or a zip code... ">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
+                <button class="btn btn-default" onclick="javascript:mainApp.homePage.searchZip()" type="button">Go!</button>
             </span>
         </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
@@ -36,16 +36,19 @@
         <ul class="list-group searchResults"></ul>
     </div>
 </div>
-<div class="legend">
-    <div class="legend__0"><span>Not Rated</span></div>
-    <div class="legend__1"><span>0 - 1</span></div>
-    <div class="legend__2"><span>1 - 2</span></div>
-    <div class="legend__3"><span>2 - 3</span></div>
-    <div class="legend__4"><span>3 - 4</span></div>
-    <div class="legend__5"><span>4 - 5</span></div>
+
+<div class="map_container">
+    <div class="legend">
+        <div class="legend__0"><span>Not Rated</span></div>
+        <div class="legend__1"><span>0 - 1</span></div>
+        <div class="legend__2"><span>1 - 2</span></div>
+        <div class="legend__3"><span>2 - 3</span></div>
+        <div class="legend__4"><span>3 - 4</span></div>
+        <div class="legend__5"><span>4 - 5</span></div>
+    </div>
+    <div id="map"></div>
 </div>
-<div id="map"></div>
-<div id="demo"></div>
+
 @section ScriptsBefore
 {
     <script type="text/javascript">

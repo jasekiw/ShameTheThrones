@@ -1,6 +1,7 @@
 ﻿namespace shamethethrones.restroom
 {
     export class RestroomIcon {
+      
         public getIcon(rating: number, gender : number, rated: boolean) : string {
             var baseDir: string = Main.getBaseDir();
             var baseIconUrl = baseDir + "Content/img/restroom-markers/";

@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fav.ico" />
     <Content Include="Content\img\toilet.png" />
+    <Content Include="Content\sass\includes\_homepage.scss" />
     <None Include="Content\sass\includes\_legend.scss" />
     <Content Include="Content\sass\style.css">
       <DependentUpon>style.scss</DependentUpon>
@@ -265,6 +266,8 @@
     <Content Include="Views\Restroom\Index.cshtml" />
     <Content Include="Views\Restroom\Rate.cshtml" />
     <Content Include="Views\Restroom\Show.cshtml" />
+    <Content Include="Views\Restroom\Add.cshtml" />
+    <Content Include="Views\Restroom\RateBathroom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -293,7 +296,7 @@
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\AddRestroomPage.ts" />
     <TypeScriptCompile Include="Scripts\typings\geolocationMarker\GeolocationMarker.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\google.maps.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\google.maps.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
