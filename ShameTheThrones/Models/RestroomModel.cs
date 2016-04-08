@@ -39,6 +39,18 @@ namespace ShameTheThrones.Models
             
         }
 
+        public RestroomModel(Restroom restroom)
+        {
+            this.id = restroom.id;
+            this.Address = restroom.address;
+            this.City = restroom.city;
+            this.Descritption = restroom.description;
+            this.Gender = restroom.gender;
+            this.State = restroom.state;
+            this.ZipCode = restroom.zipCode.HasValue ? "" + restroom.zipCode.Value : "";
+            this.userId = restroom.userId;
+        }
+
         public RestroomModel(int id)
         {
             using (shamethethronesEntities db = new shamethethronesEntities())
