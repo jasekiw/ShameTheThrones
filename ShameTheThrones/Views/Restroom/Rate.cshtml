@@ -1,6 +1,101 @@
-﻿
+﻿@using System.Web.Optimization
+@using System.Web.UI.HtmlControls
+@model ShameTheThrones.Models.RatingModel
+
 @{
-    ViewBag.Title = "Rate";
+    ViewBag.Title = "Rate Restroom";
 }
 
-<h2>title</h2>
+@*
+    Comments and TODO:
+    May be better to extend the add bathroom class?  We want them to be in sync, so if we change the layout of one we need to change the
+    layout of the other.
+    TODO: pass data from the home screen to this class--the restroom fields for location and gender should be filled out, only rating related
+    fields should be blank.  It will be good enough to make some tests.
+*@
+
+<div class="panel panel-default">
+    <div class="panel-heading text-center"><h2>Rate Bathroom</h2></div>
+
+    @using (Html.BeginForm("NewRating", "Restroom"))
+    {
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                @Html.TextBox("Title", "", new
+           {
+               @class = "form-control centered",
+               @placeholder = "type a title..."
+           })
+
+            </div>
+        </div>
+        @Html.Hidden("RestroomId", Model.RestroomId)
+        <div class="panel-body">
+
+
+            <div class="row">
+                <!--How to make db capture data from this?  Is there a better way to do it?-->
+                <div class="col-xs-12 text-center">
+                    <div class="rating_container">
+                        <div class="rating"></div>
+                        <div class="counter">0</div>
+                    </div>
+                    @Html.Hidden("Rating", 0, new { @id = "rating"})
+                   
+                </div>
+
+
+            </div>
+
+            <div class="row" style="margin-top: 50px">
+                <div class="col-xs-12 text-center">
+                    <div class="form-group-lg">
+                        @Html.Label("Comment")
+                        @Html.TextArea("Comment", new
+                       {
+                           @class = "form-control textarea-lg",
+                           @style = "margin: auto; margin-bottom: 20px; width: 100%", //How to make comment  box span the width of the form?
+                           @rows = "4",
+                           @placeholder = "write a comment..."
+                           
+
+                       })
+                    </div>
+                  
+                </div>
+
+            </div>
+
+            <div class="well text-left">
+                <button class="btn btn-default text-center" type="button">Add Photo(s)</button>
+
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg text-center btn-block" type="submit">Rate Restroom</button>
+            </div>
+
+        </div>
+    }
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/rateyo")
+    <script type="text/javascript">
+        $(".rating").rateYo({
+            fullStar: true
+        }).on("rateyo.change", function(e, data) {
+            var rating = data.rating;
+            $(this).next().text(rating);
+        }).on("rateyo.set", function (e, data) {
+            $("#rating").val(data.rating);
+        });
+    </script>
+
+}
+@section Styles
+{
+    @Styles.Render("~/Content/css/rateyo")
+}

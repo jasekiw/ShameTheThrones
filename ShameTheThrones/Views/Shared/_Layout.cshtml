@@ -7,6 +7,7 @@
     <link rel="icon" href="@Url.Content("~/Content/fav.ico")" type="image/x-icon" sizes="96x96">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @RenderSection("Styles", false/*required*/)
 </head>
 <body>
 

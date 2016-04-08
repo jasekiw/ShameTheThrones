@@ -44,18 +44,18 @@ namespace ShameTheThrones.Controllers
         public ActionResult Login(UserModel user)
         {
             
-            if (ModelState.IsValid)
-            {
+//            if (ModelState.IsValid)
+//            {
                 if (user.isValid(user.Email, user.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    FormsAuthentication.SetAuthCookie(user.getId().ToString(), false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Log In information is incorrect");
                 }
-            }
+//            }
             return View(user);
         }
 

@@ -2,7 +2,8 @@
 @import "includes/homesearch";
 @import "includes/legend";
 @import "includes/_homepage";
-
+@import "includes/bootstrapExtending";
+@import "includes/rating";
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -15,12 +16,6 @@ body {
     padding-top:100px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 
 .centered {
