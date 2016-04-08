@@ -20,10 +20,25 @@ namespace ShameTheThrones
                      ));
          
             bundles.Add(new ScriptBundle("~/bundles/mainsite").Include(
-                    "~/Scripts/js/thirdparty/geolocation-marker.js",
                      "~/Scripts/typescript/typescriptcombined.js"
                     ));
-           
+            bundles.Add(new ScriptBundle("~/bundles/googleMapsExtensions").Include(
+                    "~/Scripts/js/thirdparty/geolocation-marker.js"
+                    ));
+
+            /**
+            *
+            * RateYo Plugin
+            */
+            bundles.Add(new ScriptBundle("~/bundles/rateyo").Include(
+                   "~/Scripts/js/thirdparty/rateyo/jquery.rateyo.js"
+                   ));
+            bundles.Add(new StyleBundle("~/Content/css/rateyo").Include(
+                      "~/Scripts/js/thirdparty/rateyo/jquery.rateyo.min.css"
+                      ));
+
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/sass/style.css"

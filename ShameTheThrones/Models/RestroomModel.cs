@@ -30,7 +30,7 @@ namespace ShameTheThrones.Models
         //public IEnumerable<String> = // may not need
 
         [Required]
-        public string Descritption { get; set; }
+        public string Description { get; set; }
 
         public DateTime DeletedAt;
 
@@ -44,7 +44,7 @@ namespace ShameTheThrones.Models
             this.id = restroom.id;
             this.Address = restroom.address;
             this.City = restroom.city;
-            this.Descritption = restroom.description;
+            this.Description = restroom.description;
             this.Gender = restroom.gender;
             this.State = restroom.state;
             this.ZipCode = restroom.zipCode.HasValue ? "" + restroom.zipCode.Value : "";
@@ -60,7 +60,7 @@ namespace ShameTheThrones.Models
                 this.id = restroom.id;
                 this.Address = restroom.address;
                 this.City = restroom.city;
-                this.Descritption = restroom.description;
+                this.Description = restroom.description;
                 this.Gender = restroom.gender;
                 this.State = restroom.state;
                 this.ZipCode = restroom.zipCode.HasValue ? "" + restroom.zipCode.Value : "";
@@ -79,7 +79,7 @@ namespace ShameTheThrones.Models
                 newBathroom.state = bathroom.State; 
                 newBathroom.zipCode = Int32.Parse(bathroom.ZipCode); 
                 newBathroom.gender = bathroom.Gender;
-                newBathroom.description = bathroom.Descritption;
+                newBathroom.description = bathroom.Description;
                 db.Restrooms.Add(newBathroom);
                 db.SaveChanges(); //until testing is done
                 bathroom.id = newBathroom.id; // sets the id so we can get it later
@@ -112,7 +112,7 @@ namespace ShameTheThrones.Models
                 return ratingAverageResult;
             }
         }
-        
 
-    }// BathroomModel
+
+    }// RestroomModel
 }

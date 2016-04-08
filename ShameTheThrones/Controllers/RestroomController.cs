@@ -30,10 +30,19 @@ namespace ShameTheThrones.Controllers
 
         public ActionResult Rate(int id)
         {
-            RestroomModel restroom = new RestroomModel();
-            restroom.id = id;
-            double averageRating = restroom.getAverageRating();
-            return View();
+            RatingModel rating = new RatingModel();
+            rating.RestroomId = id;
+            return View(rating);
+        }
+
+        [HttpPost]
+        public ActionResult NewRating(RatingModel ratingModel)
+        {
+            string val1 = System.Web.HttpContext.Current.User.Identity.Name;
+            int userId = Int32.Parse(val1);
+            ratingModel.UserId = userId;
+            ratingModel.add();
+            return RedirectToAction("Index", "Restroom");
         }
       
         public ActionResult Search(RestroomSearchModel search)

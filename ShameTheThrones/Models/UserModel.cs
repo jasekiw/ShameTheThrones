@@ -21,6 +21,7 @@ namespace ShameTheThrones.Models
         public string Password { get; set; }
 
         public DateTime? DeletedAt;
+        private int id; 
 
         public void Register(UserModel user)
         {
@@ -57,11 +58,17 @@ namespace ShameTheThrones.Models
                 {
                     if (user.pasword == password)
                     {
+                        this.id = user.id;
                         isValid = true;
                     }
                 }
             }
                 return isValid;
+        }
+
+        public int getId()
+        {
+            return this.id;
         }
         
     }

@@ -145,7 +145,9 @@
     <Content Include="Content\fav.ico" />
     <Content Include="Content\img\toilet.png" />
     <Content Include="Content\sass\includes\_homepage.scss" />
+    <Content Include="Content\sass\includes\_bootstrapExtending.scss" />
     <None Include="Content\sass\includes\_legend.scss" />
+    <None Include="Content\sass\includes\_rating.scss" />
     <Content Include="Content\sass\style.css">
       <DependentUpon>style.scss</DependentUpon>
     </Content>
@@ -197,6 +199,10 @@
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomInfoBuilder.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomMarker.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomResponse.ts" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.css" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.js" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.css" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.js" />
     <Content Include="Scripts\js\thirdparty\spin.js" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\google\MarkerCollection.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomIcon.ts" />
@@ -242,7 +248,6 @@
     </Compile>
     <Compile Include="Models\RatingAverageModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
-    <Compile Include="Models\RestroomRateModel.cs" />
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
     <Compile Include="Models\RestroomModel.cs" />
@@ -267,7 +272,10 @@
     <Content Include="Views\Restroom\Rate.cshtml" />
     <Content Include="Views\Restroom\Show.cshtml" />
     <Content Include="Views\Restroom\Add.cshtml" />
-    <Content Include="Views\Restroom\RateBathroom.cshtml" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.less" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.css.map" />
+    <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.js.map" />
+    <Content Include="Scripts\js\thirdparty\rateyo\LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -325,7 +333,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60060</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

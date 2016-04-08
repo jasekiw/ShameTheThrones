@@ -59,6 +59,47 @@
 .map_container {
   display: none; }
 
+.textarea-lg {
+  min-width: 100%; }
+
+.input-group.full-width {
+  width: 100%; }
+
+.rating_container {
+  display: inline-block;
+  position: relative; }
+
+div.rating_container div.counter {
+  display: none;
+  position: absolute;
+  min-width: 20px;
+  padding: 5px;
+  font-size: 15px;
+  line-height: 0px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 50%;
+  right: -36px;
+  margin-top: -10px;
+  color: white; }
+
+div.rating_container div.counter:before,
+div.rating_container div.counter ::before {
+  content: "";
+  width: 0;
+  height: 0;
+  top: 50%;
+  margin-top: -5px;
+  display: block;
+  border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+  border-width: 5px 5px 5px 0px;
+  left: -10px;
+  border-style: solid;
+  position: relative; }
+
+div.rating_container:hover div.counter {
+  display: block; }
+
 body {
   padding-top: 50px;
   padding-bottom: 20px; }
@@ -68,12 +109,6 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 100px; }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px; }
 
 .centered {
   text-align: center; }
