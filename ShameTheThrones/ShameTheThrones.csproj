@@ -276,6 +276,7 @@
     <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.css.map" />
     <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.js.map" />
     <Content Include="Scripts\js\thirdparty\rateyo\LICENSE" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
