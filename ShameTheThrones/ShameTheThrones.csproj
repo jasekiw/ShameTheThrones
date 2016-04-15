@@ -143,6 +143,24 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fav.ico" />
+    <Content Include="Content\img\restroom-markers\men\blue.png" />
+    <Content Include="Content\img\restroom-markers\men\gray.png" />
+    <Content Include="Content\img\restroom-markers\men\green.png" />
+    <Content Include="Content\img\restroom-markers\men\purple.png" />
+    <Content Include="Content\img\restroom-markers\men\red.png" />
+    <Content Include="Content\img\restroom-markers\men\yellow.png" />
+    <Content Include="Content\img\restroom-markers\unisex\blue.png" />
+    <Content Include="Content\img\restroom-markers\unisex\gray.png" />
+    <Content Include="Content\img\restroom-markers\unisex\green.png" />
+    <Content Include="Content\img\restroom-markers\unisex\purple.png" />
+    <Content Include="Content\img\restroom-markers\unisex\red.png" />
+    <Content Include="Content\img\restroom-markers\unisex\yellow.png" />
+    <Content Include="Content\img\restroom-markers\women\blue.png" />
+    <Content Include="Content\img\restroom-markers\women\gray.png" />
+    <Content Include="Content\img\restroom-markers\women\green.png" />
+    <Content Include="Content\img\restroom-markers\women\pruple.png" />
+    <Content Include="Content\img\restroom-markers\women\red.png" />
+    <Content Include="Content\img\restroom-markers\women\yellow.png" />
     <Content Include="Content\img\toilet.png" />
     <Content Include="Content\sass\includes\_homepage.scss" />
     <Content Include="Content\sass\includes\_bootstrapExtending.scss" />
@@ -192,6 +210,7 @@
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
     <None Include="Scripts\js\thirdparty\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\js\thirdparty\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\js\thirdparty\geolocation-marker.js" />
     <Content Include="Scripts\js\thirdparty\jquery-2.2.0.js" />
     <Content Include="Scripts\js\thirdparty\jquery-2.2.0.min.js" />
     <Content Include="Scripts\js\libraries\spinnerHandler.js" />
@@ -287,9 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\restroom-markers\men\" />
-    <Folder Include="Content\img\restroom-markers\unisex\" />
-    <Folder Include="Content\img\restroom-markers\women\" />
     <Folder Include="Scripts\typings\spinner\" />
     <Folder Include="Views\Bathroom\" />
   </ItemGroup>
