@@ -10,7 +10,7 @@ Agree on our technologies |3
 Set up a git repository | 1
 Choose and set up a server to host our application |8
 Set up a database |13
-Create a modular design so that the work can be divided logically between 5 people
+Create a modular design so that the work can be divided logically between 5 people| 8
 Write documentation | 1
 Create a login form | 5
 Add geolocation functionality for more precision than zip code lookup | 13
