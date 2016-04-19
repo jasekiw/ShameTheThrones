@@ -113,3 +113,6 @@ body {
 .centered {
   text-align: center; }
 
+.errors {
+  color: #ce0000; }
+

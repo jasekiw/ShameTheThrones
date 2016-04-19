@@ -73,7 +73,7 @@ namespace ShameTheThrones.Models
             using (shamethethronesEntities db = new shamethethronesEntities())
             {
                 Restroom newBathroom = new Restroom();
-
+                newBathroom.userId = bathroom.userId;
                 newBathroom.address = bathroom.Address;
                 newBathroom.city = bathroom.City; // commented out until db is changed 
                 newBathroom.state = bathroom.State; 
