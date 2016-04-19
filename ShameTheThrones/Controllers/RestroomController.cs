@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShameTheThrones.Infrastructure;
 using ShameTheThrones.Models;
 using ShameTheThrones.Models.DbContext;
 
@@ -23,7 +24,7 @@ namespace ShameTheThrones.Controllers
         [HttpPost]
         public ActionResult New(RestroomModel restroom)
         {
-            
+            restroom.userId = User.Identity.getUser().Id;
             restroom.AddRestroom(restroom);
             return RedirectToAction("Rate", new { id = restroom.id });
         }

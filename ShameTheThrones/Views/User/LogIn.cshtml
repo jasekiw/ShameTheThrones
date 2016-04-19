@@ -9,25 +9,56 @@
     <div class="panel-heading text-center">Log In</div>
     
     <div class="panel-body">
-
-    @using (Html.BeginForm("LogIn", "User"))
-    {
-        <div class="col-xs-12 text-center">
-            @Html.Label("Username")
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+        <div class="col-xs-12">
+            <p class="errors"></p>
         </div>
+        @using (Html.BeginForm("LogIn", "User"))
+        {
+            <div class="col-xs-12 text-center">
+                @Html.LabelFor(m => m.Email, "Email")
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+            </div>
 
-        <div class="col-xs-12 text-center">
-            @Html.Label("Password")
-            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
-        </div>
+            <div class="col-xs-12 text-center">
+                @Html.Label("Password")
+                @Html.TextBoxFor(m => m.Password, new
+                {
+                    @class = "form-control", @style = "margin:auto; margin-bottom:20px;", @type="password"
+            
+                })
+            </div>
         
-        <div class="text-center" style="margin-bottom:20px;">
-            <button class="btn btn-default text-center" type="submit">Log In</button>
-        </div>
-    }
+            <div class="text-center" style="margin-bottom:20px;">
+                <button class="btn btn-default text-center" type="submit">Log In</button>
+            </div>
+        }
 
     </div>
 
 </div>
 
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('button[type="submit"]').click(function (e) {
+
+            var errorMessage = "";
+
+            $("[required]").each(function(e) {
+                if ($(this).val().length == 0) {
+                    var selector = '[for="' + $(this).attr("name") + '"]';
+                    errorMessage += "<li>" + $(selector).text() + ' is a required field. </li>';
+                }
+            });
+         
+
+            if (errorMessage != "") {
+                $(".errors").html("<ul>" + errorMessage + "</ul>");
+                return false;
+            }
+        });
+
+    </script>
+
+}

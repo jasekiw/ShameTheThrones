@@ -7,32 +7,68 @@
 <div class="panel panel-default">
 
     <div class="panel-heading text-center">Register</div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <p class="errors"></p>
+        </div>
+        @using (Html.BeginForm("Register", "User"))
+        {
 
-    @using (Html.BeginForm("Register", "User"))
-    {
-        <div class="panel-body">
+            
             <div class="col-xs-12 text-center">
-                @Html.Label("User Name")
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px" })
+            
+                @Html.LabelFor(m => m.UserName, "User Name")
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px", @required = "" })
             </div>
 
             <div class="col-xs-12 text-center">
-                @Html.Label("Email Address")
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px" })
+                @Html.LabelFor(m => m.Email,"Email Address")
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px", @required = "" })
                 @Html.ValidationMessageFor(x => x.Email)
             </div>
 
             <div class="col-xs-12 text-center">
-                @Html.Label("Password")
-                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px" })
+                @Html.LabelFor(m => m.Password,"Password")
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px", @type = "password" , @required = "" })
             </div>
-        </div>
-        <div class="text-center" style="margin-bottom:20px;">
-            <button class="btn btn-default text-center" type="submit">Register</button>
-        </div>
-    }
+            <div class="col-xs-12 text-center">
+                @Html.LabelFor(m => m.RetypePassword, "Retype Password")
+                @Html.TextBoxFor(m => m.RetypePassword, new { @class = "form-control", @style = "margin:auto; margin-bottom:20px", @type = "password" ,@required = ""})
+            </div>
+
+            <div class="text-center" style="margin-bottom:20px;">
+                <button class="btn btn-default text-center" type="submit">Register</button>
+            </div>
+        }
+    </div>
    
 
 </div>
 
 
+@section Scripts
+{
+    <script type="text/javascript">
+        $('button[type="submit"]').click(function (e) {
+
+            var errorMessage = "";
+
+            $("[required]").each(function(e) {
+                if ($(this).val().length == 0) {
+                    var selector = '[for="' + $(this).attr("name") + '"]';
+                    errorMessage += "<li>" + $(selector).text() + ' is a required field. </li>';
+                }
+            });
+            if ($("#Password").val() != $("#RetypePassword").val()) {
+                errorMessage += "<li>The passwords typed do not match</li>";
+            }
+
+            if (errorMessage != "") {
+                $(".errors").html("<ul>" + errorMessage + "</ul>");
+                return false;
+            }
+        });
+
+    </script>
+
+}

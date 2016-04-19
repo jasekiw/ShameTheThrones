@@ -28,18 +28,20 @@
         public locationDeclined() {
 
         }
+
         public addAddressToForm(address: maps.GeocoderResult) {
-            var isAddress = true;
+            var isAddress = false;
             address.types.forEach((addressType) => {
                 if (addressType == "locality")
-                    isAddress = true;
+                        isAddress = true;
             });
             if (isAddress) {
                 $("#Address").val(address.address_components[0].short_name + " " + address.address_components[1].short_name);
                 $("#City").val(address.address_components[2].short_name);
                 $("#State").val(address.address_components[5].short_name);
                 $("#ZipCode").val(address.address_components[7].short_name);
-            } else
+            }
+            else
                 console.log("not an address");
 
         }

@@ -34,33 +34,6 @@ var shamethethrones;
 var shamethethrones;
 (function (shamethethrones) {
     var restroom;
-    (function (restroom_2) {
-        var RestroomMarker = (function () {
-            function RestroomMarker(marker, restroom, infoWindow) {
-                this.marker = marker;
-                this.restroom = restroom;
-                this.infoWindow = infoWindow;
-            }
-            return RestroomMarker;
-        }());
-        restroom_2.RestroomMarker = RestroomMarker;
-    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
-})(shamethethrones || (shamethethrones = {}));
-var shamethethrones;
-(function (shamethethrones) {
-    var restroom;
-    (function (restroom) {
-        var RestroomResponse = (function () {
-            function RestroomResponse() {
-            }
-            return RestroomResponse;
-        }());
-        restroom.RestroomResponse = RestroomResponse;
-    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
-})(shamethethrones || (shamethethrones = {}));
-var shamethethrones;
-(function (shamethethrones) {
-    var restroom;
     (function (restroom) {
         var RestroomIcon = (function () {
             function RestroomIcon() {
@@ -101,6 +74,21 @@ var shamethethrones;
             return RestroomIcon;
         }());
         restroom.RestroomIcon = RestroomIcon;
+    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
+})(shamethethrones || (shamethethrones = {}));
+var shamethethrones;
+(function (shamethethrones) {
+    var restroom;
+    (function (restroom_2) {
+        var RestroomMarker = (function () {
+            function RestroomMarker(marker, restroom, infoWindow) {
+                this.marker = marker;
+                this.restroom = restroom;
+                this.infoWindow = infoWindow;
+            }
+            return RestroomMarker;
+        }());
+        restroom_2.RestroomMarker = RestroomMarker;
     })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
 })(shamethethrones || (shamethethrones = {}));
 ///<reference path="../restroom/RestroomInfoBuilder.ts"/>
@@ -309,7 +297,7 @@ var shamethethrones;
             AddRestroomPage.prototype.locationDeclined = function () {
             };
             AddRestroomPage.prototype.addAddressToForm = function (address) {
-                var isAddress = true;
+                var isAddress = false;
                 address.types.forEach(function (addressType) {
                     if (addressType == "locality")
                         isAddress = true;
@@ -366,5 +354,17 @@ var shamethethrones;
         return Main;
     }());
     shamethethrones.Main = Main;
+})(shamethethrones || (shamethethrones = {}));
+var shamethethrones;
+(function (shamethethrones) {
+    var restroom;
+    (function (restroom) {
+        var RestroomResponse = (function () {
+            function RestroomResponse() {
+            }
+            return RestroomResponse;
+        }());
+        restroom.RestroomResponse = RestroomResponse;
+    })(restroom = shamethethrones.restroom || (shamethethrones.restroom = {}));
 })(shamethethrones || (shamethethrones = {}));
 //# sourceMappingURL=typescriptcombined.js.map
