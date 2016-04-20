@@ -1,9 +1,9 @@
-﻿namespace shamethethrones.restroom {
+﻿
     import maps = google.maps;
     export class AddRestroomPage {
         private geocoder: maps.Geocoder;
         constructor() {
-
+            $("#fillByLocation").click(() => this.getLocation());
         }
         public getLocation = () => {
             this.geocoder = new google.maps.Geocoder();
@@ -32,7 +32,7 @@
         public addAddressToForm(address: maps.GeocoderResult) {
             var isAddress = false;
             address.types.forEach((addressType) => {
-                if (addressType == "locality")
+                if (addressType == "street_address")
                         isAddress = true;
             });
             if (isAddress) {
@@ -46,4 +46,4 @@
 
         }
     }
-}
+

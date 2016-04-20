@@ -30,11 +30,17 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     @Scripts.Render("~/bundles/mainsite")
-    <script type="text/javascript">
-        var mainApp = new shamethethrones.Main(waitUntilLoaded);
-        var baseProjectDir = "@Url.Content("~")";
-        shamethethrones.Main.setBaseDir(baseProjectDir);
-    </script>
+
+<script type="text/javascript">
+    require.config({
+        baseUrl: "@Url.Content("~/Scripts/typescript")"
+    });
+   
+    var baseProjectDir = "@Url.Content("~")";
+    
+    
+   
+</script>
     
     @RenderSection("Scripts", false/*required*/)
 </body>

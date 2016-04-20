@@ -13,7 +13,7 @@
     <div class="col-xs-12">
         <div class="centered">
             <h1>
-                <a href="javascript:mainApp.homePage.getLocation()" type="button" class="btn btn-default map-button">Click here to find bathrooms around you</a>
+                <a id="bathroomsAroundMe" href="javascript:void(0);" type="button" class="btn btn-default map-button">Click here to find bathrooms around you</a>
             </h1>
             <h2>Or...</h2>
         </div>
@@ -66,6 +66,11 @@
 @section Scripts
                     {
     <script type="text/javascript">
-        mainApp.constructHomePage();
+        require(['shamethethrones/Main'], function (shamethethrones) {
+            var mainApp = new shamethethrones.Main(waitUntilLoaded);
+            shamethethrones.Main.setBaseDir(baseProjectDir);
+            mainApp.constructHomePage();
+        });
+        
     </script>
 }

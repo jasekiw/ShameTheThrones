@@ -12,30 +12,28 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li @if (ViewBag.NavBarTab == "Home"){ 
-                    @: class="active" 
-                    }><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li @(ViewBag.NavbarTab == "Home" ? "class=\"active\"" : "")>
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>
 
-                <li @if (ViewBag.NavbarTab == "About") {
-                    @: class="active" 
-                    }><a href="@Url.Action("About", "Home")">About</a></li>
+                <li @(ViewBag.NavbarTab == "About" ? "class=\"active\"" : "")>
+                    <a href="@Url.Action("About", "Home")">About</a>
+                </li>
 
 
-                <li @if (ViewBag.NavbarTab == "Rate"){ 
-                    @: class="active" 
-                    }><a href="@Url.Action("RateBathroom", "Restroom")">Rate</a></li>
+                <li @(ViewBag.NavbarTab == "Ratings" ? "class=\"active\"" : "")>
+                    <a href="@Url.Action("Ratings", "Restroom")">Ratings</a>
+                </li>
 
-                <li @if (ViewBag.NavbarTab == "Contact"){ 
-                    @: class="active" 
-                    }><a href="@Url.Action("Index", "Home")">Hall of Shame</a></li>
+            <li @(ViewBag.NavbarTab == "Contact" ? "class=\"active\"" : "") >
+                <a href="@Url.Action("Index", "Home")">Hall of Shame</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @if (Request.IsAuthenticated)
                 {
                     <li>
-                        <a href="#">@Html.Encode(@User.Identity.getUser().UserName)</a>
-                        
+                        <a href="@Url.Action("Account", "User")">@Html.Encode(@User.Identity.getUser().UserName)</a>
                     </li>
                     <li>
                         <a href="@Url.Action("LogOut", "User")">Log Out</a>

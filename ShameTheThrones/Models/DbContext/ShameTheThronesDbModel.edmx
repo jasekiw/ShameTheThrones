@@ -23,7 +23,7 @@
           <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="comment" Type="text" />
           <Property Name="restroomId" Type="int" Nullable="false" />
-          <Property Name="rating" Type="tinyint" Nullable="false" />
+          <Property Name="ratingValue" Type="tinyint" Nullable="false" />
           <Property Name="userId" Type="int" Nullable="false" />
           <Property Name="deletedAt" Type="date" />
         </EntityType>
@@ -113,10 +113,10 @@
           <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="restroomId" Type="Int32" Nullable="false" />
-          <Property Name="rating1" Type="Byte" Nullable="false" />
           <Property Name="userId" Type="Int32" Nullable="false" />
           <Property Name="deletedAt" Type="DateTime" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_Rating_User" FromRole="Rating" ToRole="User" />
+          <Property Name="ratingValue" Type="Byte" Nullable="false" />
         </EntityType>
         <EntityType Name="Restroom">
           <Key>
@@ -205,11 +205,11 @@
           <EntitySetMapping Name="Ratings">
             <EntityTypeMapping TypeName="ShameTheThronesModel.Rating">
               <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="ratingValue" ColumnName="ratingValue" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="restroomId" ColumnName="restroomId" />
-                <ScalarProperty Name="rating1" ColumnName="rating" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
               </MappingFragment>

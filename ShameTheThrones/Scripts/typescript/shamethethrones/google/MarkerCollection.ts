@@ -1,7 +1,6 @@
 ﻿
-namespace shamethethrones.shamethethrones_google {
-    import Marker = shamethethrones.restroom.RestroomMarker;
-    export interface MarkerCollection {
-        [key: string]: Marker;
-    }
+
+import {RestroomMarker} from "../restroom/RestroomMarker";
+export interface MarkerCollection {
+    [key: string]: RestroomMarker;
 }

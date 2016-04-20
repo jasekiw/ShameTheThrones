@@ -222,6 +222,7 @@
     <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.js" />
     <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.css" />
     <Content Include="Scripts\js\thirdparty\rateyo\jquery.rateyo.min.js" />
+    <Content Include="Scripts\js\thirdparty\require.js" />
     <Content Include="Scripts\js\thirdparty\spin.js" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\google\MarkerCollection.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomIcon.ts" />
@@ -267,7 +268,8 @@
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RatingAverageModel.cs" />
-    <Compile Include="Models\RatingModel.cs" />
+    <Compile Include="Models\rating\RatingModel.cs" />
+    <Compile Include="Models\rating\RatingListModel.cs" />
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
     <Compile Include="Models\RestroomModel.cs" />
@@ -299,6 +301,8 @@
     <Content Include="Scripts\js\thirdparty\rateyo\LICENSE" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\User\Account.cshtml" />
+    <Content Include="Views\Restroom\Ratings.cshtml" />
+    <Content Include="Views\Home\HallofShame.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -335,9 +339,10 @@
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
-    <TypeScriptModuleKind>System</TypeScriptModuleKind>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-    <TypeScriptOutFile>Scripts/typescript/typescriptcombined.js</TypeScriptOutFile>
+    <TypeScriptOutFile>
+    </TypeScriptOutFile>
     <TypeScriptOutDir />
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>

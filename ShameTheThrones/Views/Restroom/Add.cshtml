@@ -25,7 +25,7 @@
 
             <div class="well" style="margin-bottom: 75px">
                 <h3 class="text-center">Location</h3>
-                <a href="javascript:mainApp.addRestroomPage.getLocation()" type="button" class="btn btn-default rate-button">Fill in by location</a>
+                <a id="fillByLocation" href="javascript:void(0);" type="button" class="btn btn-default rate-button">Fill in by location</a>
                 <div class="row">
                     <div class="col-xs-6 text-center">
                         @Html.Label("Address")
@@ -54,69 +54,49 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
+            <div class="map_container">
+                <div id="map"></div>
+            </div>
+            <div class="well">
+                <div class="row">
+                    <div class="col-xs-6">
 
-                    @{
-                        //gender list array
-                        SelectList genderList = new SelectList(new List<SelectListItem>
+                        @{
+                            //gender list array
+                            SelectList genderList = new SelectList(new List<SelectListItem>
                         {
                             new SelectListItem {Text = "Male", Value = "0"},
                             new SelectListItem {Text = "Female", Value = "1"},
                             new SelectListItem {Text = "Both", Value = "2"}
                         }, "Value", "Text");
 
-                    }
-                    @Html.DropDownListFor(x => x.Gender, genderList, "Select Gender For Restroom",
-                        new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px"})
+                        }
+                        @Html.DropDownListFor(x => x.Gender, genderList, "Select Gender For Restroom",
+                        new { @class = "form-control", @style = "margin:auto; margin-bottom: 20px" })
 
-                </div>
-
-                <!--How to make db capture data from this? Is there a better way to do it?-->
-                <div class="col-xs-6 text-center">
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="First group">
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true">1</span>
-                            </button>
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true">2</span>
-                            </button>
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true">3</span>
-                            </button>
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true">4</span>
-                            </button>
-
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true">5</span>
-                            </button>
-
-                        </div>
                     </div>
+
+
+
+
                 </div>
 
+                <div class="row" style="margin-top: 50px">
+                    <div class="col-xs-12 text-center">
+                        @Html.Label("Description")
+                        @Html.TextAreaFor(b => b.Description, new
+                       {
+                           @class = "form-control",
+                           @style = "margin: auto; margin-bottom: 20px; width: 100%", //How to make comment  box span the width of the form?
+                           @rows = "4"
 
-            </div>
+                       })
+                    </div>
 
-            <div class="row" style="margin-top: 50px">
-                <div class="col-xs-12 text-center">
-                    @Html.Label("Description")
-                    @Html.TextAreaFor(b => b.Description, new
-                    {
-                        @class = "form-control",
-                        @style = "margin: auto; margin-bottom: 20px; width: 100%", //How to make comment  box span the width of the form?
-                        @rows = "4"
-
-                    })
                 </div>
 
             </div>
+            
 
             <div class="well text-left">
                 <button class="btn btn-default text-center" type="button">Add Photo(s)</button>
@@ -137,6 +117,10 @@
 @section Scripts
 {
     <script type="text/javascript">
-        mainApp.constructAddRestroomPage();
+        require(['shamethethrones/Main'], function (shamethethrones) {
+            var mainApp = new shamethethrones.Main(waitUntilLoaded);
+            shamethethrones.Main.setBaseDir(baseProjectDir);
+            mainApp.constructAddRestroomPage();
+        });
     </script>
 }

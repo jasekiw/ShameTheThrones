@@ -1,8 +1,18 @@
-﻿@model dynamic
+﻿@using ShameTheThrones.Infrastructure
+@model dynamic
 
 @{
     ViewBag.Title = "Account";
 }
 
-<h2>@Session["username"]</h2>
+<h2>@User.Identity.getUser().UserName</h2>
+<hr/>
+<h3>Change Password</h3>
+
+@Html.Label("Old Password")
+@Html.Password("oldPassword", "", new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+@Html.Label("New Password")
+@Html.Password("newPassword", "", new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
+@Html.Label("Retype New Password")
+@Html.Password("newPasswordRetype", "",new { @class = "form-control", @style = "margin:auto; margin-bottom:20px;" })
 

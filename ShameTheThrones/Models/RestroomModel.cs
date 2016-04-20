@@ -107,7 +107,7 @@ namespace ShameTheThrones.Models
             {
                 var ratingAverageResult =
                     db.Database.SqlQuery<RatingAverageModel>(
-                        "SELECT SUM(dbo.Rating.rating) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
+                        "SELECT SUM(dbo.Rating.ratingValue) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
                         id).First();
                 return ratingAverageResult;
             }
