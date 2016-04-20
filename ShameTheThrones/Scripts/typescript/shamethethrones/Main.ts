@@ -1,10 +1,11 @@
 ﻿///<reference path="home/HomePage.ts"/>
 ///<reference path="restroom/AddRestroomPage.ts"/>
-namespace shamethethrones {
-    import HomePage = home.HomePage;
-    import AddRestroomPage = restroom.AddRestroomPage;
 
-    export class Main {
+import {HomePage} from  "./home/HomePage";
+import {AddRestroomPage} from "./restroom/AddRestroomPage";
+
+
+export class Main {
 
         public homePage: HomePage;
         public addRestroomPage: AddRestroomPage;
@@ -38,4 +39,4 @@ namespace shamethethrones {
             $(".spinner").css("dispay", "block");
         }
     }
-}
+

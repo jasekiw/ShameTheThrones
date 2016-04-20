@@ -21,22 +21,22 @@ namespace ShameTheThrones.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult New(RestroomModel restroom)
         {
             restroom.userId = User.Identity.getUser().Id;
             restroom.AddRestroom(restroom);
             return RedirectToAction("Rate", new { id = restroom.id });
         }
-
+        [Authorize]
         public ActionResult Rate(int id)
         {
             RatingModel rating = new RatingModel();
             rating.RestroomId = id;
             return View(rating);
         }
-
-        [HttpPost]
+        
+        [HttpPost, Authorize]
         public ActionResult NewRating(RatingModel ratingModel)
         {
             string val1 = System.Web.HttpContext.Current.User.Identity.Name;
@@ -55,6 +55,12 @@ namespace ShameTheThrones.Controllers
         {
             RestroomModel restroom = new RestroomModel(id);
             return View(restroom);
+        }
+
+        public ActionResult Ratings()
+        {
+
+            return View(RatingModel.getLatestRatings());
         }
 
     }

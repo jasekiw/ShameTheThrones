@@ -1,22 +1,20 @@
-﻿///<reference path="../restroom/RestroomInfoBuilder.ts"/>
-///<reference path="../google/MarkerCollection.ts"/>
-///<reference path="../restroom/RestroomIcon.ts"/>
-///<reference path="../restroom/RestroomMarker.ts"/>
-namespace shamethethrones.home {
+﻿
 
-    import RestroomSearchObject = restroom.RestroomSearchObject;
-    import RestroomResponse = restroom.RestroomResponse;
-    import maps = google.maps;
-    import RestroomInfoBuilder = restroom.RestroomInfoBuilder;
-    import RestroomMarker = restroom.RestroomMarker;
-    import RestroomIcon = restroom.RestroomIcon;
-
+import {RestroomResponse} from "../restroom/RestroomResponse";
+import {MarkerCollection} from "../google/MarkerCollection";
+import {RestroomInfoBuilder} from "../restroom/RestroomInfoBuilder";
+import {RestroomSearchObject} from "../restroom/RestroomSearchObject";
+import {Main} from "../Main";
+import {RestroomIcon} from "../restroom/RestroomIcon";
+import {RestroomMarker} from "../restroom/RestroomMarker";
+import maps = google.maps;
+ 
     export class HomePage {
 
         private map: maps.Map;
         private currentLatitude: number = 38; // default values to give a map a location to preload
         private currentLongitude: number = -85;
-        private markers: shamethethrones_google.MarkerCollection;
+        private markers: MarkerCollection;
         private locationMarker: GeolocationMarker;
         private geocoder: maps.Geocoder;
         constructor() {
@@ -27,6 +25,7 @@ namespace shamethethrones.home {
                 if ($(e.target).val().length > 3)
                     this.searchZip();
             });
+            $("#bathroomsAroundMe").click(() => this.getLocation());
         }
         /**
          * Gets the location of the user and initializes the map
@@ -134,7 +133,7 @@ namespace shamethethrones.home {
                         animation: google.maps.Animation.DROP,
                         title: restroom.address
                     });
-                    var restroomMarker: restroom.RestroomMarker = new RestroomMarker(toiletMarker, restroom, infowindow);
+                    var restroomMarker: RestroomMarker = new RestroomMarker(toiletMarker, restroom, infowindow);
                     toiletMarker.addListener('click', () => restroomMarker.infoWindow.open(this.map, restroomMarker.marker));
                     this.setMarker(restroomMarker);
                 }
@@ -182,5 +181,5 @@ namespace shamethethrones.home {
            
         }
     }
-}
+
 

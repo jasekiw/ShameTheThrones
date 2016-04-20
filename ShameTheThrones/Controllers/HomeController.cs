@@ -19,5 +19,10 @@ namespace ShameTheThrones.Controllers
         {
             return View();
         }
+
+        public ActionResult HallofShame()
+        {
+            return View();
+        }
     }
 }
