@@ -182,6 +182,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="gulpfile.js" />
     <Content Include="Models\DbContext\ShameTheThronesDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShameTheThronesDbModel.edmx</DependentUpon>
@@ -207,6 +208,7 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\sass\includes\_homesearch.scss" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
     <None Include="Scripts\js\thirdparty\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\js\thirdparty\jquery-2.2.0.intellisense.js" />
@@ -304,6 +306,7 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\Restroom\Ratings.cshtml" />
     <Content Include="Views\Home\HallofShame.cshtml" />
+    <Content Include="Scripts\typescript\tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -314,7 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\typings\spinner\" />
+    <Folder Include="Scripts\typescript\typings\spinner\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -326,9 +329,9 @@
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomSearchObject.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\Main.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\AddRestroomPage.ts" />
-    <TypeScriptCompile Include="Scripts\typings\geolocationMarker\GeolocationMarker.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\google.maps.d.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\typings\geolocationMarker\GeolocationMarker.d.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\typings\google.maps.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

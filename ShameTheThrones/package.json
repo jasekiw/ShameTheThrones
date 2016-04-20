@@ -1,0 +1,16 @@
+{
+  "name": "shamethethrones",
+  "version": "1.0.0",
+  "description": "Rate public restrooms",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-typescript": "^2.13.0"
+  }
+}
