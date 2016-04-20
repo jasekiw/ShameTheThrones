@@ -215,6 +215,7 @@
     <Content Include="Scripts\js\thirdparty\jquery-2.2.0.min.js" />
     <Content Include="Scripts\js\libraries\spinnerHandler.js" />
     <Content Include="Scripts\js\thirdparty\modernizr-2.6.2.js" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\google\Map.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomInfoBuilder.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomMarker.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomResponse.ts" />
@@ -267,9 +268,9 @@
     <Compile Include="Models\DbContext\User.cs">
       <DependentUpon>ShameTheThronesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RatingAverageModel.cs" />
-    <Compile Include="Models\rating\RatingModel.cs" />
+    <Compile Include="Models\rating\RatingAverageModel.cs" />
     <Compile Include="Models\rating\RatingListModel.cs" />
+    <Compile Include="Models\rating\RatingModel.cs" />
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
     <Compile Include="Models\RestroomModel.cs" />
