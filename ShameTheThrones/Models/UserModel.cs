@@ -55,6 +55,12 @@ namespace ShameTheThrones.Models
         {
             bool isValid = false;
 
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                //if we don't do this then we get an error turning it into bytes
+                return false;
+            }
+
             using (shamethethronesEntities db = new shamethethronesEntities())
             {
                 string encrypted = CalculateMD5Hash(password);
