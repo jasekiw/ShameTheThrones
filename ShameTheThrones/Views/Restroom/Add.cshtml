@@ -1,4 +1,5 @@
-﻿@model ShameTheThrones.Models.RestroomModel
+﻿@using System.Web.Optimization
+@model ShameTheThrones.Models.RestroomModel
 
 @{
     ViewBag.Title = "AddBathroom";
@@ -21,6 +22,8 @@
 
     @using (Html.BeginForm("New", "Restroom"))
     {
+        @Html.HiddenFor(b => b.coordX)
+        @Html.HiddenFor(b => b.coordY)
         <div class="panel-body">
 
             <div class="well" style="margin-bottom: 75px">
@@ -55,7 +58,7 @@
                 </div>
             </div>
             <div class="map_container">
-                <div id="map"></div>
+                <div class="map"></div>
             </div>
             <div class="well">
                 <div class="row">
@@ -113,6 +116,7 @@
 @section ScriptsBefore
 {
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
+    @Scripts.Render("~/bundles/googleMapsExtensions")
 }
 @section Scripts
 {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
-using Microsoft.SqlServer.Server;
 using ShameTheThrones.Models.DbContext;
-using ShameTheThrones.Models.rating;
 
-namespace ShameTheThrones.Models
+namespace ShameTheThrones.Models.rating
 {
     public class RatingModel
     {

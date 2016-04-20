@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Moq;
+using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Models
 {
@@ -27,10 +28,13 @@ namespace ShameTheThrones.Models
         [Required]
         public byte Gender { get; set; }
 
-        //public IEnumerable<String> = // may not need
 
         [Required]
         public string Description { get; set; }
+        [Required]
+        public decimal coordX { get; set; }
+        [Required]
+        public decimal coordY { get; set; }
 
         public DateTime DeletedAt;
 
@@ -80,6 +84,8 @@ namespace ShameTheThrones.Models
                 newBathroom.zipCode = Int32.Parse(bathroom.ZipCode); 
                 newBathroom.gender = bathroom.Gender;
                 newBathroom.description = bathroom.Description;
+                newBathroom.coordX = bathroom.coordX;
+                newBathroom.coordY = bathroom.coordY;
                 db.Restrooms.Add(newBathroom);
                 db.SaveChanges(); //until testing is done
                 bathroom.id = newBathroom.id; // sets the id so we can get it later

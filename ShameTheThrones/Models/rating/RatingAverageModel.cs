@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Common.EntitySql;
-using System.Linq;
-using System.Web;
-
-namespace ShameTheThrones.Models
+namespace ShameTheThrones.Models.rating
 {
     public class RatingAverageModel
     {

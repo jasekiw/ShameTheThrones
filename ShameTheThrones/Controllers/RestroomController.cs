@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ShameTheThrones.Infrastructure;
 using ShameTheThrones.Models;
 using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Controllers
 {
