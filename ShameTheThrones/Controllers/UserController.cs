@@ -81,7 +81,7 @@ namespace ShameTheThrones.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Log In information is incorrect");
+                    ModelState.AddModelError(string.Empty, "Either your username or password is incorrect.");
                 }
 //            }
             return View(user);
