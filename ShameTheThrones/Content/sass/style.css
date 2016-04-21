@@ -102,7 +102,8 @@ div.rating_container:hover div.counter {
 
 body {
   padding-top: 50px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  background-color: #ecf0f1; }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -115,4 +116,34 @@ body {
 
 .errors {
   color: #ce0000; }
+
+.btn {
+  background-color: #2980b9;
+  box-shadow: black 0px 0px 5px;
+  transition: box-shadow 1s, background-color 0.5s;
+  color: white;
+  border: black 1px solid; }
+  .btn:hover {
+    box-shadow: black 0px 0px 15px;
+    background-color: #3498db;
+    color: white;
+    border: black 1px solid; }
+
+.panel .panel-heading {
+  background-color: #2980b9;
+  color: white;
+  font-size: 20px; }
+
+.navbar li {
+  background-color: inherit;
+  transition: background-color 0.5s, border-radius 0.2s linear;
+  border-radius: 0px; }
+  .navbar li:hover {
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px; }
+  .navbar li a {
+    color: black; }
+    .navbar li a:hover {
+      color: white; }
 

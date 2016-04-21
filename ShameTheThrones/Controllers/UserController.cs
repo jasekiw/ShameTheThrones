@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using ShameTheThrones.Models;
 using System.Web.Security;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 namespace ShameTheThrones.Controllers
 {
