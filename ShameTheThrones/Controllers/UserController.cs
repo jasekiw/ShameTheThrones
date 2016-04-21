@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using ShameTheThrones.Models;
 using System.Web.Security;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 namespace ShameTheThrones.Controllers
 {
@@ -81,7 +81,7 @@ namespace ShameTheThrones.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Log In information is incorrect");
+                    ModelState.AddModelError(string.Empty, "Either your username or password is incorrect.");
                 }
 //            }
             return View(user);
