@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/css")
     @RenderSection("Styles", false/*required*/)
 </head>
-<body>
+<body class=" @ViewBag.TitleClass ">
 
     @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 
@@ -20,27 +20,21 @@
         <p>&copy; @DateTime.Now.Year - ShameTheThrones</p>
     </footer>
 </div>
-    <script type="text/javascript">
-        var waitUntilLoaded = false;
-    </script>
     @Scripts.Render("~/bundles/before");
+    <script type="text/javascript">
+        fullPageSpinner();
+    </script>
+
     @RenderSection("ScriptsBefore", false/*required*/)
     <script src="~/Scripts/js/thirdparty/modernizr-2.6.2.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     
-    @Scripts.Render("~/bundles/mainsite")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
+    @Scripts.Render("~/bundles/googleMapsExtensions")
+    <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/dist/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
 
-<script type="text/javascript">
-    require.config({
-        baseUrl: "@Url.Content("~/Scripts/typescript")"
-    });
-   
-    var baseProjectDir = "@Url.Content("~")";
-    
-    
-   
-</script>
+
     
     @RenderSection("Scripts", false/*required*/)
 </body>

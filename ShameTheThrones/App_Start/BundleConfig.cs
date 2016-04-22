@@ -20,7 +20,7 @@ namespace ShameTheThrones
                      ));
          
             bundles.Add(new ScriptBundle("~/bundles/mainsite").Include(
-                    "~/Scripts/js/thirdparty/require.js"
+//                    "~/Scripts/js/thirdparty/require.js"
                     ));
             bundles.Add(new ScriptBundle("~/bundles/googleMapsExtensions").Include(
                     "~/Scripts/js/thirdparty/geolocation-marker.js"

@@ -1,6 +1,4 @@
-﻿
-
-import {RestroomResponse} from "../restroom/RestroomResponse";
+﻿import {RestroomResponse} from "../restroom/RestroomResponse";
 import {MarkerCollection} from "../google/MarkerCollection";
 import {RestroomInfoBuilder} from "../restroom/RestroomInfoBuilder";
 import {RestroomSearchObject} from "../restroom/RestroomSearchObject";

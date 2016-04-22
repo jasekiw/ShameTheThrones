@@ -27,7 +27,6 @@ export class Map {
         this.markers = {};
         this.geocoder = new google.maps.Geocoder();
         this.initMap();
-
     }
 
     

@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "AddBathroom";
+    ViewBag.TitleClass = "restroom-add";
 }
 
 @*
@@ -115,16 +116,15 @@
 </div>
 @section ScriptsBefore
 {
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
-    @Scripts.Render("~/bundles/googleMapsExtensions")
+
 }
 @section Scripts
 {
     <script type="text/javascript">
-        require(['shamethethrones/Main'], function (shamethethrones) {
-            var mainApp = new shamethethrones.Main(waitUntilLoaded);
-            shamethethrones.Main.setBaseDir(baseProjectDir);
-            mainApp.constructAddRestroomPage();
-        });
+//        require(['shamethethrones/Main'], function (shamethethrones) {
+//            var mainApp = new shamethethrones.Main(waitUntilLoaded);
+//            shamethethrones.Main.setBaseDir(baseProjectDir);
+//            mainApp.constructAddRestroomPage();
+//        });
     </script>
 }
