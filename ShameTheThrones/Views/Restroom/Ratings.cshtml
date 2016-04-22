@@ -4,30 +4,66 @@
     ViewBag.Title = "Ratings";
 }
 
-<h1 class="centered">Latest Ratings</h1>
+<h1 class="centered" style="margin-bottom: 50px;">Latest Ratings</h1>
 
 @foreach (var rating in Model.ratings)
 {
-    <div class="panel panel-default">
-        <div class="panel-heading rating-heading">
-            <h3 class="panel-title">
-                <div class="row">
-                    <div class="col-xs-8">
-                        @rating.Title
-                    </div>
-                    <div class="col-xs-4">
-                        @rating.Rating
-                        @for(int i = 0; i < rating.Rating; i++)
-                        {
-                            <span class="glyphicon glyphicon-star rating-star"></span>
-                        }
-                    </div>
+    int n = 0; // counter for columns
+
+    if (n % 2 == 0) // if n is even
+    {
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading rating-heading">
+                    <h3 class="panel-title">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                @rating.Title
+                            </div>
+                            <div class="col-xs-4">
+                                @rating.Rating
+                                @for (int i = 0; i < rating.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star rating-star"></span>
+                                }
+                            </div>
+                        </div>
+
+                    </h3>
                 </div>
-                
-            </h3>
+                <div class="panel-body">
+                    @rating.Comment
+                </div>
+            </div>
         </div>
-        <div class="panel-body">
-            @rating.Comment
+    }//if
+
+    else // if n is odd
+    {
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading rating-heading">
+                    <h3 class="panel-title">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                @rating.Title
+                            </div>
+                            <div class="col-xs-4">
+                                @rating.Rating
+                                @for (int i = 0; i < rating.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star rating-star"></span>
+                                }
+                            </div>
+                        </div>
+
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @rating.Comment
+                </div>
+            </div>
         </div>
-    </div>
+    }// else
+
 }
