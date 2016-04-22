@@ -29,15 +29,20 @@ body {
 
 .btn{
     background-color: #2980b9;
-    box-shadow: black 0px 0px 5px;
-    transition: box-shadow 1s, background-color 0.5s;
+    box-shadow: black 1px 3px 1px;
+    transition: box-shadow 0.2s, background-color 0.5s;
     color: white;
-    border: black 1px solid;
+    border: #2980b9 solid 1px;
+
     &:hover{
-        box-shadow: black 0px 0px 15px;
+        box-shadow: black 1px 1px 2px;
         background-color: #3498db;
         color: white;
-        border: black 1px solid;
+        border: #3498db solid 1px;
+    }
+
+    .form-btn{
+        box-shadow: black 0px 0px 0px;
     }
 }
 
@@ -47,19 +52,22 @@ body {
         color: white;
         font-size: 20px;
     }
+
+    .rating-heading{
+        background-color: #6389A2;
+        text-transform: capitalize;
+    }
     
 }
 
 .navbar{
     li{
         background-color: inherit;
-        transition: background-color 0.5s, border-radius 0.2s linear;
-        border-radius: 0px;
+        transition: background-color 0.2s;
 
         &:hover{
             background-color: #3498db;
             color: white;
-            border-radius: 5px;
         }
 
          a{
