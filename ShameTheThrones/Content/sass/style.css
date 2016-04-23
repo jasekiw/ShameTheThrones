@@ -100,9 +100,13 @@ div.rating_container div.counter ::before {
 div.rating_container:hover div.counter {
   display: block; }
 
+.rating-heading {
+  background-color: #6389A2; }
+
 body {
   padding-top: 50px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  background-color: #ecf0f1; }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -115,4 +119,38 @@ body {
 
 .errors {
   color: #ce0000; }
+
+.btn {
+  background-color: #2980b9;
+  box-shadow: black 1px 3px 1px;
+  transition: box-shadow 0.2s, background-color 0.5s;
+  color: white;
+  border: #2980b9 solid 1px; }
+  .btn:hover, .btn:active, .btn:focus {
+    box-shadow: black 1px 1px 2px;
+    background-color: #3498db;
+    color: white;
+    border: #3498db solid 1px; }
+  .btn .form-btn {
+    box-shadow: black 0px 0px 0px; }
+
+.panel .panel-heading {
+  background-color: #2980b9;
+  color: white;
+  font-size: 20px; }
+
+.panel .rating-heading {
+  background-color: #6389A2;
+  text-transform: capitalize; }
+
+.navbar li {
+  background-color: inherit;
+  transition: background-color 0.2s; }
+  .navbar li:hover {
+    background-color: #3498db;
+    color: white; }
+  .navbar li a {
+    color: black; }
+    .navbar li a:hover {
+      color: white; }
 
