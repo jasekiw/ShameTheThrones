@@ -1,4 +1,6 @@
-﻿@using System.Web.Optimization
+﻿@using System.Diagnostics.Eventing.Reader
+@using System.Web.Configuration
+@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,11 +33,19 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
-    @Scripts.Render("~/bundles/googleMapsExtensions")
-    <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/dist/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
+    @{
+        CompilationSection compilationSection = (CompilationSection)System.Configuration.ConfigurationManager.GetSection(@"system.web/compilation");
+        bool isDebugEnabled = compilationSection.Debug;
+    }
 
-
-    
+    @if (isDebugEnabled)
+    {
+        <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
+    }
+    else
+    {
+        <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/dist/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
+    }
     @RenderSection("Scripts", false/*required*/)
 </body>
 </html>

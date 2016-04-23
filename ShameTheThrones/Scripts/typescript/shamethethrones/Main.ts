@@ -40,13 +40,8 @@ export class Main {
          * Disabled the spinner to show that the page is loaded
          */
         public static loadCompleted() {
-            var elements = window.document.getElementsByClassName("spinner");
-            for (let i = 0; i < elements.length; i++) {
-                var element = <HTMLElement>elements[i];
-                element.style.display = "none";
-            }
-            console.log($(".spinner"));
-            $(".spinner").css("dispay", "none");
+            $(".spinner").css("display", "none");
+
         }
         public static showLoader(): void {
             $(".spinner").css("dispay", "block");

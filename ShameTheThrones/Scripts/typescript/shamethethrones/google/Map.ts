@@ -23,6 +23,7 @@ export class Map {
 
     constructor(selector: string) {
         this.container = $(selector);
+        this.container.css("display", "none");
         this.mapElement = this.container.find(".map");
         this.markers = {};
         this.geocoder = new google.maps.Geocoder();
@@ -101,8 +102,7 @@ export class Map {
             center: new google.maps.LatLng(this.currentLatitude, this.currentLongitude),
             zoom: 14
         });
-        console.log("map ready");
-
+      
     }
     /**
      * Allows search to run when the user moves the map

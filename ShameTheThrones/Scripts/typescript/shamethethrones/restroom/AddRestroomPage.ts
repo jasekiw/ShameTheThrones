@@ -1,23 +1,30 @@
 ﻿import {Map} from "../google/Map";
 import maps = google.maps;
+import {Validator} from "../validation/Validator";
+
 export class AddRestroomPage {
 
     private geocoder: maps.Geocoder;
     private map: Map;
-
+    private form: JQuery;
+    private validator : Validator;
     constructor() {
         this.geocoder = new maps.Geocoder();
-            this.map = new Map(".map_container");
-            this.map.showMap();
-            $("#fillByLocation").click(() => this.map.getLocation(() => {
-                this.showPosition(this.map.currentLatitude, this.map.currentLongitude);
-              
-                this.calculateAddress();
-            }));
-            $("#Address").keyup((e) => this.calculateAddress());
-            $("#City").keyup((e) => this.calculateAddress());
-            $("#State").keyup((e) => this.calculateAddress());
-            $("#ZipCode").keyup((e) => this.calculateAddress());
+        this.map = new Map(".map_container");
+        this.map.showMap();
+        this.form = $("#NewRestroom");
+        this.validator = new Validator(this.form);
+//        this.form.submit((e) => this.submit(e));
+        $("#fillByLocation").click(() => this.map.getLocation(() => {
+            this.showPosition(this.map.currentLatitude, this.map.currentLongitude);
+            $("#coordX").val(this.map.currentLatitude);
+            $("#coordY").val(this.map.currentLongitude);
+                
+        }));
+        $("#Address").keyup((e) => this.calculateAddress());
+        $("#City").keyup((e) => this.calculateAddress());
+        $("#State").keyup((e) => this.calculateAddress());
+        $("#ZipCode").keyup((e) => this.calculateAddress());
     }
 
     
@@ -56,9 +63,16 @@ export class AddRestroomPage {
             $("#City").val(address.address_components[2].short_name);
             $("#State").val(address.address_components[5].short_name);
             $("#ZipCode").val(address.address_components[7].short_name);
+            this.calculateAddress();
         }
         else
             console.log("not an address");
+
+    }
+    public submit(e : JQueryEventObject) {
+        console.log($("#coordX").val());
+        console.log($("#coordY").val());
+        e.preventDefault();
 
     }
 }

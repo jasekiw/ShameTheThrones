@@ -16,14 +16,12 @@ export class HomePage {
 
         this.map = new Map(".map_container");
         this.map.enableAutomaticSearch();
-        $(".spinner").css("display", "none");
         $(".zip-code-search").on("keyup", (e) => {
             var zipcode : string = $(e.target).val();
             if (zipcode.length > 3)
               this.map.searchZip(zipcode);
         });
         $("#bathroomsAroundMe").click(() => this.map.getLocation(() => {
-            console.log("got here");
             this.map.scrollToMap();
         }));
     }

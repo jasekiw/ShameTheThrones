@@ -17,11 +17,20 @@ gulp.task('compile-typescript-front-end', function () {
 
 gulp.task('optimize-scripts', function () {
     return gulp.src('Scripts/typescript/shamethethrones/Main.js')
+        .pipe(sourcemaps.init())
         .pipe(requirejsOptimize({
             "baseurl": "Scripts/typescript/shamethethrones"
         }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('Scripts/typescript/dist/shamethethrones'));
 });
 
 gulp.task('default', ['compile-typescript-front-end']);
 gulp.task('optimize', ['optimize-scripts']);
+
+gulp.task('build', ['compile-typescript-front-end'], function() {
+    gulp.run('optimize-scripts');
+})
+gulp.task('watch', ['compile-typescript-front-end'], function () {
+    gulp.watch('Scripts/typescript/shamethethrones/**/*.ts', ['compile-typescript-front-end']);
+});
