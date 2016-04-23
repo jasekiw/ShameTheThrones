@@ -52,26 +52,27 @@ namespace ShameTheThrones.Controllers
                     userDat.UserName = user.UserName;
                     userDat.Email = user.Email;
                     userDat.Id = user.getId();
-                    string userData = new JavaScriptSerializer().Serialize(userDat);
-                    FormsAuthenticationTicket authTicket = new
-                        FormsAuthenticationTicket(1, //version
-                                                  userDat.Id.ToString(), // user name
-                                                  DateTime.Now,             //creation
-                                                  DateTime.Now.AddMinutes(30), //Expiration
-                                                  true, userData); //storing the json data
+                string userData = new JavaScriptSerializer().Serialize(userDat);
+                FormsAuthenticationTicket authTicket = new
+                    FormsAuthenticationTicket(1, //version
+                                              userDat.Id.ToString(), // user name
+                                              DateTime.Now,             //creation
+                                              DateTime.Now.AddMinutes(30), //Expiration
+                                              true, userData); //storing the json data
 
-                    string encTicket = FormsAuthentication.Encrypt(authTicket);
-                    var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
-                    {
-                        Expires = authTicket.Expiration,
-                        Path = FormsAuthentication.FormsCookiePath
-                    };
-                    Response.Cookies.Add(cookie);
-                    return RedirectToAction("Index", "Home");
+                string encTicket = FormsAuthentication.Encrypt(authTicket);
+                var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
+                {
+                    Expires = authTicket.Expiration,
+                    Path = FormsAuthentication.FormsCookiePath
+                };
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("Index", "Home");
                 }
-                else      
-                    ModelState.AddModelError("", "Log In information is incorrect");
-                
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Either your username or password is incorrect.");
+                }
 //            }
             return View(user);
         }
