@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ShameTheThrones.Models;
+using ShameTheThrones.Models.DbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,27 +13,31 @@ namespace ShameTheThrones.Models.Tests
     [TestClass()]
     public class UserModelTests
     {
-        private Mock<UserModel> _mockUserClass;
-        private Mock<UserModel> _mockUser1;
-        private Mock<UserModel> _mockUser2;
+        private Mock<shamethethronesEntities> _mockUserClass;
+        private Mock<User> _mockUser1;
+        private Mock<User> _mockUser2;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockUserClass = new Mock<UserModel>();
-            _mockUser1 = new Mock<UserModel>();
-            _mockUser2 = new Mock<UserModel>();
+            _mockUserClass = new Mock<shamethethronesEntities>();
+            _mockUser1 = new Mock<User>();
+            _mockUser2 = new Mock<User>();
             _mockUserClass.SetupAllProperties();
             _mockUser1.SetupAllProperties();
             _mockUser2.SetupAllProperties();
-            _mockUserClass.Setup(register => register.Register(new Mock<UserModel>().Object));
+            _mockUserClass.Setup(add => add.Users.Add(_mockUser1.Object));
+            _mockUserClass.Setup(save => save.SaveChanges());
         }
 
         [TestMethod()]
         public void RegisterTest()
         {
-            _mockUserClass.Object.Register(_mockUser2.Object);
-            Assert.AreEqual(_mockUserClass.Object, _mockUser2.Object);
+            _mockUserClass.Object.Users.Add(_mockUser2.Object);
+            _mockUserClass.Object.Users.Add(_mockUser1.Object);
+            _mockUserClass.Object.SaveChanges();
+            Assert.IsTrue(_mockUserClass.Object.Users.Contains(_mockUser1.Object));
+            Assert.IsTrue(_mockUserClass.Object.Users.Contains(_mockUser2.Object));
         }
     }
 }

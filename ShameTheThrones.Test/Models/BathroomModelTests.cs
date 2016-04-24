@@ -1,32 +1,38 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-
+using ShameTheThrones.Models.DbContext;
 
 namespace ShameTheThrones.Models.Tests
 {
     [TestClass()]
     public class BathroomModelTests
     {
-        private Mock<RestroomModel> _mockDb;
-        private Mock<RestroomModel> _mockRR1;
-        private Mock<RestroomModel> _mockRR2;
+        private Mock<shamethethronesEntities> _mockDb;
+        private Mock<Restroom> _mockRR1;
+        private Mock<Restroom> _mockRR2;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockDb = new Mock<RestroomModel>();
-            _mockRR1 = new Mock<RestroomModel>();
-            _mockRR2 = new Mock<RestroomModel>();
+            _mockDb = new Mock<shamethethronesEntities>();
+            _mockRR1 = new Mock<Restroom>();
+            _mockRR2 = new Mock<Restroom>();
             _mockDb.SetupAllProperties();
             _mockRR1.SetupAllProperties();
             _mockRR2.SetupAllProperties();
-            _mockDb.Setup(add => add.AddRestroom(new Mock<RestroomModel>().Object));
+            _mockDb.Setup(add => add.Restrooms.Add(new Mock<Restroom>().Object));
+            _mockDb.Setup(save => save.SaveChanges());
         }
         [TestMethod()]
         public void AddBathroomModelTest()
         {
-            _mockDb.Object.AddRestroom(_mockRR2.Object);
-            Assert.AreEqual(_mockDb.Object, _mockRR2.Object);
+            _mockDb.Object.Restrooms.Add(_mockRR2.Object);
+            _mockDb.Object.Restrooms.Add(_mockRR2.Object);
+            _mockDb.Object.SaveChanges();
+            Assert.IsNotNull(_mockDb);
+            Assert.IsNotNull(_mockRR1.Object.id);
+            Assert.IsNotNull(_mockDb.Object.Restrooms.Find(_mockRR1.Object.id));
+            Assert.IsNotNull(_mockDb.Object.Restrooms.Find(_mockRR2.Object.id));
         }
     }
 }
