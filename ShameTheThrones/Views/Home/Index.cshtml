@@ -7,29 +7,40 @@
 }
 <div class="row spaced">
     <div class="col-xs-12" id="homeGreeting">
-        Welcome to ShameTheThrones, to start rating public restrooms please log in.
+        <h1 class="text-center">Welcome to ShameTheThrones</h1>
+        <h3 class="text-center">Please <a href="@Url.Action("LogIn", "User")">Login</a> to rate a restroom </h3>
+        
+    </div>
+
+    <div class="col-xs-12">
+        <h3 class="text-center">Here are three options to find restrooms</h3>
     </div>
 </div>
 <div class="row spaced homeSearch">
-    <div class="col-xs-12">
+    <div class="col-md-4 vertical-align-container">
         <div class="centered">
             <h1>
-                <a id="bathroomsAroundMe" href="javascript:void(0);" type="button" class="btn btn-default map-button">Click here to find bathrooms around you</a>
+                <a id="bathroomsAroundMe" href="javascript:void(0);" type="button" class="btn btn-default map-button">Restrooms near me</a>
             </h1>
-            <h2>Or...</h2>
         </div>
+    </div><!-- /.col-md-4 -->
+    <div class="col-md-4 vertical-align-container">
         <div class="centered">
             <h1>
-                <a href="@Url.Action("Add", "Restroom")" type="button" class="btn btn-default rate-button">Don't see what you are looking for?  Add a bathroom</a>
+                <a href="@Url.Action("Add", "Restroom")" type="button" class="btn btn-default rate-button">Add a bathroom</a>
             </h1>
-            <h2>Or...</h2>
         </div>
-        <div class="input-group">
-            <input type="text" class="form-control zip-code-search" placeholder="start typing an address or a zip code... ">
-            <span class="input-group-btn">
-                <button class="btn btn-default" onclick="javascript:mainApp.homePage.searchZip()" type="button">Go!</button>
-            </span>
-        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+
+    <div class="col-md-4 vertical-align-container ">
+        <h1>
+            <div class="input-group">
+                <input type="text" class="form-control zip-code-search" placeholder="Search for a restroom">
+                <span class="input-group-btn">
+                    <button class="btn btn-default form-btn" onclick="javascript:mainApp.homePage.searchZip()" type="button">Search</button>
+                </span>
+            </div><!-- /input-group -->
+        </h1>
     </div><!-- /.col-lg-6 -->
 </div>
 <div class="row">
