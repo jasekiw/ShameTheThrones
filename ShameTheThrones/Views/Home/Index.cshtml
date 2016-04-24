@@ -37,7 +37,7 @@
             <div class="input-group">
                 <input type="text" class="form-control zip-code-search" placeholder="Search for a restroom">
                 <span class="input-group-btn">
-                    <button class="btn btn-default form-btn" onclick="javascript:mainApp.homePage.searchZip()" type="button">Search</button>
+                    <button id="SearchAddress" class="btn btn-default form-btn" type="button">Search</button>
                 </span>
             </div><!-- /input-group -->
         </h1>
@@ -61,18 +61,3 @@
     <div class="map"></div>
 </div>
 
-@section ScriptsBefore
-{
-   
-}
-@section Scripts
-                    {
-    <script type="text/javascript">
-//        require(['shamethethrones/Main'], function (shamethethrones) {
-//            var mainApp = new shamethethrones.Main(waitUntilLoaded);
-//            shamethethrones.Main.setBaseDir(baseProjectDir);
-//            mainApp.constructHomePage();
-//        });
-        
-    </script>
-}

@@ -17,11 +17,17 @@
 
 <div class="container body-content">
     @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - ShameTheThrones</p>
-    </footer>
 </div>
+<div class="container footer">
+    <div class="row">
+        <div class="col-xs-12 centered">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Shame The Thrones</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
     @Scripts.Render("~/bundles/before");
     <script type="text/javascript">
         fullPageSpinner();
@@ -38,14 +44,12 @@
         bool isDebugEnabled = compilationSection.Debug;
     }
 
-    @if (isDebugEnabled)
-    {
+    @if (isDebugEnabled){
         <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
-    }
-    else
-    {
+    } else {
         <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/dist/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
     }
+
     @RenderSection("Scripts", false/*required*/)
 </body>
 </html>

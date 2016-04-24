@@ -24,6 +24,7 @@ export class HomePage {
         $("#bathroomsAroundMe").click(() => this.map.getLocation(() => {
             this.map.scrollToMap();
         }));
+        $("#SearchAddress").click(() => this.map.searchZip($(".zip-code-search").val() ) );
     }
 }
 

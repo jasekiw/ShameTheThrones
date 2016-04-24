@@ -10,7 +10,7 @@ import maps = google.maps;
 
 
 export class Map {
-    private map: maps.Map;
+    public map: maps.Map;
     public currentLatitude: number = 38; // default values to give a map a location to preload
     public currentLongitude: number = -85;
     private markers: MarkerCollection;
@@ -19,8 +19,8 @@ export class Map {
     private container: JQuery;
     private mapElement: JQuery;
     private showLocationMarker = false;
-    private currentPositionMarkerForNewRestroom;
-
+    private currentPositionMarkerForNewRestroom: google.maps.Marker = null;
+   
     constructor(selector: string) {
         this.container = $(selector);
         this.container.css("display", "none");
@@ -134,7 +134,21 @@ export class Map {
         });
     }
     public addMarkerForCurrent() {
-        
+        if (this.currentPositionMarkerForNewRestroom == null)
+            this.currentPositionMarkerForNewRestroom = new google.maps.Marker({
+                position: new google.maps.LatLng(this.currentLatitude, this.currentLongitude),
+                map: this.map,
+                draggable: true,
+                animation: google.maps.Animation.DROP
+            });
+       
+    }
+    public setCurrentMarkerPosition(lat: number, lng: number) {
+        this.currentPositionMarkerForNewRestroom.setPosition( { lat: lat, lng: lng } );
+    }
+    
+    public getCurrentMarker() {
+        return this.currentPositionMarkerForNewRestroom;
     }
     /**
      * Updates the map with restrooms that were returned from the search. 
@@ -148,8 +162,9 @@ export class Map {
                 var restroomIcon = new RestroomIcon();
                 var markerImgUrl = restroomIcon.getIcon(restroom.rating, restroom.gender, restroom.rated);
                 var contentBuilder: RestroomInfoBuilder = new RestroomInfoBuilder(restroom);
+                var content = contentBuilder.getContent();
                 var infowindow = new google.maps.InfoWindow({
-                    content: contentBuilder.getContent()
+                    content: content
                 });
 
                 var toiletMarker = new google.maps.Marker({
