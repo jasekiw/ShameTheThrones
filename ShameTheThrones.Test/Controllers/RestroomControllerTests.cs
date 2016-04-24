@@ -18,18 +18,6 @@ namespace ShameTheThrones.Controllers.Tests
         }
 
         [TestMethod()]
-        public void AddBathroomTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void IndexTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void SearchTest()
         {
             Assert.Fail();
