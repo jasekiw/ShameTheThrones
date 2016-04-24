@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Shame The Thrones!";
     ViewBag.NavbarTab = "Home";
+    ViewBag.TitleClass = "home";
 }
 <div class="row spaced">
     <div class="col-xs-12" id="homeGreeting">
@@ -36,7 +37,7 @@
             <div class="input-group">
                 <input type="text" class="form-control zip-code-search" placeholder="Search for a restroom">
                 <span class="input-group-btn">
-                    <button class="btn btn-default form-btn" onclick="javascript:mainApp.homePage.searchZip()" type="button">Search</button>
+                    <button id="SearchAddress" class="btn btn-default form-btn" type="button">Search</button>
                 </span>
             </div><!-- /input-group -->
         </h1>
@@ -60,28 +61,3 @@
     <div class="map"></div>
 </div>
 
-@section ScriptsBefore
-{
-    <script type="text/javascript">
-        var waitUntilLoaded = true;
-        fullPageSpinner();
-        var seconds = new Date().getTime() / 1000;
-        var stopTimer = function() {
-            return (new Date().getTime() / 1000) - seconds;
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
-    @Scripts.Render("~/bundles/googleMapsExtensions")
-    
-}
-@section Scripts
-                    {
-    <script type="text/javascript">
-        require(['shamethethrones/Main'], function (shamethethrones) {
-            var mainApp = new shamethethrones.Main(waitUntilLoaded);
-            shamethethrones.Main.setBaseDir(baseProjectDir);
-            mainApp.constructHomePage();
-        });
-        
-    </script>
-}

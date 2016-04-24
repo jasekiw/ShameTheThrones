@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using ShameTheThrones.Models;
 using System.Web.Security;
-//using Newtonsoft.Json;
 
 namespace ShameTheThrones.Controllers
 {
@@ -55,9 +52,7 @@ namespace ShameTheThrones.Controllers
                     userDat.UserName = user.UserName;
                     userDat.Email = user.Email;
                     userDat.Id = user.getId();
-
                 string userData = new JavaScriptSerializer().Serialize(userDat);
-
                 FormsAuthenticationTicket authTicket = new
                     FormsAuthenticationTicket(1, //version
                                               userDat.Id.ToString(), // user name
@@ -66,17 +61,12 @@ namespace ShameTheThrones.Controllers
                                               true, userData); //storing the json data
 
                 string encTicket = FormsAuthentication.Encrypt(authTicket);
-
                 var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
                 {
                     Expires = authTicket.Expiration,
                     Path = FormsAuthentication.FormsCookiePath
                 };
-             
-               
                 Response.Cookies.Add(cookie);
-              
-
                 return RedirectToAction("Index", "Home");
                 }
                 else

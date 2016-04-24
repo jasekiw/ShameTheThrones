@@ -48,7 +48,7 @@ namespace ShameTheThrones.Models.rating
             var ratingList = new RatingListModel();
             using (var db = new shamethethronesEntities())
             {
-                var ratings = db.Ratings.Take(50).ToList();
+                var ratings = db.Ratings.Take(50).OrderByDescending(e => e.id).ToList();
                 foreach(var rating in ratings)
                 {
                     var ratingModel = new RatingModel(rating);

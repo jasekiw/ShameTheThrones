@@ -317,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\typescript\dist\shamethethrones\" />
     <Folder Include="Scripts\typescript\typings\spinner\" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +330,7 @@
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\RestroomSearchObject.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\Main.ts" />
     <TypeScriptCompile Include="Scripts\typescript\shamethethrones\restroom\AddRestroomPage.ts" />
+    <TypeScriptCompile Include="Scripts\typescript\shamethethrones\validation\Validator.ts" />
     <TypeScriptCompile Include="Scripts\typescript\typings\geolocationMarker\GeolocationMarker.d.ts" />
     <TypeScriptCompile Include="Scripts\typescript\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typescript\typings\google.maps.d.ts" />

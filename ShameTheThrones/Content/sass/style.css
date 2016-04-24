@@ -122,17 +122,33 @@ body {
 
 .btn {
   background-color: #2980b9;
-  box-shadow: black 1px 3px 1px;
-  transition: box-shadow 0.2s, background-color 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.7) 1px 5px 1px;
+  transition: all 0.2s;
   color: white;
-  border: #2980b9 solid 1px; }
-  .btn:hover, .btn:active, .btn:focus {
-    box-shadow: black 1px 1px 2px;
+  border: none;
+  position: relative;
+  top: 0; }
+  .btn:focus {
+    background-color: #2980b9;
+    color: white;
+    outline: none;
+    border: none; }
+  .btn:hover {
     background-color: #3498db;
     color: white;
-    border: #3498db solid 1px; }
+    border: none; }
+  .btn.btn-default:active {
+    background-color: #5faee3;
+    box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+    top: 5px; }
   .btn .form-btn {
     box-shadow: black 0px 0px 0px; }
+
+.flexible-btn-container {
+  min-height: 40px; }
+
+.field-validation-error {
+  color: #cc0000; }
 
 .panel .panel-heading {
   background-color: #2980b9;
