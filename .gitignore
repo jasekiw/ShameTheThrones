@@ -214,3 +214,5 @@ ModelManifest.xml
 /ShameTheThrones/Content/img/restroom-markers/women/Thumbs.db
 /ShameTheThrones/Content/img/Thumbs.db
 Thumbs.db
+/ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js
+/ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js.map

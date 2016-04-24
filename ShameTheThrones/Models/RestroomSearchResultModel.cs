@@ -39,9 +39,10 @@ namespace ShameTheThrones.Models
             restroomResult.id = restroom.id;
             restroomResult.address = restroom.address;
             restroomResult.gender = restroom.gender;
-            restroomResult.description = restroom.description.Length > 100
-                ? restroom.description.Substring(0, 100) + "..."
-                : restroom.description;
+            var description = restroom.description ?? "";
+            restroomResult.description = description.Length > 100
+                ? description.Substring(0, 100) + "..."
+                : description;
             if (rating)
             {
                 RatingAverageModel ratingmodel = RestroomModel.getRatingObject(restroom.id);
@@ -55,8 +56,11 @@ namespace ShameTheThrones.Models
         public static List<RestroomSearchResultModel> getListFromDatabaseModelsList(List<Restroom> restrooms)
         {
             List<RestroomSearchResultModel> restroomsResults = new List<RestroomSearchResultModel>();
-            foreach (var restroom in restrooms)  
-                restroomsResults.Add(getFromDatabaseModel(restroom, true));
+            foreach (var restroom in restrooms)
+                if(restroom != null)
+                    restroomsResults.Add(getFromDatabaseModel(restroom, true));
+            
+              
             return restroomsResults;
         }
     }

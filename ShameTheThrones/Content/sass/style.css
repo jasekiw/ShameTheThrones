@@ -100,9 +100,13 @@ div.rating_container div.counter ::before {
 div.rating_container:hover div.counter {
   display: block; }
 
+.rating-heading {
+  background-color: #6389A2; }
+
 body {
   padding-top: 50px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  background-color: #ecf0f1; }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -115,4 +119,54 @@ body {
 
 .errors {
   color: #ce0000; }
+
+.btn {
+  background-color: #2980b9;
+  box-shadow: rgba(0, 0, 0, 0.7) 1px 5px 1px;
+  transition: all 0.2s;
+  color: white;
+  border: none;
+  position: relative;
+  top: 0; }
+  .btn:focus {
+    background-color: #2980b9;
+    color: white;
+    outline: none;
+    border: none; }
+  .btn:hover {
+    background-color: #3498db;
+    color: white;
+    border: none; }
+  .btn.btn-default:active {
+    background-color: #5faee3;
+    box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+    top: 5px; }
+  .btn .form-btn {
+    box-shadow: black 0px 0px 0px; }
+
+.flexible-btn-container {
+  min-height: 40px; }
+
+.field-validation-error {
+  color: #cc0000; }
+
+.panel .panel-heading {
+  background-color: #2980b9;
+  color: white;
+  font-size: 20px; }
+
+.panel .rating-heading {
+  background-color: #6389A2;
+  text-transform: capitalize; }
+
+.navbar li {
+  background-color: inherit;
+  transition: background-color 0.2s; }
+  .navbar li:hover {
+    background-color: #3498db;
+    color: white; }
+  .navbar li a {
+    color: black; }
+    .navbar li a:hover {
+      color: white; }
 

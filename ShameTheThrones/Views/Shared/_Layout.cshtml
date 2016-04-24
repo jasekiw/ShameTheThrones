@@ -1,4 +1,6 @@
-﻿@using System.Web.Optimization
+﻿@using System.Diagnostics.Eventing.Reader
+@using System.Web.Configuration
+@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,39 +11,45 @@
     @Styles.Render("~/Content/css")
     @RenderSection("Styles", false/*required*/)
 </head>
-<body>
+<body class=" @ViewBag.TitleClass ">
 
     @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 
 <div class="container body-content">
     @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - ShameTheThrones</p>
-    </footer>
 </div>
-    <script type="text/javascript">
-        var waitUntilLoaded = false;
-    </script>
+<div class="container footer">
+    <div class="row">
+        <div class="col-xs-12 centered">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Shame The Thrones</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
     @Scripts.Render("~/bundles/before");
+    <script type="text/javascript">
+        fullPageSpinner();
+    </script>
+
     @RenderSection("ScriptsBefore", false/*required*/)
     <script src="~/Scripts/js/thirdparty/modernizr-2.6.2.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     
-    @Scripts.Render("~/bundles/mainsite")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
+    @{
+        CompilationSection compilationSection = (CompilationSection)System.Configuration.ConfigurationManager.GetSection(@"system.web/compilation");
+        bool isDebugEnabled = compilationSection.Debug;
+    }
 
-<script type="text/javascript">
-    require.config({
-        baseUrl: "@Url.Content("~/Scripts/typescript")"
-    });
-   
-    var baseProjectDir = "@Url.Content("~")";
-    
-    
-   
-</script>
-    
+    @if (isDebugEnabled){
+        <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
+    } else {
+        <script type="text/javascript" data-main="@Url.Content("~/Scripts/typescript/dist/shamethethrones/Main.js")" src="@Url.Content("~/Scripts/js/thirdparty/require.js")"></script>
+    }
+
     @RenderSection("Scripts", false/*required*/)
 </body>
 </html>

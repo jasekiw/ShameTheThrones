@@ -17,7 +17,7 @@ namespace ShameTheThrones.Controllers
         {
             return View();
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         public ActionResult Add()
         {
             return View();

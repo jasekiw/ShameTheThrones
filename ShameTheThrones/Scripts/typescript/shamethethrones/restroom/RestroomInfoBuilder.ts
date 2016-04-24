@@ -25,7 +25,7 @@ export class RestroomInfoBuilder {
         var description: string = "<p><strong>Description:</strong> " + this.restroom.description + "</p>";
         var gender: string = "<p><strong>Gender:</strong> " + genderName + "</p>";
         var rating: string = "<p><strong>rating:</strong> " + ratingText + "</p>";
-        var rateButton: string = "<div class=\"ratebutton_container\"><a class=\"btn btn-primary\" href=\"" + Main.getBaseDir() + "restroom/rate/" + this.restroom.id + "\">Rate</a></div>";
+        var rateButton: string = `<div class="flexible-btn-container"><a class="btn btn-default" href="` + Main.getBaseDir() + "restroom/rate/" + this.restroom.id + `">Rate</a></div>`;
         return header + description + gender + rating + rateButton;
     }
 }

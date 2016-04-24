@@ -26,7 +26,8 @@
                 @Html.TextBox("Title", "", new
            {
                @class = "form-control centered",
-               @placeholder = "type a title..."
+               @placeholder = "type a title...",
+               @required = ""
            })
 
             </div>
@@ -42,7 +43,7 @@
                         <div class="rating"></div>
                         <div class="counter">0</div>
                     </div>
-                    @Html.Hidden("Rating", 0, new { @id = "rating"})
+                    @Html.Hidden("Rating", 0, new { @id = "rating", @required = "" })
                    
                 </div>
 
@@ -58,8 +59,8 @@
                            @class = "form-control textarea-lg",
                            @style = "margin: auto; margin-bottom: 20px; width: 100%", //How to make comment  box span the width of the form?
                            @rows = "4",
-                           @placeholder = "write a comment..."
-                           
+                           @placeholder = "write a comment...",
+                           @required = ""
 
                        })
                     </div>
