@@ -50,9 +50,9 @@
 {
     <script type="text/javascript">
         $('button[type="submit"]').click(function (e) {
-
+            $('[name="Email"]').val( $('[name="Email"]').val().trim() );
             var errorMessage = "";
-
+           
             $("[required]").each(function(e) {
                 if ($(this).val().length == 0) {
                     var selector = '[for="' + $(this).attr("name") + '"]';

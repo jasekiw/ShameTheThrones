@@ -1,4 +1,5 @@
-﻿var gulp = require('gulp');
+﻿
+var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var requirejsOptimize = require('gulp-requirejs-optimize');
@@ -11,9 +12,6 @@ gulp.task('compile-typescript-front-end', function () {
     return tsResult.js.pipe(sourcemaps.write())
         .pipe(gulp.dest('./Scripts/typescript/shamethethrones/'));
 });
-
-
-
 
 gulp.task('optimize-scripts', function () {
     return gulp.src('Scripts/typescript/shamethethrones/Main.js')
@@ -28,9 +26,9 @@ gulp.task('optimize-scripts', function () {
 gulp.task('default', ['compile-typescript-front-end']);
 gulp.task('optimize', ['optimize-scripts']);
 
-gulp.task('build', ['compile-typescript-front-end'], function() {
-    gulp.run('optimize-scripts');
-})
+gulp.task('build',['compile-typescript-front-end'],function() {
+        gulp.run('optimize-scripts');
+});
 gulp.task('watch', ['compile-typescript-front-end'], function () {
     gulp.watch('Scripts/typescript/shamethethrones/**/*.ts', ['compile-typescript-front-end']);
 });

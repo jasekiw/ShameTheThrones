@@ -53,6 +53,9 @@ namespace ShameTheThrones.Models
             this.State = restroom.state;
             this.ZipCode = restroom.zipCode.HasValue ? "" + restroom.zipCode.Value : "";
             this.userId = restroom.userId;
+            this.coordX = restroom.coordX ?? 0;
+            this.coordY = restroom.coordY ?? 0;
+
         }
 
         public RestroomModel(int id)
@@ -123,24 +126,17 @@ namespace ShameTheThrones.Models
         {
             using (shamethethronesEntities db = new shamethethronesEntities())
             {
-                Restroom restroomModel = db.Restrooms.Where(x => x.id == restroomId).Single();
-                Rating rating = db.Ratings.Where(x => x.restroomId == restroomId).First();
+                Restroom restroomModel = db.Restrooms.Single(x => x.id == restroomId);
+                var ratings = db.Ratings.Where(x => x.restroomId == restroomId).OrderByDescending(x => x.id).Take(50).ToList();
 
 
-                var restroom = new RestroomModel();
+                var restroom = new RestroomModel(restroomModel);
 
-                restroom.id = restroomModel.id;
-                restroom.Address = restroomModel.address;
-                restroom.City = restroomModel.city;
-                restroom.Description = restroomModel.description;
-                restroom.Gender = restroomModel.gender;
-
-                var ratingModel = new RatingModel();
-                ratingModel.Title = rating.title;
-
+                var ratingsListModel = new RatingListModel(ratings);
+                
                 var restroomWithRating = new RestroomWithRatingModel();
                 restroomWithRating.restroomModel = restroom;
-                restroomWithRating.ratingModel = ratingModel;
+                restroomWithRating.ratingModels = ratingsListModel;
 
                 return restroomWithRating;
             } 

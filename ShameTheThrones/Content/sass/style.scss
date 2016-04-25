@@ -31,7 +31,7 @@ body {
 
     background-color: #2980b9;
     box-shadow: rgba(0,0,0,0.7) 1px 5px 1px;
-    transition: all 0.2s;
+    transition: all 0.1s;
     color: white;
     border:none;
     position:relative;
@@ -61,6 +61,14 @@ body {
 }
 .flexible-btn-container {
     min-height: 40px;
+}
+.padding-vertical {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.margin-vertical {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .field-validation-error {
     color: darken(red, 10%);

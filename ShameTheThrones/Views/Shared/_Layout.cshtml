@@ -28,7 +28,7 @@
     </div>
 </div>
 
-    @Scripts.Render("~/bundles/before");
+    @Scripts.Render("~/bundles/before")
     <script type="text/javascript">
         fullPageSpinner();
     </script>
@@ -40,7 +40,7 @@
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_N_J5ihjjP4YJ-sKBMGselkuhwi0Ltzg"></script>
     @{
-        CompilationSection compilationSection = (CompilationSection)System.Configuration.ConfigurationManager.GetSection(@"system.web/compilation");
+        CompilationSection compilationSection = (CompilationSection) System.Configuration.ConfigurationManager.GetSection(@"system.web/compilation");
         bool isDebugEnabled = compilationSection.Debug;
     }
 

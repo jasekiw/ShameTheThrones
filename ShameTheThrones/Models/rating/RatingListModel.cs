@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ShameTheThrones.Models.DbContext;
 
 namespace ShameTheThrones.Models.rating
 {
@@ -9,6 +10,13 @@ namespace ShameTheThrones.Models.rating
         public RatingListModel()
         {
             this.ratings = new List<RatingModel>();
+        }
+
+        public RatingListModel(List<Rating> ratings)
+        {
+            this.ratings = new List<RatingModel>();
+            foreach (var rating in ratings)
+                this.ratings.Add(new RatingModel(rating));
         }
 
         public void add(RatingModel rating)

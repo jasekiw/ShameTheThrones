@@ -16,14 +16,18 @@ export class HomePage {
 
         this.map = new Map(".map_container");
         this.map.enableAutomaticSearch();
-        $(".zip-code-search").on("keyup", (e) => {
+        $(".zip-code-search").on("change", (e) => {
             var zipcode : string = $(e.target).val();
             if (zipcode.length > 3)
               this.map.searchZip(zipcode);
         });
-        $("#bathroomsAroundMe").click(() => this.map.getLocation(() => {
-            this.map.scrollToMap();
-        }));
+        $("#bathroomsAroundMe").click(() => {
+            Main.showLoader();
+            this.map.getLocation(() => {
+                this.map.scrollToMap();
+                Main.loadCompleted();
+            });
+        });
         $("#SearchAddress").click(() => this.map.searchZip($(".zip-code-search").val() ) );
     }
 }

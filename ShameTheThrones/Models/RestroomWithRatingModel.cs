@@ -8,6 +8,6 @@ namespace ShameTheThrones.Models
     public class RestroomWithRatingModel
     {
         public RestroomModel restroomModel { get; set; }
-        public rating.RatingModel ratingModel { get; set; }
+        public rating.RatingListModel ratingModels { get; set; }
     }
 }
