@@ -276,6 +276,7 @@
     <Compile Include="Models\RestroomSearchModel.cs" />
     <Compile Include="Models\RestroomSearchResultModel.cs" />
     <Compile Include="Models\RestroomModel.cs" />
+    <Compile Include="Models\RestroomWithRatingModel.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

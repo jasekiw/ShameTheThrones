@@ -119,11 +119,13 @@ namespace ShameTheThrones.Models
             }
         }
 
-        public RestroomModel getRestroom(int restroomId)
+        public RestroomWithRatingModel getRestroomWithRating(int restroomId)
         {
             using (shamethethronesEntities db = new shamethethronesEntities())
             {
                 Restroom restroomModel = db.Restrooms.Where(x => x.id == restroomId).Single();
+                Rating rating = db.Ratings.Where(x => x.restroomId == restroomId).First();
+
 
                 var restroom = new RestroomModel();
 
@@ -132,9 +134,15 @@ namespace ShameTheThrones.Models
                 restroom.City = restroomModel.city;
                 restroom.Description = restroomModel.description;
                 restroom.Gender = restroomModel.gender;
-               
 
-                return restroom;
+                var ratingModel = new RatingModel();
+                ratingModel.Title = rating.title;
+
+                var restroomWithRating = new RestroomWithRatingModel();
+                restroomWithRating.restroomModel = restroom;
+                restroomWithRating.ratingModel = ratingModel;
+
+                return restroomWithRating;
             } 
         }
 

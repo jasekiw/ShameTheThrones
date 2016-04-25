@@ -1,38 +1,59 @@
-﻿@model ShameTheThrones.Models.RestroomModel
+﻿@model ShameTheThrones.Models.RestroomWithRatingModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Restroom";
 }
 
-<div class ="col-xs-12 text-center">
-    <h2>
-        Address:
-    </h2>
-    <h3>
-        @Model.Address
-    </h3>
-    
-    <br />
+<div class="col-xs-12 text-center">
+    <div class="panel panel-default">
+        <div class="panel-heading rating-heading">
+            <h3 class="panel-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3>@Model.ratingModel.Title</h3>
+                    </div>
+                    <div class="col-xs-6">
+                         <h3>
+                        @for (int i = 0; i < Model.restroomModel.getAverageRating(); i++)
+                        {
+                            <span class="glyphicon glyphicon-star rating-star"></span>
+                        }</h3>
+                    </div>
+               </div>
 
-    <h2>Description</h2>
-    <h3>@Model.Description</h3>
-    <br />
+            </h3>
+        </div>
+        <div class="panel-body">
+            <h2>
+                Address:
+            </h2>
+            <h3>
+                @Model.restroomModel.Address
+            </h3>
 
-    <h2>Which Gender Restrooms?</h2>
-    @if (Model.Gender == 0)
-    {
-        <h3>Men Only</h3>
-    }
-    else if (Model.Gender == 1)
-    {
-        <h3>Women Only</h3>
-    }
-    else
-    {
-        <h3>All of the Above!</h3>
-    }
-    <br />
+            <br />
 
-    <h2>Average Rating?</h2>
-    <h3>@(Model.getAverageRating())</h3>
+            <h2>Description</h2>
+            <h3>@Model.restroomModel.Description</h3>
+            <br />
+
+            <h2>Which Gender Restrooms?</h2>
+            @if (Model.restroomModel.Gender == 0)
+            {
+                <h3>Men Only</h3>
+            }
+            else if (Model.restroomModel.Gender == 1)
+            {
+                <h3>Women Only</h3>
+            }
+            else
+            {
+                <h3>All of the Above!</h3>
+            }
+            <br />
+
+            <h2>Average Rating?</h2>
+            <h3>@(Model.restroomModel.getAverageRating())</h3>
+        </div>
+    </div>
 </div>
