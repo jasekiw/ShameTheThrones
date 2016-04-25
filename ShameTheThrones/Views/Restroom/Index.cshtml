@@ -1,7 +1,38 @@
-﻿
+﻿@model ShameTheThrones.Models.RestroomModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class ="col-xs-12 text-center">
+    <h2>
+        Address:
+    </h2>
+    <h3>
+        @Model.Address
+    </h3>
+    
+    <br />
 
+    <h2>Description</h2>
+    <h3>@Model.Description</h3>
+    <br />
+
+    <h2>Which Gender Restrooms?</h2>
+    @if (Model.Gender == 0)
+    {
+        <h3>Men Only</h3>
+    }
+    else if (Model.Gender == 1)
+    {
+        <h3>Women Only</h3>
+    }
+    else
+    {
+        <h3>All of the Above!</h3>
+    }
+    <br />
+
+    <h2>Average Rating?</h2>
+    <h3>@(Model.getAverageRating())</h3>
+</div>
