@@ -52,7 +52,7 @@ namespace ShameTheThrones.Controllers
             var viewModel = model.getRestroom(ratingModel.RestroomId);
 
 
-            return RedirectToAction("Index", "Restroom", viewModel);
+            return RedirectToAction("Index", "Restroom", new { id = viewModel.id });
         }
       
         public ActionResult Search(RestroomSearchModel search)
