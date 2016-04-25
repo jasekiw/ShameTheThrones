@@ -18,7 +18,7 @@
                     <h3 class="panel-title">
                         <div class="row">
                             <div class="col-xs-8">
-                                @rating.Title
+                                <a href="@Url.Action("Index", "Restroom", new { id = rating.RestroomId })" style="color:white">@rating.Title</a>
                             </div>
                             <div class="col-xs-4">
                                 @rating.Rating
