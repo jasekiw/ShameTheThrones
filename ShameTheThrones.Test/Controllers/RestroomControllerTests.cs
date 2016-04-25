@@ -16,12 +16,6 @@ namespace ShameTheThrones.Controllers.Tests
         {
             Assert.Fail();
         }
-
-        [TestMethod()]
-        public void SearchTest()
-        {
-            Assert.Fail();
-        }
     }
 }
 /*
