@@ -14,14 +14,8 @@ namespace ShameTheThrones.Controllers.Tests
     [TestClass()]
     public class RestroomControllerTests
     {
-        private Mock<shamethethronesEntities> _mockDb;
-        private Mock<Restroom> _mockRR1;
-        private Mock<Restroom> _mockRR2;
         private Mock<RatingModel> _mockRatingModel;
         private Mock<Rating> _rating1;
-        private Mock<Rating> _rating2;
-        private Mock<Rating> _rating3;
-        private Mock<Rating> _rating4;
 
         [TestInitialize]
         public void Initialize()
