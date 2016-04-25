@@ -21,11 +21,12 @@ export class RestroomInfoBuilder {
             ratingText = this.restroom.rating.toString();
         else
             ratingText = "Not Yet Rated";
-        var header: string = "<h3>" + this.restroom.address + "</h3>";
+        var header: string = `<a href="/restroom/show/` + this.restroom.id + `"><h3>` + this.restroom.address + "</h3></a>";
         var description: string = "<p><strong>Description:</strong> " + this.restroom.description + "</p>";
         var gender: string = "<p><strong>Gender:</strong> " + genderName + "</p>";
         var rating: string = "<p><strong>rating:</strong> " + ratingText + "</p>";
         var rateButton: string = `<div class="flexible-btn-container"><a class="btn btn-default" href="` + Main.getBaseDir() + "restroom/rate/" + this.restroom.id + `">Rate</a></div>`;
         return header + description + gender + rating + rateButton;
+
     }
 }

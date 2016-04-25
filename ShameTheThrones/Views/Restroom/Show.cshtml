@@ -1,7 +1,159 @@
-﻿@model ShameTheThrones.Models.RestroomModel
+﻿@model ShameTheThrones.Models.RestroomWithRatingModel
 
 @{
-    ViewBag.Title = Model.Address;
+    ViewBag.Title = "Restroom";
+    ViewBag.TitleClass = "show-restroom";
 }
 
-<h2>@Model.Address</h2>
+<div class="col-xs-12 text-center">
+    <div class="panel panel-default">
+        <div class="panel-heading rating-heading">
+            <h3 class="panel-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3>@Model.restroomModel.Address @Model.restroomModel.City, @Model.restroomModel.State</h3>
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>
+                            @for (int i = 0; i < Model.restroomModel.getAverageRating(); i++)
+                            {
+                                <span class="glyphicon glyphicon-star rating-star"></span>
+                            }
+                        </h3>
+                    </div>
+                </div>
+
+            </h3>
+        </div>
+        <div class="panel-body">
+
+            @Html.HiddenFor(x => x.restroomModel.coordX)
+            @Html.HiddenFor(x => x.restroomModel.coordY)
+
+            <div class="col-md-6 col-xs-12">
+                <h3>
+                    Address:
+                </h3>
+                <p>
+                    @Model.restroomModel.Address
+                </p>
+            </div>
+
+            <div class="col-md-6 col-xs-12">
+                <h3>Description</h3>
+                <p>@Model.restroomModel.Description</p>
+            </div>
+
+            <div class="col-md-6 col-xs-12">
+                <h3>Gender</h3>
+
+                @if (Model.restroomModel.Gender == 0)
+                {
+                    <p>Mens</p>
+                }
+                else if (Model.restroomModel.Gender == 1)
+                {
+                    <p>Womens</p>
+                }
+                else
+                {
+                    <p>Both</p>
+                }
+
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <h3>Average Rating</h3>
+                <p>@(Model.restroomModel.getAverageRating())</p>
+            </div>
+           
+        </div>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading rating-heading">
+            <h3 class="panel-title">
+                Map
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="map_container">
+                    <div class="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading rating-heading">
+            <h3 class="panel-title">
+                Ratings
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12 padding-vertical">
+                <a class="btn btn-default margin-vertical" href="@Url.Action("Rate", "Restroom", new { @id = @Model.restroomModel.id})">Rate this Restroom</a>
+            </div>
+            @foreach (var rating in Model.ratingModels.ratings)
+            {
+                int n = 0; // counter for columns
+
+                if (n%2 == 0) // if n is even
+                {
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading rating-heading">
+                                <h3 class="panel-title">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            @rating.Title
+                                        </div>
+                                        <div class="col-xs-4">
+                                            @rating.Rating
+                                            @for (int i = 0; i < rating.Rating; i++)
+                                            {
+                                                <span class="glyphicon glyphicon-star rating-star"></span>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                @rating.Comment
+                            </div>
+                        </div>
+                    </div>
+                } //if
+                else
+                {
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading rating-heading">
+                                <h3 class="panel-title">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            @rating.Title
+                                        </div>
+                                        <div class="col-xs-4">
+                                            @rating.Rating
+                                            @for (int i = 0; i < rating.Rating; i++)
+                                            {
+                                                <span class="glyphicon glyphicon-star rating-star"></span>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                @rating.Comment
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+
+</div>

@@ -91,6 +91,7 @@ export class Map {
         this.container.show();
         this.mapElement.css("min-height", "400px");
         google.maps.event.trigger(this.map, "resize"); // allow the map to resize to the new height
+        
     }
 
     /**

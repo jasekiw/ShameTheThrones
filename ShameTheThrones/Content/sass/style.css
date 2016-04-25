@@ -147,6 +147,14 @@ body {
 .flexible-btn-container {
   min-height: 40px; }
 
+.padding-vertical {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.margin-vertical {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
 .field-validation-error {
   color: #cc0000; }
 

@@ -62,8 +62,10 @@ namespace ShameTheThrones.Controllers
 
         public ActionResult Show(int id)
         {
-            RestroomModel restroom = new RestroomModel(id);
-            return View(restroom);
+            var model = new RestroomModel();
+            var viewModel = model.getRestroomWithRating(id);
+
+            return View(viewModel);
         }
 
         public ActionResult Ratings()
