@@ -5,46 +5,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
+using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Controllers.Tests
 {
     [TestClass()]
     public class RestroomControllerTests
     {
-        [TestMethod()]
-        public void RateBathroomTest()
-        {
-            Assert.Fail();
-        }
-    }
-}
-/*
         private Mock<shamethethronesEntities> _mockDb;
         private Mock<Restroom> _mockRR1;
         private Mock<Restroom> _mockRR2;
+        private Mock<RatingModel> _mockRatingModel;
+        private Mock<Rating> _rating1;
+        private Mock<Rating> _rating2;
+        private Mock<Rating> _rating3;
+        private Mock<Rating> _rating4;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockDb = new Mock<shamethethronesEntities>();
-            _mockRR1 = new Mock<Restroom>();
-            _mockRR2 = new Mock<Restroom>();
-            _mockDb.SetupAllProperties();
-            _mockRR1.SetupAllProperties();
-            _mockRR2.SetupAllProperties();
-            _mockDb.Setup(add => add.Restrooms.Add(new Mock<Restroom>().Object));
-            _mockDb.Setup(save => save.SaveChanges());
-        }
-        [TestMethod()]
-        public void AddBathroomModelTest()
-        {
-            _mockDb.Object.Restrooms.Add(_mockRR2.Object);
-            _mockDb.Object.Restrooms.Add(_mockRR2.Object);
-            _mockDb.Object.SaveChanges();
-            Assert.IsNotNull(_mockDb);
-            Assert.IsNotNull(_mockRR1.Object.id);
-            Assert.IsNotNull(_mockDb.Object.Restrooms.Find(_mockRR1.Object.id));
-            Assert.IsNotNull(_mockDb.Object.Restrooms.Find(_mockRR2.Object.id));
+            _mockRatingModel = new Mock<RatingModel>(_rating1);
+            _rating1 = new Mock<Rating>();
+            _mockRatingModel.SetupAllProperties();
+            _rating1.SetupAllProperties();
+            _mockRatingModel.Setup(rate => rate.add());
         }
 
-    */
+        [TestMethod()]
+        public void RateBathroomTest()
+        {
+            _mockRatingModel.Object.add();
+            Assert.AreEqual(_mockRatingModel.Object.Rating, _rating1);
+        }
+    }
+}
