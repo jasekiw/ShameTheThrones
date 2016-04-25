@@ -29,11 +29,16 @@
             </div>
 
             <div class="text-center" style="margin-bottom:20px;">
-
                 <button class="btn btn-default text-center" type="submit">Log In</button>
             </div>
             <div class="text-center">
                 @Html.ValidationMessage(string.Empty)
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <a class="btn btn-default" href="@Url.Action("Register", "User")">Don't have an account? Register instead</a>
+                </div>
+                
             </div>
         }
 
