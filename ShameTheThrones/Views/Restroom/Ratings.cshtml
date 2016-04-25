@@ -17,10 +17,10 @@
                 <div class="panel-heading rating-heading">
                     <h3 class="panel-title">
                         <div class="row">
-                            <div class="col-xs-8">
-                                <a href="@Url.Action("Index", "Restroom", new { id = rating.RestroomId })" style="color:white">@rating.Title</a>
+                            <div class="col-xs-6 col-sm-8">
+                                <a href="@Url.Action("Show", "Restroom", new { id = rating.RestroomId })" style="color:white">@rating.Title</a>
                             </div>
-                            <div class="col-xs-4">
+                            <div class="col-xs-6 col-sm-4">
                                 @rating.Rating
                                 @for (int i = 0; i < rating.Rating; i++)
                                 {
