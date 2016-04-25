@@ -8,11 +8,5 @@ namespace ShameTheThrones.Test
     public class UserModel
     {
         
-        [TestMethod]
-        public void AddUser()
-        {
-
-            
-        }
     }
 }

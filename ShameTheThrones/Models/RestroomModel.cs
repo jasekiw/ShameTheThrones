@@ -99,9 +99,9 @@ namespace ShameTheThrones.Models
             {
                 var ratingAverageResult =
                     db.Database.SqlQuery<RatingAverageModel>(
-                        "SELECT SUM(dbo.Rating.rating) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
+                        "SELECT SUM(dbo.Rating.ratingValue) as sumOfRatings, COUNT(*) as total FROM dbo.Rating WHERE dbo.Rating.restroomId = " +
                         this.id).First();
-                average = ratingAverageResult.getAverage();
+                average = Math.Truncate((100 * ratingAverageResult.getAverage()) / 100);
             }
             return average;
         }
@@ -117,6 +117,33 @@ namespace ShameTheThrones.Models
                         id).First();
                 return ratingAverageResult;
             }
+        }
+
+        public RestroomWithRatingModel getRestroomWithRating(int restroomId)
+        {
+            using (shamethethronesEntities db = new shamethethronesEntities())
+            {
+                Restroom restroomModel = db.Restrooms.Where(x => x.id == restroomId).Single();
+                Rating rating = db.Ratings.Where(x => x.restroomId == restroomId).First();
+
+
+                var restroom = new RestroomModel();
+
+                restroom.id = restroomModel.id;
+                restroom.Address = restroomModel.address;
+                restroom.City = restroomModel.city;
+                restroom.Description = restroomModel.description;
+                restroom.Gender = restroomModel.gender;
+
+                var ratingModel = new RatingModel();
+                ratingModel.Title = rating.title;
+
+                var restroomWithRating = new RestroomWithRatingModel();
+                restroomWithRating.restroomModel = restroom;
+                restroomWithRating.ratingModel = ratingModel;
+
+                return restroomWithRating;
+            } 
         }
 
 

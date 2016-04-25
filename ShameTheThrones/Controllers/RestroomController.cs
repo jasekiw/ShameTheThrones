@@ -13,9 +13,12 @@ namespace ShameTheThrones.Controllers
     public class RestroomController : Controller
     {
         // GET: Restroom
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            var model = new RestroomModel();
+            var viewModel = model.getRestroomWithRating(id);
+            
+            return View(viewModel);
         }
         [HttpGet, Authorize]
         public ActionResult Add()
@@ -44,7 +47,12 @@ namespace ShameTheThrones.Controllers
             int userId = Int32.Parse(val1);
             ratingModel.UserId = userId;
             ratingModel.add();
-            return RedirectToAction("Index", "Restroom");
+
+            var model = new RestroomModel();
+            var viewModel = model.getRestroomWithRating(ratingModel.RestroomId);
+
+
+            return RedirectToAction("Index", "Restroom", new { id = viewModel.restroomModel.id });
         }
       
         public ActionResult Search(RestroomSearchModel search)
