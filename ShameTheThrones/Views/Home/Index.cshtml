@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using ShameTheThrones.Infrastructure
 
 @{
     ViewBag.Title = "Shame The Thrones!";
@@ -7,8 +8,17 @@
 }
 <div class="row spaced">
     <div class="col-xs-12" id="homeGreeting">
-        <h1 class="text-center">Welcome to ShameTheThrones</h1>
-        <h3 class="text-center">Please <a href="@Url.Action("LogIn", "User")">Login</a> to rate a restroom </h3>
+       
+        @if (!Request.IsAuthenticated)
+        {
+            <h1 class="text-center">Welcome to ShameTheThrones</h1>
+            <h3 class="text-center">Please <a href="@Url.Action("LogIn", "User")">Login</a> to rate a restroom </h3>
+        }
+        else
+        {
+            <h1 class="text-center">Welcome @User.Identity.getUser().UserName!</h1>
+        }
+        
         
     </div>
 

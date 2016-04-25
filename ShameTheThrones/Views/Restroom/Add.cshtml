@@ -29,28 +29,34 @@
 
             <div class="well" style="margin-bottom: 75px">
                 <h3 class="text-center">Location</h3>
-                <a id="fillByLocation" href="javascript:void(0);" type="button" class="btn btn-default rate-button">Fill in by location</a>
                 <div class="row">
-                    <div class="col-xs-6 text-center">
+                    <div class="col-xs-12 flexible-btn-container centered">
+                        
+                        <a id="fillByLocation" href="javascript:void(0);" type="button" class="btn btn-default rate-button">Fill in by location</a>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-6 col-xs-12 text-center">
                         @Html.Label("Address")
-                        @Html.TextBoxFor(b => b.Address, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = "" })
+                        @Html.TextBoxFor(b => b.Address, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = ""})
                     </div>
 
-                    <div class="col-xs-6 text-center">
+                    <div class="col-md-6 col-xs-12 text-center">
                         @Html.Label("City")
-                        @Html.TextBoxFor(b => b.City, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = "" })
+                        @Html.TextBoxFor(b => b.City, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = ""})
                     </div>
 
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-6 text-center">
+                    <div class="col-md-6 col-xs-12 text-center">
                         @Html.Label("State")
-                        @Html.TextBoxFor(b => b.State, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = "" })
+                        @Html.TextBoxFor(b => b.State, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = ""})
 
                     </div>
 
-                    <div class="col-xs-6 text-center">
+                    <div class="col-md-6 col-xs-12 text-center">
                         @Html.Label("Zip")
                         @Html.TextBoxFor(b => b.ZipCode, new {@class = "form-control", @style = "margin:auto; margin-bottom: 20px", @required = ""})
 
@@ -58,12 +64,17 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 centered">
+                    <p>Please make sure the marker is at the right location on the map. This will be the location that the restroom will be displayed</p>
+                </div>
+            </div>
             <div class="map_container">
                 <div class="map"></div>
             </div>
             <div class="well">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-md-6 col-xs-12">
 
                         @{
                             //gender list array
@@ -87,7 +98,7 @@
 
                 <div class="row" style="margin-top: 50px">
                     <div class="col-xs-12 text-center">
-                        @Html.Label("Description")
+                        @Html.Label("Describe the location of the restroom")
                         @Html.TextAreaFor(b => b.Description, new
                    {
                        @class = "form-control",

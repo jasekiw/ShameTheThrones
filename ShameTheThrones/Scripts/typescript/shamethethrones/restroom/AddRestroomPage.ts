@@ -1,5 +1,6 @@
 ﻿import {Map} from "../google/Map";
 import maps = google.maps;
+import {Main} from "../Main";
 
 export class AddRestroomPage {
 
@@ -39,15 +40,17 @@ export class AddRestroomPage {
 
         this.form = $("#NewRestroom");
         $("#fillByLocation").click(() => this.map.getLocation(() => {
+            Main.showLoader();
             this.showPosition(this.map.currentLatitude, this.map.currentLongitude);
             this.map.setCurrentMarkerPosition(this.map.currentLatitude, this.map.currentLongitude);
             this.setLocation(this.map.currentLatitude, this.map.currentLongitude);
+            Main.loadCompleted();
                 
         }));
-        $("#Address").keyup(() => this.calculateAddress());
-        $("#City").keyup(() => this.calculateAddress());
-        $("#State").keyup(() => this.calculateAddress());
-        $("#ZipCode").keyup(() => this.calculateAddress());
+        $("#Address").change(() => this.calculateAddress());
+        $("#City").change(() => this.calculateAddress());
+        $("#State").change(() => this.calculateAddress());
+        $("#ZipCode").change(() => this.calculateAddress());
     }
 
     
