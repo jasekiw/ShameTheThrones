@@ -27,7 +27,7 @@ Add a restroom | 8 | 7 | Travis & Jason & David
 Login feedback | 5 | 3 | Travis
 Average the ratings | 3 | 3 | Jason
 Rate an existing restroom | 5 | 4 | Rebecca & Jason
-Write unit tests | 8 | 20 | Rebecca, David, Jason
+Write unit tests | 8 | 20 | Rebecca, David, Jason, Roland
 Create a new account/Register | 8 | 6 | Travis
 Forgot password functionality | 8 | - | -
 Add new Restroom | 4 | 4 | David
