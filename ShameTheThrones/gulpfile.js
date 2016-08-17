@@ -32,3 +32,16 @@ gulp.task('build',['compile-typescript-front-end'],function() {
 gulp.task('watch', ['compile-typescript-front-end'], function () {
     gulp.watch('Scripts/typescript/shamethethrones/**/*.ts', ['compile-typescript-front-end']);
 });
+
+var typedoc = require("gulp-typedoc");
+gulp.task("typedoc", function () {
+    return gulp
+        .src(["Scripts/typescript/**/*.ts"])
+        .pipe(typedoc({
+            module: "amd",
+            target: "es5",
+            out: "docs/",
+            name: "Shame The Thrones Front End Documentation"
+        }))
+    ;
+});

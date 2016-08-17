@@ -20,13 +20,9 @@
                     <a href="@Url.Action("About", "Home")">About</a>
                 </li>
 
-
                 <li @(ViewBag.NavbarTab == "Ratings" ? "class=\"active\"" : "")>
                     <a href="@Url.Action("Ratings", "Restroom")">Ratings</a>
                 </li>
-
-            <li @(ViewBag.NavbarTab == "Contact" ? "class=\"active\"" : "") >
-                <a href="@Url.Action("Index", "Home")">Hall of Shame</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
