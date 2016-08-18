@@ -227,6 +227,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\CustomIdentity .cs" />
+    <Compile Include="Migrations\201608180153316_initial.cs" />
+    <Compile Include="Migrations\201608180153316_initial.Designer.cs">
+      <DependentUpon>201608180153316_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\ShameTheThronesInitializer.cs" />
     <Compile Include="Models\DbContext\shamethethronesContext.cs" />
     <Compile Include="Models\DbModels\Media.cs" />
     <Compile Include="Models\DbModels\Rating.cs" />
@@ -303,6 +309,11 @@
     <TypeScriptCompile Include="Scripts\typescript\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typescript\typings\google.maps.d.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608180153316_initial.resx">
+      <DependentUpon>201608180153316_initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -357,6 +368,8 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+	<Exec Command="npm i" WorkingDirectory="$(ProjectDir)" />
+	<Exec Command="npm run-script build" WorkingDirectory="$(ProjectDir)" />
   </Target>
   <Target Name="AfterBuild">
   </Target>

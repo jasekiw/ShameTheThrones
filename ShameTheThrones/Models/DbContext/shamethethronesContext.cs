@@ -1,4 +1,6 @@
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using ShameTheThrones.Models.DbModels;
 using ShameTheThrones.Models.Mapping;
 
@@ -28,5 +30,6 @@ namespace ShameTheThrones.Models.DbContext
             modelBuilder.Configurations.Add(new RestroomMap());
             modelBuilder.Configurations.Add(new UserMap());
         }
+        
     }
 }
