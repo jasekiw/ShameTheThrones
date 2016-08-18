@@ -210,11 +210,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-/ShameTheThrones/Content/img/restroom-markers/unisex/Thumbs.db
-/ShameTheThrones/Content/img/restroom-markers/women/Thumbs.db
-/ShameTheThrones/Content/img/Thumbs.db
 Thumbs.db
 /ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js
 /ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js.map
 /ShameTheThrones/Scripts/typescript/dist/
 /ShameTheThrones/ConnectionStrings.config
+ShameTheThrones/Content/sass/**/*.css

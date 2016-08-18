@@ -30,12 +30,12 @@ body {
 .btn {
 
     background-color: #2980b9;
-    box-shadow: rgba(0,0,0,0.7) 1px 5px 1px;
-    transition: all 0.1s;
+    box-shadow: rgba(0,0,0,0.7) 0 4px 1px;
+    transition: all 0.05s;
     color: white;
     border:none;
     position:relative;
-    top: 0;
+    top: -2px;
     &:focus {
         background-color: #2980b9;
         color: white;
@@ -51,8 +51,8 @@ body {
     }
     &.btn-default:active {
         background-color: lighten(#3498db, 10%);
-        box-shadow: rgba(0,0,0,0.7) 1px 1px 2px;
-        top: 5px
+        box-shadow: rgba(0,0,0,0.7) 0 1px 2px;
+        top: 3px
     }
 
     .form-btn{

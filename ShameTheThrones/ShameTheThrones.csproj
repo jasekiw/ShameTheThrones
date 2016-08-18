@@ -164,7 +164,9 @@
     <Content Include="Content\img\toilet.png" />
     <Content Include="Content\sass\includes\_homepage.scss" />
     <Content Include="Content\sass\includes\_bootstrapExtending.scss" />
-    <Content Include="ConnectionStrings.config" />
+    <Content Include="ConnectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Content\sass\includes\_legend.scss" />
     <None Include="Content\sass\includes\_rating.scss" />
     <Content Include="Content\sass\style.css">
@@ -226,7 +228,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\CustomIdentity .cs" />
+    <Compile Include="Infrastructure\CustomIdentity.cs" />
     <Compile Include="Migrations\201608180153316_initial.cs" />
     <Compile Include="Migrations\201608180153316_initial.Designer.cs">
       <DependentUpon>201608180153316_initial.cs</DependentUpon>
