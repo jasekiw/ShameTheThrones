@@ -217,3 +217,4 @@ Thumbs.db
 /ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js
 /ShameTheThrones/Scripts/typescript/shamethethrones/**/*.js.map
 /ShameTheThrones/Scripts/typescript/dist/
+/ShameTheThrones/ConnectionStrings.config

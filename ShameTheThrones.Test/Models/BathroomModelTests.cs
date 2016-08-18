@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models.Tests
 {

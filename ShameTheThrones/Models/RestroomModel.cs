@@ -1,10 +1,11 @@
-﻿using ShameTheThrones.Models.DbContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Moq;
+using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Models
@@ -60,7 +61,7 @@ namespace ShameTheThrones.Models
 
         public RestroomModel(int id)
         {
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (shamethethronesContext db = new shamethethronesContext())
             {
                 Restroom restroom = db.Restrooms.Where(x => x.id == id).First(x => x.deletedAt == null);
                
@@ -77,7 +78,7 @@ namespace ShameTheThrones.Models
 
         public void AddRestroom(RestroomModel bathroom)
         {
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 Restroom newBathroom = new Restroom();
                 newBathroom.userId = bathroom.userId;
@@ -98,7 +99,7 @@ namespace ShameTheThrones.Models
         public double getAverageRating()
         {
             double average = -1;
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 var ratingAverageResult =
                     db.Database.SqlQuery<RatingAverageModel>(
@@ -112,7 +113,7 @@ namespace ShameTheThrones.Models
         public static RatingAverageModel getRatingObject(int id)
         {
             double average = -1;
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 var ratingAverageResult =
                     db.Database.SqlQuery<RatingAverageModel>(
@@ -124,7 +125,7 @@ namespace ShameTheThrones.Models
 
         public RestroomWithRatingModel getRestroomWithRating(int restroomId)
         {
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 Restroom restroomModel = db.Restrooms.Single(x => x.id == restroomId);
                 var ratings = db.Ratings.Where(x => x.restroomId == restroomId).OrderByDescending(x => x.id).Take(50).ToList();

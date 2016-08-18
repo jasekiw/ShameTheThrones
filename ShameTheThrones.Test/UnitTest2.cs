@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShameTheThrones.Controllers;
 using ShameTheThrones.Models;
-using ShameTheThrones.Models.DbContext;
 
 namespace ShameTheThrones.Test
 {

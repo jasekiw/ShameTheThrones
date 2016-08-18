@@ -1,5 +1,4 @@
-﻿using ShameTheThrones.Models.DbContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,6 +6,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Security;
+using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models
 {
@@ -30,7 +31,7 @@ namespace ShameTheThrones.Models
 
         public void Register(UserModel user)
         {
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 User newUser = new User();
 
@@ -61,7 +62,7 @@ namespace ShameTheThrones.Models
                 return false;
             }
 
-            using (shamethethronesEntities db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 string encrypted = CalculateMD5Hash(password);
                 var user = db.Users.FirstOrDefault(x => x.email == email);

@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models.rating
 {
@@ -30,7 +31,7 @@ namespace ShameTheThrones.Models.rating
 
         public void add()
         {
-            using (var db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 var rating = new Rating();
                 rating.userId = this.UserId;
@@ -46,7 +47,7 @@ namespace ShameTheThrones.Models.rating
         public static RatingListModel getLatestRatings()
         {
             var ratingList = new RatingListModel();
-            using (var db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 var ratings = db.Ratings.Take(50).OrderByDescending(e => e.id).ToList();
                 foreach(var rating in ratings)

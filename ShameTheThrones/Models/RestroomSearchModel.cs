@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models
 {
@@ -16,7 +17,7 @@ namespace ShameTheThrones.Models
         public List<RestroomSearchResultModel> GetRestrooms()
         {
             List<RestroomSearchResultModel> restroomResults = new List<RestroomSearchResultModel>();
-            using (var db = new shamethethronesEntities())
+            using (var db = new shamethethronesContext())
             {
                 List<Restroom> restrooms = new List<Restroom>();
 

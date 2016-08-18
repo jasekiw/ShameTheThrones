@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Models

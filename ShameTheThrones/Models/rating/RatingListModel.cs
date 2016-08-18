@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ShameTheThrones.Models.DbContext;
+using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models.rating
 {
