@@ -4,10 +4,26 @@
 @import "includes/_homepage";
 @import "includes/bootstrapExtending";
 @import "includes/rating";
+html {
+    height:100%;
+}
+
 body {
+    min-height:100%;
+    background-color: #ecf0f1;
+     background: url(../img/bathroom-background-no-responsive.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: inset 0 0 60px black;
+}
+.body-wrapper {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #ecf0f1;
+}
+ .body-wrapper {
+   
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -89,6 +105,7 @@ body {
 }
 
 .navbar{
+    box-shadow: 0 0px 20px rgba(0,0,0,0.8);
     li{
         background-color: inherit;
         transition: background-color 0.2s;

@@ -10,7 +10,6 @@ export class Main {
         private classes: string;
         private static basedir: string;
         constructor() {
-            this.initHandleHeight();
                 this.classes = $("body").attr("class");
             if (this.contains("home")) {
                 this.constructHomePage();
@@ -56,33 +55,7 @@ export class Main {
             else
                 return true;
         }
-        private handleHeight() {
-            $(".body-wrapper").css("min-height", "0");
-            setTimeout(() => {
-                if (window.outerWidth < 500 && $("body").outerHeight() < window.innerHeight) {
-                    let bodyHeight = $("body").outerHeight();
-                    let wrapperHeight = $(".body-wrapper").outerHeight();
-                    let offset = $("body").height() - $(".body-wrapper").height();
-                    $(".body-wrapper").css("min-height", window.innerHeight - offset);
-                }
-            }, 3);
-        }
-        private initHandleHeight() {
-            this.handleHeight();
-            let lastResizeTime = 0;
-            $(window).resize(() => { // debounce the resize to 300 milliseconds
-                lastResizeTime = new Date().getTime();
-                setTimeout(() => {
-                    let offset = (new Date()).getTime() - lastResizeTime;
-
-                    if (offset >= 300)
-                        this.handleHeight();
-
-                },
-                    300);
-            });
-
-        }
+      
     }
 Main.setBaseDir("/");
 var main = new Main();
