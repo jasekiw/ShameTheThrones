@@ -143,6 +143,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fav.ico" />
+    <Content Include="Content\img\bathroom-background.svg" />
     <Content Include="Content\img\restroom-markers\men\blue.png" />
     <Content Include="Content\img\restroom-markers\men\gray.png" />
     <Content Include="Content\img\restroom-markers\men\green.png" />
@@ -373,7 +374,6 @@
       GulpBuild;
     </CompileDependsOn>
   </PropertyGroup>
-  
   <PropertyGroup>
     <CopyAllFilesToSingleFolderForPackageDependsOn>
       $(CopyAllFilesToSingleFolderForPackageDependsOn);
@@ -393,10 +393,8 @@
     </ItemGroup>
     <Message Text="CollectGulpOutput list: %(_CustomFiles.Identity)" />
   </Target>
-  
   <Target Name="GulpBuild">
-	<Exec Command="npm i" WorkingDirectory="$(ProjectDir)" />
-	<Exec Command="npm run-script build" WorkingDirectory="$(ProjectDir)" />
+    <Exec Command="npm i" WorkingDirectory="$(ProjectDir)" />
+    <Exec Command="npm run-script build" WorkingDirectory="$(ProjectDir)" />
   </Target>
-
 </Project>

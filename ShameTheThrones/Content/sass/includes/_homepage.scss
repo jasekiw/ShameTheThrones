@@ -1,3 +1,67 @@
 ﻿.map_container {
     display:none;
 }
+@mixin droptext() {
+    color: white;
+    text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
+}
+
+.home {
+    background-image: url('../img/bathroom-background.svg');
+    background-position: center;
+    background-size:cover;
+}
+
+.home {
+    h1,h3 {
+       @include droptext;
+    }
+    .map { 
+        h1,h3 {
+            color:black;
+            text-shadow: none;
+        }
+    }
+
+    footer {
+       @include droptext;
+    }
+    .legend {
+        > div {
+            box-shadow: 0px 0px 2px black;
+            border-radius: 4px;
+        }
+        span {
+            @include droptext;
+        }
+        text-align:center;
+    }
+    .map {
+       
+        z-index: 5000;
+        border-radius: 10px;
+        box-shadow: 0 0 10px black;
+        margin-bottom: 40px;
+        margin-top:30px;
+    }
+    input.zip-code-search {
+        background: rgba(255,255,255,0.2);
+        @include droptext;
+        &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+             color:white;
+             opacity:1;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:white;
+            opacity:1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+             color:white;
+             opacity:1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color:white;
+            opacity:1;
+        }
+    }
+}

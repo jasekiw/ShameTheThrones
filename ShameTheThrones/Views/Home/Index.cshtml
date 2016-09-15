@@ -30,14 +30,14 @@
     <div class="col-md-4 vertical-align-container">
         <div class="centered">
             <h1>
-                <a id="bathroomsAroundMe" href="javascript:void(0);" type="button" class="btn btn-default map-button">Restrooms near me</a>
+                <button id="bathroomsAroundMe" href="javascript:void(0);" type="button" class="btn btn-default map-button">Restrooms near me</button>
             </h1>
         </div>
     </div><!-- /.col-md-4 -->
     <div class="col-md-4 vertical-align-container">
         <div class="centered">
             <h1>
-                <a href="@Url.Action("Add", "Restroom")" type="button" class="btn btn-default rate-button">Add a bathroom</a>
+                <button href="@Url.Action("Add", "Restroom")" onclick="window.location.href = this.getAttribute('href');" type="button" class="btn btn-default rate-button">Add a bathroom</button>
             </h1>
         </div>
     </div><!-- /.col-lg-6 -->
