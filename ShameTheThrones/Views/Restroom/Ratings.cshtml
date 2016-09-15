@@ -5,64 +5,36 @@
 }
 
 <h1 class="centered" style="margin-bottom: 50px;">Latest Ratings</h1>
-
-@foreach (var rating in Model.ratings)
+@for (int row = 0; row < Model.ratings.Count; row += 2)
 {
-    int n = 0; // counter for columns
+    <div class="row">
+        @for (int column = row; column < row + 2 && column < Model.ratings.Count; column++)
+        {
+            var rating = Model.ratings[column];
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading rating-heading">
+                        <h3 class="panel-title">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-8 col-xs-12">
+                                    <a href="@Url.Action("Show", "Restroom", new { id = rating.RestroomId })" style="color:white">@rating.Title</a>
+                                </div>
+                                <div class="col-xs-6 col-sm-4">
+                                    @rating.Rating
+                                    @for (int i = 0; i < rating.Rating; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star rating-star"></span>
+                                    }
+                                </div>
+                            </div>
 
-    if (n % 2 == 0) // if n is even
-    {
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading rating-heading">
-                    <h3 class="panel-title">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-8">
-                                <a href="@Url.Action("Show", "Restroom", new { id = rating.RestroomId })" style="color:white">@rating.Title</a>
-                            </div>
-                            <div class="col-xs-6 col-sm-4">
-                                @rating.Rating
-                                @for (int i = 0; i < rating.Rating; i++)
-                                {
-                                    <span class="glyphicon glyphicon-star rating-star"></span>
-                                }
-                            </div>
-                        </div>
-
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    @rating.Comment
-                </div>
-            </div>
-        </div>
-    }//if
-    else 
-    {
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading rating-heading">
-                    <h3 class="panel-title">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                @rating.Title
-                            </div>
-                            <div class="col-xs-4">
-                                @rating.Rating
-                                @for (int i = 0; i < rating.Rating; i++)
-                                {
-                                    <span class="glyphicon glyphicon-star rating-star"></span>
-                                }
-                            </div>
-                        </div>
-
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    @rating.Comment
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        @rating.Comment
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-
+        }
+    </div>
 }
