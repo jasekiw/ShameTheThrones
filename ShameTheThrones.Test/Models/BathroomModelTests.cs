@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using ShameTheThrones.Models.DbContext;
 using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models.Tests
@@ -7,14 +8,14 @@ namespace ShameTheThrones.Models.Tests
     [TestClass()]
     public class BathroomModelTests
     {
-        private Mock<shamethethronesEntities> _mockDb;
+        private Mock<shamethethronesContext> _mockDb;
         private Mock<Restroom> _mockRR1;
         private Mock<Restroom> _mockRR2;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockDb = new Mock<shamethethronesEntities>();
+            _mockDb = new Mock<shamethethronesContext>();
             _mockRR1 = new Mock<Restroom>();
             _mockRR2 = new Mock<Restroom>();
             _mockDb.SetupAllProperties();

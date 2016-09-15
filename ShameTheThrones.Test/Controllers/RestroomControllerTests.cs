@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
+using ShameTheThrones.Models.DbModels;
 using ShameTheThrones.Models.rating;
 
 namespace ShameTheThrones.Controllers.Tests

@@ -164,9 +164,6 @@
     <Content Include="Content\img\toilet.png" />
     <Content Include="Content\sass\includes\_homepage.scss" />
     <Content Include="Content\sass\includes\_bootstrapExtending.scss" />
-    <Content Include="ConnectionStrings.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Content\sass\includes\_legend.scss" />
     <None Include="Content\sass\includes\_rating.scss" />
     <Content Include="Content\sass\style.css">
@@ -196,6 +193,7 @@
     <Content Include="Content\sass\includes\_homesearch.scss" />
     <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
+    <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\js\thirdparty\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\js\thirdparty\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\js\thirdparty\geolocation-marker.js" />
@@ -368,12 +366,37 @@
   </Target>
   <Import Project="..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+       Other similar extension points exist, see Microsoft.Common.targets. -->
+  <PropertyGroup>
+    <CompileDependsOn>
+      $(CompileDependsOn);
+      GulpBuild;
+    </CompileDependsOn>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+      CollectGulpOutput;
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+      CollectGulpOutput;
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+  <Target Name="CollectGulpOutput">
+    <ItemGroup>
+      <_CustomFiles Include="Scripts\typescript\dist\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>Scripts\typescript\dist\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <Message Text="CollectGulpOutput list: %(_CustomFiles.Identity)" />
+  </Target>
+  
+  <Target Name="GulpBuild">
 	<Exec Command="npm i" WorkingDirectory="$(ProjectDir)" />
 	<Exec Command="npm run-script build" WorkingDirectory="$(ProjectDir)" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

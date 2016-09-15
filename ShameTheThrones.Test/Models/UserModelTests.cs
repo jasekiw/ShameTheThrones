@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShameTheThrones.Models.DbContext;
 using ShameTheThrones.Models.DbModels;
 
 namespace ShameTheThrones.Models.Tests
@@ -13,14 +14,14 @@ namespace ShameTheThrones.Models.Tests
     [TestClass()]
     public class UserModelTests
     {
-        private Mock<shamethethronesEntities> _mockUserClass;
+        private Mock<shamethethronesContext> _mockUserClass;
         private Mock<User> _mockUser1;
         private Mock<User> _mockUser2;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockUserClass = new Mock<shamethethronesEntities>();
+            _mockUserClass = new Mock<shamethethronesContext>();
             _mockUser1 = new Mock<User>();
             _mockUser2 = new Mock<User>();
             _mockUserClass.SetupAllProperties();
