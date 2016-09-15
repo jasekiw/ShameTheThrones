@@ -13,7 +13,7 @@ export class HomePage {
     private map: Map;
 
     constructor() {
-        this.initHandleHeight();
+//        this.initHandleHeight();
 
         this.map = new Map(".map_container");
         this.map.enableAutomaticSearch();
