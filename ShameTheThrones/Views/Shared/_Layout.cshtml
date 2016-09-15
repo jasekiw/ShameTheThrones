@@ -14,19 +14,22 @@
 <body class=" @ViewBag.TitleClass ">
 
     @Html.Partial("~/Views/Shared/_Navbar.cshtml")
-
-<div class="container body-content">
-    @RenderBody()
-</div>
-<div class="container footer">
-    <div class="row">
-        <div class="col-xs-12 centered">
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Shame The Thrones</p>
-            </footer>
+<div class="body-wrapper">
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div class="container footer">
+        <div class="row">
+            <div class="col-xs-12 centered">
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Shame The Thrones</p>
+                </footer>
+            </div>
         </div>
     </div>
 </div>
+
+
 
     @Scripts.Render("~/bundles/before")
     <script type="text/javascript">

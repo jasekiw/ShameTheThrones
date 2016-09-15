@@ -6,13 +6,13 @@
     text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
 }
 
+
 .home {
+
     background-image: url('../img/bathroom-background.svg');
     background-position: center;
     background-size:cover;
-}
-
-.home {
+    padding-bottom: 0;
     h1,h3 {
        @include droptext;
     }
@@ -64,4 +64,14 @@
             opacity:1;
         }
     }
+
+    @media all and (max-width: 490px) {
+    .body-wrapper {
+        box-shadow: inset 0 0 60px black;
+    }
+    .body-content {
+      padding-top: 40px;
+    }
+
+}
 }

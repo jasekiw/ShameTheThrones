@@ -80,6 +80,11 @@ export class Map {
     public locationDeclined(error: PositionError, functionWhenComplete : () => void = undefined): void {
         Main.loadCompleted();
         if (error.code === error.PERMISSION_DENIED) {
+            if (window.outerWidth < 500)
+                alert("Please enable Location on your device to use this feature.");
+            else {
+                alert("Please allow location in your browser to use this feature.");
+            }
             console.log("Location permission denied");
         } else {
             console.log("unkown error occured when getting location ERRORCODE: " + error.code + " ERRORMESSAGE: " + error.message);

@@ -194,6 +194,7 @@
     <Content Include="Content\sass\includes\_homesearch.scss" />
     <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Home Server.pubxml" />
+    <None Include="Properties\PublishProfiles\production.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\js\thirdparty\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\js\thirdparty\jquery-2.2.0.intellisense.js" />
