@@ -13,7 +13,7 @@ export class HomePage {
     private map: Map;
 
     constructor() {
-//        this.initHandleHeight();
+        
 
         this.map = new Map(".map_container");
         this.map.enableAutomaticSearch();
@@ -31,33 +31,7 @@ export class HomePage {
         });
         $("#SearchAddress").click(() => this.map.searchZip($(".zip-code-search").val() ) );
     }
-    private handleHeight() {
-        $(".body-wrapper").css("min-height", "0");
-        setTimeout(() => {
-            if (window.outerWidth < 500 && $("body").outerHeight() < window.innerHeight) {
-                let bodyHeight = $("body").outerHeight();
-                let wrapperHeight = $(".body-wrapper").outerHeight();
-                let offset = $("body").height() - $(".body-wrapper").height();
-                $(".body-wrapper").css("min-height", window.innerHeight - offset);
-            }
-        }, 3);
-    }
-    private initHandleHeight() {
-        this.handleHeight();
-        let lastResizeTime = 0;
-        $(window).resize(() => { // debounce the resize to 300 milliseconds
-            lastResizeTime = new Date().getTime();
-            setTimeout(() => {
-                    let offset = (new Date()).getTime() - lastResizeTime;
-                 
-                    if (offset >= 300) 
-                        this.handleHeight();
-                    
-            },
-            300);
-        });
-
-    }
+  
 }
 
 
